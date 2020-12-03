@@ -40,7 +40,11 @@ Vue.$http.interceptors.request.use(config => {
 Vue.$http.interceptors.response.use(res => {
     NProgress.done()
     const status = res.data.status
+    const message = res.msg
     //可以预留放行的状态码
     //预留登陆
-
+    if (status !== 200) {
+        return Promise.reject(new Error(message))
+    }
+    return res
 })
