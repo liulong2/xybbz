@@ -1,12 +1,10 @@
-import axios from 'axios'
-import VueAxios from "vue-axios";
 import Vue from 'vue'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import {getToken} from '@/utils/auth'
 import {serialize} from '@/utils/utils'
 
-Vue.use(axios, VueAxios);
+// Vue.use(axios, VueAxios);
 //设置超时时间
 Vue.$http.default.timeout = 20000
 //设置返回状态码
