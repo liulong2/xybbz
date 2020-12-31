@@ -1,12 +1,16 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+const Generator =() => import('../views/xybbz/Generator')
+
 Vue.use(VueRouter)
 
 const routes = [
     {
         path: "/",
-        redirect: "/"
+        redirect: "/generator"
+    },{
+
     }
 ]
 
