@@ -1,19 +1,24 @@
+// vue.config.js
 const path = require('path')
-function resolve(dir) {
-    return path.join(__dirname, dir)
-}
-const name = "xybbz"
+const resolve = dir => path.join(__dirname, dir)
+
 module.exports = {
-    configureWebpack: {
-        name: name,
-        resolve: {
-            alias: {
-                // eslint-disable-next-line no-undef
-                '@': resolve('src')
-                // '@crud': resolve('src/components/Crud')
+    lintOnSave: false,
+    chainWebpack: config => {
+        config.resolve.alias
+            .set('@', resolve('src'))
+    },
+    devServer: {
+        open: true,
+        proxy: {
+            '/api': {
+                //  接口请求路径
+                target: `http://localhost:1001/`,
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/api': '/'
+                }
             }
         }
     }
 }
-
-

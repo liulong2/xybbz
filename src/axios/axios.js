@@ -1,25 +1,27 @@
-import Vue from 'vue'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import {getToken} from '@/utils/auth'
 import {serialize} from '@/utils/utils'
+import axios from "axios";
 
 // Vue.use(axios, VueAxios);
 //设置超时时间
-Vue.$http.default.timeout = 20000
+axios.default.timeout = 20000
+axios.default.baseUrl = process.env.BASE_URL
+
 //设置返回状态码
-Vue.$http.default.validateStatus = (status) => {
+axios.default.validateStatus = (status) => {
     return status === 200;
 }
 // 每次请求携带cookies信息
-Vue.$http.defaults.withCredentials = true
+axios.defaults.withCredentials = true
 //设置进度条
 NProgress.configure({
     minimum: 0.07,
     showSpinner: false
 })
 
-Vue.$http.interceptors.request.use(config => {
+axios.interceptors.request.use(config => {
     NProgress.start()
     const meta = config.meta;
     const istoken = config.isToken === false;
@@ -35,7 +37,7 @@ Vue.$http.interceptors.request.use(config => {
 }, error => {
     return Promise.reject(error)
 })
-Vue.$http.interceptors.response.use(res => {
+axios.interceptors.response.use(res => {
     NProgress.done()
     const status = res.data.status
     const message = res.msg
@@ -45,4 +47,8 @@ Vue.$http.interceptors.response.use(res => {
         return Promise.reject(new Error(message))
     }
     return res
+}, error =>{
+    return Promise.reject(new Error(error))
 })
+
+export default axios
