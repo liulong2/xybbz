@@ -30,6 +30,7 @@
     import {setLocalToken} from '@/utils/local'
     import global from '@/config/global'
     import { setToken } from '@/utils/auth'
+    import { mapActions } from 'vuex'
 
     Vue.use(FormModel);
     export default {
@@ -80,6 +81,7 @@
                             setLocalToken(obj)
                             setToken(context);
                             // this.$router.push({path: '/bottomLayer'})
+                            this.setDisplay()
                             this.$emit('updateApp')
                         }).catch(error => {
                             console.log(error);
@@ -92,6 +94,9 @@
                 });
 
             }
+        },
+        computed: {
+            ...mapActions(['setDisplay'])
         }
     }
 </script>

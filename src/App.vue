@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <log-in v-if="isDisplay" @updateNewApp="updateNewApp"></log-in>
+    <log-in v-if="getIsDisplay" @updateNewApp="updateNewApp">{{getIsDisplay}}</log-in>
     <a-layout v-else id="components-layout-demo-top" class="layout">
       <a-layout-header>
         <div class="logo" >
@@ -12,7 +12,7 @@
                 theme="dark"
                 mode="horizontal"
                 :default-selected-keys="['1']"
-                :style="{ lineHeight: '64px' }"
+                :style="{ lineHeight: '64px', width: '500px' }"
         >
           <a-menu-item key="1">
             首页
@@ -24,6 +24,11 @@
             三方
           </a-menu-item>
         </a-menu>
+      <div class="logo">
+        <span>
+          啦啦啦啦啦
+        </span>
+      </div>
       </a-layout-header>
       <a-layout-content id="layout-content" style="padding: 0 50px">
         <a-breadcrumb style="margin: 16px 0">
@@ -49,6 +54,8 @@
 <script>
   import zhCN from 'ant-design-vue/es/locale-provider/zh_CN';
   import LogIn from "./views/xybbz/user/LogIn";
+  import { mapGetters } from 'vuex'
+  import { mapActions } from 'vuex'
 
   export default {
   name: 'App',
@@ -58,15 +65,22 @@
       isDisplay: true
     }
   },
-  components: {
+    created() {
+      this.setDisplay
+    },
+    components: {
     LogIn
     // HelloWorld
   },
     methods: {
       updateNewApp() {
         console.log("1111111")
-        this.isDisplay = false
+        // this.isDisplay = false
       }
+    },
+    computed: {
+      ...mapGetters(['getIsDisplay']),
+      ...mapActions(['setDisplay'])
     }
 }
 </script>
