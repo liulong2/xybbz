@@ -1,4 +1,4 @@
-//存储本的意义在于先找本地的数据,速度快?
+//存储本的意义在于先找本地的数据,速度快  慎用localStorage
 import global from "@/config/global";
 import {isNull} from "@/utils/utils";
 
@@ -24,13 +24,13 @@ export const setLocalToken = (tokenObj = {}) => {
 
 //获取本地存储
 export const getLocalToken = (params = {}) => {
-    let {name, typeBug} = params
-    name = localName + name
+    let {keyName, type} = params
+    keyName = localName + keyName
     let obj = {},
         context;
-    obj = window.localStorage.getItem(name)
+    obj = window.localStorage.getItem(keyName)
     if (isNull(obj)) {
-        obj = window.sessionStorage.getItem(name)
+        obj = window.sessionStorage.getItem(keyName)
     }
     if (isNull(obj)) {
         return
@@ -40,12 +40,12 @@ export const getLocalToken = (params = {}) => {
     } catch {
         return obj
     }
-    if (typeBug) {
+    if (type) {
         return obj
     }
-    if (obj.dataType == 'string') {
+    if (obj.contextType == 'string') {
         context = obj.context
-    } else if (obj.dataType == 'object') {
+    } else if (obj.contextType == 'object') {
         context = obj.context
     }
     return context;

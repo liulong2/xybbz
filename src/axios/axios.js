@@ -26,7 +26,7 @@ axios.interceptors.request.use(config => {
     const meta = config.meta;
     const istoken = config.isToken === false;
     if (getToken() && !istoken) {
-        config.headers["token"] = getToken()
+        config.headers["Authorization"] = getToken()
     }
 
     //将数据进行序列化,将对象中的字节组织成(顺序的)字节流的过程。去地址,节省空间

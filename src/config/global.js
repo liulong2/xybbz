@@ -1,3 +1,4 @@
 export default {
-    token: 'liu' //token 请求头
+    token: 'liu', //token 请求头
+    keyName: 'token'
 }

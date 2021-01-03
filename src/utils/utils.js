@@ -32,3 +32,14 @@ export function isNull(val) {
         }
     }
 }
+
+export function arrayToStr(val) {
+    let str = '';
+    for (let tableId of val) {
+        str += tableId + ','
+    }
+    if (val.length > 0) {
+        str = str.substr(0, str.length - 1);
+    }
+    return str
+}
