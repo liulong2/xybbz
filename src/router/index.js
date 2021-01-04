@@ -14,40 +14,57 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: "/",
-        redirect: "/login"
+        redirect: "/login",
+        name: '默认跳转'
     },/*{
         path: '/generator',
         component: Generator
     },*/
     {
         path: '/user',
-        component: User
+        component: User,
+        name: '登陆2'
     },
     {
         path: '/login',
-        component: LogIn
+        component: LogIn,
+        name: '登陆'
     },
     {
         path: '/test2',
-        component: test2
+        component: test2,
+        name: 'ceshi'
     },
-    {
+    /*{
         path: '/bottomLayer',
         component: BottomLayer
-    },
+    },*/
     {
         path: '/appMain',
         component: AppMain,
         redirect: '/home',
+        name: '首页',
         children : [
             {
                 path: '/generator',
-                component: Generator
+                component: Generator,
+                name: '代码生成',
+                meta: {
+                    breadNumber: 2
+                }
             },
             {
                 path: '/home',
-                component: MyHome
-            }
+                component: MyHome,
+                name: '首页',
+                meta: {
+                    breadNumber: 1
+                }
+            },
+            {
+                path: '/bottomLayer',
+                component: BottomLayer
+            },
         ]
     }
 ]

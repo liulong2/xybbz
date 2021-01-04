@@ -31,6 +31,9 @@
     import global from '@/config/global'
     import { setToken } from '@/utils/auth'
     import { mapActions } from 'vuex'
+    import {isNull} from "../../../utils/utils";
+    import {getToken} from "../../../utils/auth";
+    import {verificationToken} from '@/api/user/index'
 
     Vue.use(FormModel);
     export default {
@@ -68,6 +71,15 @@
                     wrapperCol: {span: 12, offset: 6},
                 },
             };
+        },
+        created() {
+            if (!isNull(getToken())) {
+                verificationToken(getToken()).then(res =>{
+                    this.$router.push('/appMain')
+                }).catch(error => {
+                    console.log(error);
+                })
+            }
         },
         methods: {
             submitForm(formName) {

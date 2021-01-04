@@ -3,10 +3,14 @@ import Vuex from "vuex"
 import getters from "./modules/getters";
 import mutations from "./modules/mutations"
 import actions from "./modules/actions"
-Vue.use(Vuex)
 
+Vue.use(Vuex)
 const state = {
-    isDisplay: true
+    isDisplay: true,
+    //路由集合
+    breadListState: [
+        {name: '首页', path: '/appMain'}
+    ]
 }
 const store = new Vuex.Store({
     state,

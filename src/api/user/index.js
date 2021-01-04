@@ -10,3 +10,13 @@ export const logIn = (userName, password) => {
         }
     })
 }
+
+export const verificationToken = (token) => {
+    return axios({
+        url: "/api/user/blog/verification",
+        method: 'post',
+        params: {
+            token
+        }
+    })
+}
