@@ -80,9 +80,7 @@
                             const obj = {keyName, context, type}
                             setLocalToken(obj)
                             setToken(context);
-                            // this.$router.push({path: '/bottomLayer'})
-                            this.setDisplay()
-                            this.$emit('updateApp')
+                            this.$router.push({path: '/appMain'})
                         }).catch(error => {
                             console.log(error);
                         })

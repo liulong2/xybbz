@@ -174,7 +174,8 @@
                 getList({dataId: "1345247374037069825"}).then(res => {
                     callback(res.data.data)
                 }).catch(error => {
-                    return new Error(error)
+                    this.$message.error({content: '加载失败', duration: 2});
+                    // return new Error(error)
                 })
             },
             setColumns() {
@@ -209,6 +210,9 @@
 </script>
 
 <style lang="less">
+    #generator {
+        width: 100%;
+    }
     .resize-table-th {
         position: relative;
         .table-draggable-handle {
