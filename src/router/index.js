@@ -13,13 +13,14 @@ const LogIn = () => import('@/views/xybbz/user/LogIn')
 const BottomLayer = () => import('@/components/BottomLayer/BottomLayer')
 const AppMain = () => import('@/components/vueMain/AppMain')
 const MyHome = () => import('@/views/xybbz/MyHome/MyHome')
+const MyLogin = () => import('@/views/xybbz/user/MyLogin')
 
 Vue.use(VueRouter)
 
 const routes = [
     {
         path: "/",
-        redirect: "/login",
+        redirect: "/mylogin",
         name: '默认跳转'
     },/*{
         path: '/generator',
@@ -36,10 +37,10 @@ const routes = [
         name: '登陆'
     },
 
-    /*{
-        path: '/bottomLayer',
-        component: BottomLayer
-    },*/
+    {
+        path: '/mylogin',
+        component: MyLogin
+    },
     {
         path: '/appMain',
         component: AppMain,
@@ -85,7 +86,7 @@ const router = new VueRouter({
 })
 
 
-router.beforeEach((to, from, next) => {
+/*router.beforeEach((to, from, next) => {
     console.log(to);
     console.log(from)
     //取出本地信息
@@ -109,5 +110,5 @@ router.beforeEach((to, from, next) => {
     } else {
         next()
     }
-})
+})*/
 export default router;

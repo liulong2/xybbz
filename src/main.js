@@ -5,7 +5,9 @@ import VueAxios from "vue-axios";
 import router from "../src/router";
 import store from "../src/store";
 import 'ant-design-vue/dist/antd.css';
+import less from 'less'
 
+Vue.use(less)
 Vue.use(Antd);
 Vue.use(router, VueAxios);
 Vue.config.productionTip = false
