@@ -91,14 +91,14 @@ router.beforeEach((to, from, next) => {
     //取出本地信息
     let keyName = global.breadList;
     let type = false
-    let breadListState = getLocalToken({keyName,type})
+    let breadListState = getLocalToken({keyName, type})
     // debugger
     if ((to.path === '/login' || to.path === '/') && isNull(getToken())) {
         next()
-    } else if (to.path === '/login' || from.path === '/' && !isNull(getToken())) {
+    } else if (to.path === '/login' && from.path === '/' && !isNull(getToken())) {
 
         verificationToken(getToken()).then(res => {
-            const rout = breadListState.slice(breadListState.length-1,breadListState.length )
+            const rout = breadListState.slice(breadListState.length - 1, breadListState.length)
             console.log(rout[0].path);
             next(rout[0].path)
         }).catch(error => {
@@ -106,7 +106,7 @@ router.beforeEach((to, from, next) => {
             next()
         })
 
-    }else {
+    } else {
         next()
     }
 })
