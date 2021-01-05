@@ -1,8 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import {verificationToken} from "@/api/user";
+import {getToken,removeToken} from "@/utils/auth";
+import {isNull} from "@/utils/utils";
 
-const Generator =() => import('../views/xybbz/generator/Generator')
-const test2 =() => import('../views/xybbz/generator/test2')
+const Generator = () => import('../views/xybbz/generator/Generator')
+const test2 = () => import('../views/xybbz/generator/test2')
 const User = () => import('../views/xybbz/user/User')
 const LogIn = () => import('@/views/xybbz/user/LogIn')
 const BottomLayer = () => import('@/components/BottomLayer/BottomLayer')
@@ -30,11 +33,7 @@ const routes = [
         component: LogIn,
         name: '登陆'
     },
-    {
-        path: '/test2',
-        component: test2,
-        name: 'ceshi'
-    },
+
     /*{
         path: '/bottomLayer',
         component: BottomLayer
@@ -44,13 +43,13 @@ const routes = [
         component: AppMain,
         redirect: '/home',
         name: '首页',
-        children : [
+        children: [
             {
                 path: '/generator',
                 component: Generator,
                 name: '代码生成',
                 meta: {
-                    breadNumber: 2
+                    breadNumber: 1
                 }
             },
             {
@@ -58,7 +57,15 @@ const routes = [
                 component: MyHome,
                 name: '首页',
                 meta: {
-                    breadNumber: 1
+                    breadNumber: 0
+                }
+            },
+            {
+                path: '/test2',
+                component: test2,
+                name: '测试',
+                meta: {
+                    breadNumber: 3
                 }
             },
             {
@@ -75,4 +82,21 @@ const router = new VueRouter({
 
 })
 
+router.beforeEach((to, from, next) => {
+
+    if (to.path === '/login' && isNull(getToken())) {
+        next()
+    } else {
+        if (!isNull(getToken())) {
+            verificationToken(getToken()).then(res => {
+                next()
+            }).catch(error => {
+                removeToken()
+                next('/login')
+            })
+        } else {
+            next('/login')
+        }
+    }
+})
 export default router;

@@ -16,23 +16,19 @@
         </a-layout-header>
         <a-layout-content :style="{ padding: '0 50px', marginTop: '64px', overflowY: 'scroll' }">
 
+<!--            处理路由面包屑-->
             <a-breadcrumb :routes="breadlist" :style="{ margin: '16px 0' }">
                 <template slot="itemRender" slot-scope="{ route, params, routes, paths }">
+<!--                    {{paths}}-->
                     <span v-if="routes.indexOf(route) === routes.length - 1">
                       {{ route.name }}
                     </span>
-                    <router-link v-else :to="`/${paths.join('/')}`">
+                    <router-link v-else :to="`/${paths[paths.length - 1]}`">
                         {{ route.name }}
                     </router-link>
                 </template>
             </a-breadcrumb>
 
-            <!--<a-breadcrumb :style="{ margin: '16px 0' }">
-
-                <a-breadcrumb-item>Home</a-breadcrumb-item>
-                <a-breadcrumb-item>List</a-breadcrumb-item>
-                <a-breadcrumb-item>App</a-breadcrumb-item>
-            </a-breadcrumb>-->
             <div :style="{ background: '#fff', padding: '24px', minHeight: '100px' }">
                 <slot name="myrouter">
                 </slot>
@@ -52,6 +48,7 @@
     import {mapGetters} from 'vuex'
     import {mapActions} from 'vuex'
     import {getLocalToken, setLocalToken} from "../../utils/local";
+    import global from  "@/config/global"
 
     export default {
         name: "MyLayOut",
@@ -74,10 +71,15 @@
             ...mapActions(['addBreadListState', 'removeBreadListState', 'addAllBreadListState']),
             getBreadCrumb(isReload) {
                 const breadNumber = typeof (this.$route.meta.breadNumber) != 'undefined' ? this.$route.meta.breadNumber : 1 //url变量breadNum记录层数,默认为1,如果大于1,要添加上变量
-                const breadLength = this.getBreadListState.length //获得breadList集合数组个数
+                const breadLength = this.getBreadListState().length //获得breadList集合数组个数
                 const curName = this.$route.name
                 const curPath = this.$route.fullPath
                 const newBread = {name: curName, path: curPath}
+
+                //取出本地信息
+                let keyName = global.breadList;
+                let type = false
+
                 // const ishome = curName ==='首页'
                 if (breadNumber === 0 || breadNumber === 1) {
                     // this.$store.dispatch('removeBreadListState',1)
@@ -87,20 +89,23 @@
                     }
                 } else { //如果不是一级导航,并且breadList集合个数等于或小于当前层数
                     if (!isReload) {
-                        if (breadNumber <= breadLength) {
+                        if (breadNumber >= breadLength) {
                             this.addBreadListState( newBread)
                         } else {
                             this.removeBreadListState(parseInt(breadNumber) + 1) //如果往回点面包屑导航,截取
                         }
                     } else {
-                        this.addAllBreadListState(getLocalToken(global.breadListStorage, false))
+                        this.addAllBreadListState(getLocalToken({keyName,type}))
                     }
                 }
-                this.breadlist = this.getBreadListState()
-                console.log(this.breadlist + 11111)
-                setLocalToken(global.breadListStorage, this.breadlist, false)
+                this.breadlist = Array.from(new Set(this.getBreadListState()))
+                // console.log(this.breadlist)
+                let context = this.breadlist;
 
-                console.log(this.breadlist );
+                const obj = {keyName, context, type}
+                setLocalToken(obj)
+
+                // console.log(this.breadlist);
             }
         },
         watch: {

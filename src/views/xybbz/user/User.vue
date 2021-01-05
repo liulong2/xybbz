@@ -31,9 +31,6 @@
     import global from '@/config/global'
     import { setToken } from '@/utils/auth'
     import { mapActions } from 'vuex'
-    import {isNull} from "../../../utils/utils";
-    import {getToken} from "../../../utils/auth";
-    import {verificationToken} from '@/api/user/index'
 
     Vue.use(FormModel);
     export default {
@@ -41,7 +38,6 @@
         data() {
             let checkPending;
             let checkAge = (rule, value, callback) => {
-                console.log()
                 clearTimeout(checkPending);
                 if (!value) {
                     return callback(new Error('请输入用户名'));
@@ -73,13 +69,6 @@
             };
         },
         created() {
-            if (!isNull(getToken())) {
-                verificationToken(getToken()).then(res =>{
-                    this.$router.push('/appMain')
-                }).catch(error => {
-                    console.log(error);
-                })
-            }
         },
         methods: {
             submitForm(formName) {
@@ -92,18 +81,16 @@
                             const obj = {keyName, context, type}
                             setLocalToken(obj)
                             setToken(context);
-                            this.$router.push({path: '/appMain'})
+                            this.$router.push('/appMain')
                         }).catch(error => {
                             console.log(error);
                         })
-                        // alert('submit!');
                     } else {
                         console.log('error submit!!');
                         return false;
                     }
                 });
-
-            }
+            },
         },
         computed: {
             ...mapActions(['setDisplay'])

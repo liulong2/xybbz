@@ -7,6 +7,9 @@
                 <a-button class="child" type="primary" @click="generateClick" :size="size">
                     生成
                 </a-button>
+                <!--<a-button class="child" type="primary" @click="test2Click" :size="size">
+                    跳转
+                </a-button>-->
             </template>
         </PublicButton>
         <a-table bordered :row-selection="rowSelection" :columns="columns" rowKey="id" :data-source="data" :components="components"
@@ -145,9 +148,9 @@
             // this.setComponents()
         },
         methods: {
-            getRouter(val) {
-                console.log(val);
-            },
+            /*test2Click() {
+                this.$router.push('/test2')
+            },*/
             generateClick() {
                 const key = 'generator'
                 this.$message.loading({content: '删除中', key});

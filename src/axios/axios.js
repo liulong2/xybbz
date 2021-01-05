@@ -24,7 +24,10 @@ NProgress.configure({
 axios.interceptors.request.use(config => {
     NProgress.start()
     const meta = config.meta;
+    console.log(config.isToken)
     const istoken = config.isToken === false;
+    console.log(istoken);
+
     if (getToken() && !istoken) {
         config.headers["Authorization"] = getToken()
     }

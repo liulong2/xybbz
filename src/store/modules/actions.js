@@ -4,7 +4,6 @@ export default {
         context.commit(SET_IS_DISPLAY)
     },
     addBreadListState(context,payload) {
-        console.log(payload);
         context.commit(BREAD_LIST_STATE_ADD,payload)
     },
     removeBreadListState(context,payload) {

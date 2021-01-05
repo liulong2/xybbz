@@ -15,6 +15,7 @@ export const verificationToken = (token) => {
     return axios({
         url: "/api/user/blog/verification",
         method: 'post',
+        isToken: false,
         params: {
             token
         }

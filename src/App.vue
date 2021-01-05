@@ -29,7 +29,6 @@
         },
         methods: {
             updateNewApp() {
-                console.log("1111111")
                 // this.isDisplay = false
             }
         },

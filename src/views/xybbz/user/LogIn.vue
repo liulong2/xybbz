@@ -17,7 +17,6 @@
         },
         methods: {
             updateApp() {
-                console.log(222222)
                 this.$emit('updateNewApp')
             }
         }

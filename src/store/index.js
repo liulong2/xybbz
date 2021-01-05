@@ -9,7 +9,7 @@ const state = {
     isDisplay: true,
     //路由集合
     breadListState: [
-        {name: '首页', path: '/appMain'}
+        {name: '返回首页', path: '/home'}
     ]
 }
 const store = new Vuex.Store({
