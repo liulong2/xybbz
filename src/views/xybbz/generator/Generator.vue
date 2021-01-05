@@ -143,7 +143,7 @@
                     this.loading = false;
                 }, 300);
             });
-            this.getRouter(this.$route)
+            // this.getRouter(this.$route)
             // this.setColumns()
             // this.setComponents()
         },

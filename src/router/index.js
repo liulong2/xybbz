@@ -1,8 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import {verificationToken} from "@/api/user";
-import {getToken,removeToken} from "@/utils/auth";
+import {getToken, removeToken} from "@/utils/auth";
 import {isNull} from "@/utils/utils";
+import {getLocalToken} from "@/utils/local";
+import global from "@/config/global";
 
 const Generator = () => import('../views/xybbz/generator/Generator')
 const test2 = () => import('../views/xybbz/generator/test2')
@@ -82,21 +84,35 @@ const router = new VueRouter({
 
 })
 
-router.beforeEach((to, from, next) => {
 
-    if (to.path === '/login' && isNull(getToken())) {
+router.beforeEach((to, from, next) => {
+    console.log(to);
+    console.log(from)
+    //取出本地信息
+    let keyName = global.breadList;
+    let type = false
+    let breadListState = getLocalToken({keyName,type})
+    // debugger
+    if ((to.path === '/login' || to.path === '/') && isNull(getToken())) {
         next()
-    } else {
-        if (!isNull(getToken())) {
-            verificationToken(getToken()).then(res => {
-                next()
-            }).catch(error => {
-                removeToken()
-                next('/login')
-            })
-        } else {
-            next('/login')
-        }
+    } else if ((to.path === '/login' || to.path === '/') && !isNull(getToken())) {
+
+        verificationToken(getToken()).then(res => {
+            /*if (to.path === '/login') {
+                next(from.path)
+            }else {
+
+            }*/
+            const rout = breadListState.slice(breadListState.length-1,breadListState.length )
+            console.log(rout);
+            next(rout.path)
+        }).catch(error => {
+            removeToken()
+            next()
+        })
+
+    }else {
+        next()
     }
 })
 export default router;
