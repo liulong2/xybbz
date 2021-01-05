@@ -95,17 +95,12 @@ router.beforeEach((to, from, next) => {
     // debugger
     if ((to.path === '/login' || to.path === '/') && isNull(getToken())) {
         next()
-    } else if ((to.path === '/login' || to.path === '/') && !isNull(getToken())) {
+    } else if (to.path === '/login' || from.path === '/' && !isNull(getToken())) {
 
         verificationToken(getToken()).then(res => {
-            /*if (to.path === '/login') {
-                next(from.path)
-            }else {
-
-            }*/
             const rout = breadListState.slice(breadListState.length-1,breadListState.length )
-            console.log(rout);
-            next(rout.path)
+            console.log(rout[0].path);
+            next(rout[0].path)
         }).catch(error => {
             removeToken()
             next()
