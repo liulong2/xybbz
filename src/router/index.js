@@ -14,6 +14,8 @@ const BottomLayer = () => import('@/components/BottomLayer/BottomLayer')
 const AppMain = () => import('@/components/vueMain/AppMain')
 const MyHome = () => import('@/views/xybbz/MyHome/MyHome')
 const MyLogin = () => import('@/views/xybbz/user/MyLogin')
+const AnimatedVerticalTabs = () => import('@/components/animatedVerticalTabs/AnimatedVerticalTabs')
+const Clock = () => import('@/components/clock/Clock')
 
 Vue.use(VueRouter)
 
@@ -40,6 +42,18 @@ const routes = [
     {
         path: '/mylogin',
         component: MyLogin
+    },
+    {
+        path: '/animatedverticaltabs',
+        component: AnimatedVerticalTabs
+    },
+    {
+        path: '/clock',
+        component: Clock
+    },
+    {
+        path: '/you',
+        component: () => import('@/components/LayOut/MylayOut222')
     },
     {
         path: '/appMain',
@@ -86,7 +100,7 @@ const router = new VueRouter({
 })
 
 
-/*router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
     console.log(to);
     console.log(from)
     //取出本地信息
@@ -110,5 +124,5 @@ const router = new VueRouter({
     } else {
         next()
     }
-})*/
+})
 export default router;

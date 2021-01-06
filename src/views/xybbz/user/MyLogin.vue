@@ -45,7 +45,7 @@
                                 </a-button>-->
                                 <!--<a-input type="submit" placeholder="input password" />
                                 <a-input type="button" class="btn-register" value="Sign Up" />-->
-                                <input type="submit" value="Connect" @click="submitForm('ruleForm')">
+                                <input type="submit" value="登录" @click="submitForm('ruleForm')">
                                 <input type="button" value="Sign Up" @click="btnRegister" class="btn-register">
                             </div>
                         </a-form-model>
@@ -119,7 +119,10 @@
 </template>
 
 <script>
-
+    import {logIn} from '@/api/user/index'
+    import {setLocalToken} from '@/utils/local'
+    import global from '@/config/global'
+    import { setToken } from '@/utils/auth'
     export default {
         name: "MyLogin",
         data() {

@@ -26,7 +26,7 @@
         width: 100%;
         overflow: hidden;
     }*/
-    body{
+   /* body{
         background:#f8fafc;
-    }
+    }*/
 </style>

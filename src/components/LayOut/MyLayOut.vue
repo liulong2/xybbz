@@ -1,11 +1,11 @@
 <template>
-    <a-layout id="components-layout-demo-fixed">
-        <a-layout-header class="lo" :style="{ position: 'fixed', zIndex: 1, width: '100%' }">
+    <a-layout id="components-layout-demo-top">
+        <a-layout-header class="lo" mode="horizontal" :style="{ /*position: 'fixed',*/ zIndex: 1, width: '100%' }">
             <div class="logo">
-                <span id="title">
-                    <a-avatar class="ant-dropdown-link" @click="e => e.preventDefault()" :size="50"
+<!--                <span id="title">-->
+                    <a-avatar id="avatarImage" class="ant-dropdown-link" @click="e => e.preventDefault()" :size="50"
                               src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
-                </span>
+<!--                </span>-->
             </div>
             <a-topmenu></a-topmenu>
             <div id="ant-dropdown">
@@ -14,10 +14,10 @@
                 <my-dropdown></my-dropdown>
             </div>
         </a-layout-header>
-        <a-layout-content :style="{ padding: '0 50px', marginTop: '64px', overflowY: 'scroll' }">
+        <a-layout-content :style="{ padding: '0 10px', marginTop: '10px'}">
 
 <!--            处理路由面包屑-->
-            <a-breadcrumb :routes="breadlist" :style="{ margin: '16px 0' }">
+            <a-breadcrumb :routes="breadlist" :style="{ margin: '16px 20px' }">
                 <template slot="itemRender" slot-scope="{ route, params, routes, paths }">
 <!--                    {{paths}}-->
                     <span v-if="routes.indexOf(route) === routes.length - 1">
@@ -28,8 +28,8 @@
                     </router-link>
                 </template>
             </a-breadcrumb>
-
-            <div :style="{ background: '#fff', padding: '24px', minHeight: '100px' }">
+            <div :style="{ background: '#fff', padding: '24px', minHeight: '100px', display: 'flex', }">
+                <animated-vertical-tabs></animated-vertical-tabs>
                 <slot name="myrouter">
                 </slot>
                 <router-view></router-view>
@@ -40,6 +40,7 @@
         </a-layout-content>
 
     </a-layout>
+
 </template>
 
 <script>
@@ -49,10 +50,12 @@
     import {mapActions} from 'vuex'
     import {getLocalToken, setLocalToken} from "../../utils/local";
     import global from  "@/config/global"
+    import AnimatedVerticalTabs from "@/components/animatedVerticalTabs/AnimatedVerticalTabs";
 
     export default {
         name: "MyLayOut",
         components: {
+            AnimatedVerticalTabs,
             ATopmenu,
             MyDropdown
         },
@@ -117,6 +120,9 @@
 </script>
 
 <style scoped>
+    body{
+
+    }
     #ant-dropdown {
         margin-left: auto;
     }
@@ -125,12 +131,16 @@
         display: flex;
     }
 
+    #avatarImage{
+        height: 100%;
+    }
+
     .logo {
         width: 120px;
-        height: 31px;
+        height: 100%;
         /*background: rgba(255, 255, 255, 0.2);*/
-        margin: 16px 24px 16px 0;
-        top: 10px;
+        /*margin: 16px 24px 16px 0;*/
+        /*top: 10px;*/
         float: left;
         text-align: center;
         /*color: red;*/
@@ -138,7 +148,16 @@
         z-index: 1024;
     }
 
-    #components-layout-demo-fixed {
+    /*#components-layout-demo-fixed {
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 0 24px 16px 0;
+        float: left;
+        z-index: 1024;
+    }*/
+
+    #components-layout-demo-top {
         width: 100%;
         height: 100%;
         background: rgba(255, 255, 255, 0.2);
@@ -159,8 +178,12 @@
     .ant-dropdown-link {
         /**鼠标变成小手**/
         cursor: pointer;
-        margin-right: 10px;
+        margin-top: 6px;
+        margin-right: 20px;
         margin-bottom: 5px;
+    }
+    #ant-dropdown{
+        display: flex;
     }
 
     .layout {
