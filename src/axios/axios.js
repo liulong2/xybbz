@@ -6,7 +6,7 @@ import axios from "axios";
 
 // Vue.use(axios, VueAxios);
 //设置超时时间
-axios.default.timeout = 20000
+axios.default.timeout = 3000
 axios.default.baseUrl = process.env.BASE_URL
 
 //设置返回状态码

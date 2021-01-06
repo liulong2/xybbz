@@ -20,6 +20,11 @@
 
 <style scoped>
 #dragonSlaying{
-    display: flex;
+    /*display: flex;*/
+}
+@media (max-width:1919px) {
+    #dragonSlaying{
+        display: none;
+    }
 }
 </style>

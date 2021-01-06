@@ -2,10 +2,10 @@
     <a-layout id="components-layout-demo-top">
         <a-layout-header class="lo" mode="horizontal" :style="{ /*position: 'fixed',*/ zIndex: 1, width: '100%' }">
             <div class="logo">
-<!--                <span id="title">-->
-                    <a-avatar id="avatarImage" class="ant-dropdown-link" @click="e => e.preventDefault()" :size="50"
-                              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
-<!--                </span>-->
+                <!--                <span id="title">-->
+                <a-avatar id="avatarImage" class="ant-dropdown-link" @click="e => e.preventDefault()" :size="50"
+                          src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
+                <!--                </span>-->
             </div>
             <a-topmenu></a-topmenu>
             <div id="ant-dropdown">
@@ -16,10 +16,10 @@
         </a-layout-header>
         <a-layout-content :style="{ padding: '0 10px', marginTop: '10px'}">
 
-<!--            处理路由面包屑-->
+            <!--            处理路由面包屑-->
             <a-breadcrumb :routes="breadlist" :style="{ margin: '16px 20px' }">
                 <template slot="itemRender" slot-scope="{ route, params, routes, paths }">
-<!--                    {{paths}}-->
+                    <!--                    {{paths}}-->
                     <span v-if="routes.indexOf(route) === routes.length - 1">
                       {{ route.name }}
                     </span>
@@ -29,6 +29,8 @@
                 </template>
             </a-breadcrumb>
             <div :style="{ background: '#fff', padding: '24px', minHeight: '100px', display: 'flex', }">
+                <!--<animated-vertical-tabs id="tobs"
+                                        style="animation-delay:.7s; animation-duration:4s;"></animated-vertical-tabs>-->
                 <animated-vertical-tabs></animated-vertical-tabs>
                 <slot name="myrouter">
                 </slot>
@@ -49,7 +51,7 @@
     import {mapGetters} from 'vuex'
     import {mapActions} from 'vuex'
     import {getLocalToken, setLocalToken} from "../../utils/local";
-    import global from  "@/config/global"
+    import global from "@/config/global"
     import AnimatedVerticalTabs from "@/components/animatedVerticalTabs/AnimatedVerticalTabs";
 
     export default {
@@ -93,12 +95,12 @@
                 } else { //如果不是一级导航,并且breadList集合个数等于或小于当前层数
                     if (!isReload) {
                         if (breadNumber >= breadLength) {
-                            this.addBreadListState( newBread)
+                            this.addBreadListState(newBread)
                         } else {
                             this.removeBreadListState(parseInt(breadNumber) + 1) //如果往回点面包屑导航,截取
                         }
                     } else {
-                        this.addAllBreadListState(getLocalToken({keyName,type}))
+                        this.addAllBreadListState(getLocalToken({keyName, type}))
                     }
                 }
                 this.breadlist = Array.from(new Set(this.getBreadListState()))
@@ -120,9 +122,11 @@
 </script>
 
 <style scoped>
-    body{
+
+    body {
 
     }
+
     #ant-dropdown {
         margin-left: auto;
     }
@@ -131,31 +135,17 @@
         display: flex;
     }
 
-    #avatarImage{
+    #avatarImage {
         height: 100%;
     }
 
     .logo {
         width: 120px;
         height: 100%;
-        /*background: rgba(255, 255, 255, 0.2);*/
-        /*margin: 16px 24px 16px 0;*/
-        /*top: 10px;*/
         float: left;
         text-align: center;
-        /*color: red;*/
-        /*left: 10px;*/
         z-index: 1024;
     }
-
-    /*#components-layout-demo-fixed {
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.2);
-        margin: 0 24px 16px 0;
-        float: left;
-        z-index: 1024;
-    }*/
 
     #components-layout-demo-top {
         width: 100%;
@@ -182,15 +172,17 @@
         margin-right: 20px;
         margin-bottom: 5px;
     }
-    #ant-dropdown{
+
+    #ant-dropdown {
         display: flex;
     }
 
-    .layout {
-        /*overflow-y: scroll;*/
-    }
-
-    #popo {
-        /*margin-top: 80px;*/
+    @media (max-width: 1919px) {
+        .ant-dropdown-link {
+            width: 0;
+        }
+        #ant-dropdown {
+            width: 0;
+        }
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="antialiased bg-gray-200 min-h-screen p-8" id="tabs">
+    <div class="antialiased bg-gray-200 min-h-screen p-8" id="tabs" style="animation-delay:1s; animation-duration:4s;">
         <div class="flex justify-center">
             <nav id="nav" class="w-56 relative">
       <span
@@ -7,7 +7,7 @@
               :style="{ transform: `translateY(calc(100% * ${selected}))` }"
       ></span>
                 <ul class="relative">
-                    <li >
+                    <li>
                         <button id="buttonSpan"
                                 type="button"
                                 @click="select(0)"
@@ -15,10 +15,11 @@
                                 class="py-2 px-3 w-full flex items-center focus:outline-none focus-visible:underline"
                         >
                             <svg id="buttonSvg"
-                                    :class="selected === 0 ? 'text-indigo-400' : 'text-gray-500'"
-                                    class="h-6 w-6 transition-all ease-out transition-medium"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
+                                 :class="selected === 0 ? 'text-indigo-400' : 'text-gray-500'"
+                                 class="h-6 w-6 transition-all ease-out transition-medium"
+                                 viewBox="0 0 24 24"
+                                 fill="currentColor"
+
                             >
                                 <path
                                         fill-rule="evenodd"
@@ -34,161 +35,6 @@
             </span>
                         </button>
                     </li>
-                    <!--<li>
-                        <button
-                                type="button"
-                                @click="select(1)"
-                                :aria-selected="selected === 1"
-                                class="py-2 px-3 w-full flex items-center focus:outline-none focus-visible:underline"
-                        >
-                            <svg
-                                    :class="selected === 1 ? 'text-indigo-400' : 'text-gray-500'"
-                                    class="h-6 w-6 transition-all ease-out transition-medium"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                            >
-                                <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M11.617 1.076a1 1 0 011.09.217l5.657 5.657a9 9 0 11-13.113.41A1 1 0 017 8.022v2.292a2 2 0 104 0V2a1 1 0 01.617-.924zM13 4.414v5.9A4 4 0 015.212 11.6 7 7 0 1016.95 8.364L13 4.414z"
-                                />
-                            </svg>
-                            <span
-                                    :class="selected === 1 ? 'text-indigo-600' : 'text-gray-700'"
-                                    class="ml-2 text-sm font-medium transition-all ease-out transition-medium"
-                            >
-              Popular
-            </span>
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                                type="button"
-                                @click="select(2)"
-                                :aria-selected="selected === 2"
-                                class="py-2 px-3 w-full flex items-center focus:outline-none focus-visible:underline"
-                        >
-                            <svg
-                                    :class="selected === 2 ? 'text-indigo-400' : 'text-gray-500'"
-                                    class="h-6 w-6 transition-all ease-out transition-medium"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                            >
-                                <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M12 7a1 1 0 011-1h8a1 1 0 011 1v8a1 1 0 11-2 0V8h-7a1 1 0 01-1-1z"
-                                />
-                                <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M20.707 7.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0L9 12.414l-5.293 5.293a1 1 0 01-1.414-1.414l6-6a1 1 0 011.414 0L13 13.586l6.293-6.293a1 1 0 011.414 0z"
-                                />
-                            </svg>
-                            <span
-                                    :class="selected === 2 ? 'text-indigo-600' : 'text-gray-700'"
-                                    class="ml-2 text-sm font-medium transition-all ease-out transition-medium"
-                            >
-              Trending
-            </span>
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                                type="button"
-                                @click="select(3)"
-                                :aria-selected="selected === 3"
-                                class="py-2 px-3 w-full flex items-center focus:outline-none focus-visible:underline"
-                        >
-                            <svg
-                                    :class="selected === 3 ? 'text-indigo-400' : 'text-gray-500'"
-                                    class="h-6 w-6 transition-all ease-out transition-medium"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                            >
-                                <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M7 10a3 3 0 013-3h8a3 3 0 013 3v8a3 3 0 01-3 3h-8a3 3 0 01-3-3v-8zm3-1a1 1 0 00-1 1v8a1 1 0 001 1h8a1 1 0 001-1v-8a1 1 0 00-1-1h-8z"
-                                />
-                                <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M3 6a3 3 0 013-3h10a1 1 0 110 2H6a1 1 0 00-1 1v10a1 1 0 11-2 0V6z"
-                                />
-                            </svg>
-                            <span
-                                    :class="selected === 3 ? 'text-indigo-600' : 'text-gray-700'"
-                                    class="ml-2 text-sm font-medium transition-all ease-out transition-medium"
-                            >
-              Subscriptions
-            </span>
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                                type="button"
-                                @click="select(4)"
-                                :aria-selected="selected === 4"
-                                class="py-2 px-3 w-full flex items-center focus:outline-none focus-visible:underline"
-                        >
-                            <svg
-                                    :class="selected === 4 ? 'text-indigo-400' : 'text-gray-500'"
-                                    class="h-6 w-6 transition-all ease-out transition-medium"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                            >
-                                <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M4 5a3 3 0 013-3h10a3 3 0 013 3v16a1 1 0 01-1.447.894L12 18.618l-6.553 3.276A1 1 0 014 21V5zm3-1a1 1 0 00-1 1v14.382l5.553-2.776a1 1 0 01.894 0L18 19.382V5a1 1 0 00-1-1H7z"
-                                />
-                            </svg>
-                            <span
-                                    :class="selected === 4 ? 'text-indigo-600' : 'text-gray-700'"
-                                    class="ml-2 text-sm font-medium transition-all ease-out transition-medium"
-                            >
-              Bookmarks
-            </span>
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                                type="button"
-                                @click="select(5)"
-                                :aria-selected="selected === 5"
-                                class="py-2 px-3 w-full flex items-center focus:outline-none focus-visible:underline"
-                        >
-                            <svg
-                                    :class="selected === 5 ? 'text-indigo-400' : 'text-gray-500'"
-                                    class="h-6 w-6 transition-all ease-out transition-medium"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                            >
-                                <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M13 11.586l2.536 2.535a1 1 0 11-1.415 1.415l-2.828-2.829A.997.997 0 0111 12V8a1 1 0 112 0v3.586z"
-                                />
-                                <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M5 1a1 1 0 011 1v1.998c3.918-2.945 9.506-2.635 13.071.93 3.905 3.906 3.905 10.238 0 14.143-3.905 3.905-10.237 3.905-14.142 0A9.972 9.972 0 012 12a1 1 0 112 0 8 8 0 101.777-5.029A1 1 0 014 6.341V2a1 1 0 011-1z"
-                                />
-                                <path
-                                        fill-rule="evenodd"
-                                        clip-rule="evenodd"
-                                        d="M11.293 12.707A.997.997 0 0111 12V8a1 1 0 112 0v3.586l2.536 2.535a1 1 0 11-1.415 1.415l-2.828-2.829zM5.934 1.643A1 1 0 004 2v4.342a1 1 0 001.777.63A8 8 0 114 12v-.001a1 1 0 10-2 0c0 2.558.977 5.119 2.929 7.071 3.905 3.905 10.237 3.905 14.142 0 3.844-3.844 3.904-10.04.18-13.957A10.004 10.004 0 006 3.999V2a.998.998 0 00-.066-.357zM5 2.25z"
-                                />
-                            </svg>
-                            <span
-                                    :class="selected === 5 ? 'text-indigo-600' : 'text-gray-700'"
-                                    class="ml-2 text-sm font-medium transition-all ease-out transition-medium"
-                            >
-              History
-            </span>
-                        </button>
-                    </li>-->
                 </ul>
             </nav>
         </div>
@@ -217,14 +63,27 @@
 
     #tabs {
         width: 10%;
+        transition: .4s;
+        /*font-family: Comfortaa;*/
     }
+
+    .bg-gray-200 {
+        transition: .4s;
+    }
+
+    #buttonSvg {
+        transition: .4s;
+    }
+
     .ease-in {
         transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
     }
+
     .ease-out {
         transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
         background-size: cover
     }
+
     .ease-in-out {
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -232,21 +91,27 @@
     .transition-fastest {
         transition-duration: 75ms;
     }
+
     .transition-faster {
         transition-duration: 100ms;
     }
+
     .transition-fast {
         transition-duration: 150ms;
     }
+
     .transition-medium {
         transition-duration: 200ms;
     }
+
     .transition-slow {
         transition-duration: 300ms;
     }
+
     .transition-slower {
         transition-duration: 500ms;
     }
+
     .transition-slowest {
         transition-duration: 700ms;
     }
@@ -254,9 +119,11 @@
     .transition-all {
         transition-property: all;
     }
+
     .transition-opacity {
         transition-property: opacity;
     }
+
     .transition-transform {
         transition-property: transform;
     }
@@ -264,13 +131,28 @@
     .focus-visible.focus-visible\:underline {
         text-decoration: underline;
     }
-    @media (max-width:933px) {
-        #buttonSvg{
+
+    @media (max-width: 1919px) {
+        #buttonSvg {
             width: 0;
         }
-        #buttonSpan{
-            width: 90%;
+
+        #buttonSpan {
+            /*width: 90%;*/
+            display: none;
         }
+
+        .bg-gray-200 {
+            background-color: white;
+        }
+
+        #tabs {
+            /*display: none;*/
+            width: 0;
+        }
+    }
+
+    @media (max-width: 400px) {
 
     }
 

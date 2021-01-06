@@ -236,6 +236,9 @@
     body{
         background:#f8fafc;
     }*/
+    html body{
+        width: 100%;
+    }
 
     .content{
         position: absolute;
@@ -381,7 +384,7 @@
         background: #c8d6e5;
     }
 
-    @media (max-width:933px){
+    @media (max-width: 933px){
         .login#login-bg{
             width: 0;
         }
