@@ -52,10 +52,6 @@ const routes = [
         component: Clock
     },
     {
-        path: '/you',
-        component: () => import('@/components/LayOut/MylayOut222')
-    },
-    {
         path: '/appMain',
         component: AppMain,
         redirect: '/home',

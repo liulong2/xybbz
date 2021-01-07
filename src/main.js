@@ -5,8 +5,11 @@ import VueAxios from "vue-axios";
 import router from "../src/router";
 import store from "../src/store";
 import 'ant-design-vue/dist/antd.css';
-import less from 'less'
+import less from 'less';
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/swiper-bundle.css'
 
+Vue.use(VueAwesomeSwiper,)
 Vue.use(less)
 Vue.use(Antd);
 Vue.use(router, VueAxios);

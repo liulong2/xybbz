@@ -30,6 +30,7 @@
                             <span
                                     :class="selected === 0 ? 'text-indigo-600' : 'text-gray-700'"
                                     class="ml-2 text-sm font-medium transition-all ease-out transition-medium"
+                                    style="animation-delay:.6s; animation-duration:4s;"
                             >
               首页
             </span>
@@ -62,18 +63,10 @@
     @import "../../static/css/tailwind/tailwind.min.css";
 
     #tabs {
-        width: 15%;
+        width: 9%;
         transition: .4s;
         /*font-family: Comfortaa;*/
     }
-
-    /*.bg-gray-200 {
-        transition: .4s;
-    }*/
-
-    /*#buttonSvg {
-        transition: .4s;
-    }*/
 
     .ease-in {
         transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
@@ -146,26 +139,23 @@
             padding: 0;
         }
 
-
         #tabs {
-            /*display: none;*/
             width: 0;
-            /*display: none;*/
         }
-    }
-
-    @media (max-width: 1071px) {
-        span {
-            display: none;
-        }
-        /*span {
-            display: none;
-        }*/
     }
 
     @media (max-width: 934px) {
         #buttonSvg {
             width: 0;
+        }
+    }
+
+    @media (max-width: 1774px) {
+        span {
+            display: none;
+        }
+        li {
+            margin:0 auto
         }
     }
 

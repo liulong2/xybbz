@@ -14,7 +14,7 @@
                 <my-dropdown></my-dropdown>
             </div>
         </a-layout-header>-->
-        <a-layout-content :style="{ padding: '0 10px', marginTop: '10px'}">
+        <a-layout-content id="layOut" :style="{ padding: '0 10px', marginTop: '10px', padding: '2rem', marginTop: '10%'}">
 
             <!--            处理路由面包屑-->
             <a-breadcrumb :routes="breadlist" :style="{ margin: '16px 20px' }">
@@ -29,9 +29,7 @@
                 </template>
             </a-breadcrumb>
             <div :style="{ background: '#fff', padding: '24px', minHeight: '100px', display: 'flex', }">
-                <!--<animated-vertical-tabs id="tobs"
-                                        style="animation-delay:.7s; animation-duration:4s;"></animated-vertical-tabs>-->
-                <animated-vertical-tabs></animated-vertical-tabs>
+
                 <a-divider id="divider" style="height: 100%" type="vertical" />
                 <slot name="myrouter">
                 </slot>
@@ -73,6 +71,7 @@
             this.getBreadCrumb(true)
         },
         methods: {
+
             ...mapGetters(['getBreadListState']),
             ...mapActions(['addBreadListState', 'removeBreadListState', 'addAllBreadListState']),
             getBreadCrumb(isReload) {
@@ -123,6 +122,11 @@
 </script>
 
 <style scoped>
+
+    #layOut{
+        margin-right: auto;
+        margin-left: auto;
+    }
 
     body {
 
