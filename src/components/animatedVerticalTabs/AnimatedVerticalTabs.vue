@@ -31,7 +31,7 @@
                                     :class="selected === 0 ? 'text-indigo-600' : 'text-gray-700'"
                                     class="ml-2 text-sm font-medium transition-all ease-out transition-medium"
                             >
-              Home
+              首页
             </span>
                         </button>
                     </li>
@@ -62,18 +62,18 @@
     @import "../../static/css/tailwind/tailwind.min.css";
 
     #tabs {
-        width: 10%;
+        width: 15%;
         transition: .4s;
         /*font-family: Comfortaa;*/
     }
 
-    .bg-gray-200 {
+    /*.bg-gray-200 {
         transition: .4s;
-    }
+    }*/
 
-    #buttonSvg {
+    /*#buttonSvg {
         transition: .4s;
-    }
+    }*/
 
     .ease-in {
         transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
@@ -132,28 +132,41 @@
         text-decoration: underline;
     }
 
-    @media (max-width: 1919px) {
-        #buttonSvg {
-            width: 0;
-        }
-
+    @media (max-width: 933px) {
         #buttonSpan {
             /*width: 90%;*/
             display: none;
         }
 
         .bg-gray-200 {
-            background-color: white;
+            width: 0;
+            /*background-color: white;*/
         }
+        .p-8 {
+            padding: 0;
+        }
+
 
         #tabs {
             /*display: none;*/
             width: 0;
+            /*display: none;*/
         }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 1071px) {
+        span {
+            display: none;
+        }
+        /*span {
+            display: none;
+        }*/
+    }
 
+    @media (max-width: 934px) {
+        #buttonSvg {
+            width: 0;
+        }
     }
 
 </style>

@@ -1,11 +1,11 @@
 <template>
     <a-layout id="components-layout-demo-top">
-        <a-layout-header class="lo" mode="horizontal" :style="{ /*position: 'fixed',*/ zIndex: 1, width: '100%' }">
+        <!--<a-layout-header class="lo" mode="horizontal" :style="{ /*position: 'fixed',*/ zIndex: 1, width: '100%' }">
             <div class="logo">
-                <!--                <span id="title">-->
+                &lt;!&ndash;                <span id="title">&ndash;&gt;
                 <a-avatar id="avatarImage" class="ant-dropdown-link" @click="e => e.preventDefault()" :size="50"
                           src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
-                <!--                </span>-->
+                &lt;!&ndash;                </span>&ndash;&gt;
             </div>
             <a-topmenu></a-topmenu>
             <div id="ant-dropdown">
@@ -13,7 +13,7 @@
                           src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1109664045,340305092&fm=26&gp=0.jpg"/>
                 <my-dropdown></my-dropdown>
             </div>
-        </a-layout-header>
+        </a-layout-header>-->
         <a-layout-content :style="{ padding: '0 10px', marginTop: '10px'}">
 
             <!--            处理路由面包屑-->
@@ -32,6 +32,7 @@
                 <!--<animated-vertical-tabs id="tobs"
                                         style="animation-delay:.7s; animation-duration:4s;"></animated-vertical-tabs>-->
                 <animated-vertical-tabs></animated-vertical-tabs>
+                <a-divider id="divider" style="height: 100%" type="vertical" />
                 <slot name="myrouter">
                 </slot>
                 <router-view></router-view>
@@ -182,6 +183,9 @@
             width: 0;
         }
         #ant-dropdown {
+            width: 0;
+        }
+        #divider{
             width: 0;
         }
     }
