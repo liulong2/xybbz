@@ -120,14 +120,14 @@
         transition: 300ms opacity;
         transform: translate3d(0, 0, 0);
         z-index: 10;
-        /*width: 33.3%;*/
+        width: 50%;
     }
 
 
 
     .swiper-pagination-bullets {
         /*bottom: 10px;*/
-        top: 38%;
+        top: 46%;
         left: 0;
         width: 100%;
     }
@@ -140,13 +140,13 @@
         font-size: 50px;
     }
 
-    #one {
-        /*width: auto;*/
+    /*#one {
+        !*width: auto;*!
         line-height: 300px;
         text-align: center;
         font-size: 50px;
         background-color: red;
-    }
+    }*/
 
     .swiper-container {
         height: 100%;

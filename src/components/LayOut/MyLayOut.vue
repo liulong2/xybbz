@@ -1,50 +1,9 @@
 <template>
-    <a-layout id="components-layout-demo-top">
-        <!--<a-layout-header class="lo" mode="horizontal" :style="{ /*position: 'fixed',*/ zIndex: 1, width: '100%' }">
-            <div class="logo">
-                &lt;!&ndash;                <span id="title">&ndash;&gt;
-                <a-avatar id="avatarImage" class="ant-dropdown-link" @click="e => e.preventDefault()" :size="50"
-                          src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
-                &lt;!&ndash;                </span>&ndash;&gt;
-            </div>
-            <a-topmenu></a-topmenu>
-            <div id="ant-dropdown">
-                <a-avatar class="ant-dropdown-link" @click="e => e.preventDefault()" :size="50"
-                          src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1109664045,340305092&fm=26&gp=0.jpg"/>
-                <my-dropdown></my-dropdown>
-            </div>
-        </a-layout-header>-->
-        <a-layout-content id="layOut" :style="{ padding: '0 10px', padding: '2rem'}">
-
-            <!--            处理路由面包屑-->
-            <a-breadcrumb :routes="breadlist" :style="{ margin: '16px 20px' }">
-                <template slot="itemRender" slot-scope="{ route, params, routes, paths }">
-                    <!--                    {{paths}}-->
-                    <span v-if="routes.indexOf(route) === routes.length - 1">
-                      {{ route.name }}
-                    </span>
-                    <router-link v-else :to="`/${paths[paths.length - 1]}`">
-                        {{ route.name }}
-                    </router-link>
-                </template>
-            </a-breadcrumb>
-            <div :style="{minHeight: '100px', display: 'flex', }">
-
-<!--                分割线-->
-<!--                <a-divider id="divider" style="height: 100%" type="vertical" />-->
-                <slot name="myrouter">
-                </slot>
-
-                <router-view></router-view>
-                <one-tabs class="OneTabs"/>
-            </div>
-            <!--<a-layout-footer :style="{ textAlign: 'center'  }">
-                乱七八糟的网站
-            </a-layout-footer>-->
-        </a-layout-content>
-
-    </a-layout>
-
+    <!--            此处的maxHeight非常重要,关系到 one-tabs的高度-->
+    <div class="myindex" :style="{maxHeight: '20em'}">
+        <my-home class="layOut-home"></my-home>
+        <one-tabs class="OneTabs"/>
+    </div>
 </template>
 
 <script>
@@ -57,6 +16,7 @@
     import AnimatedVerticalTabs from "@/components/animatedVerticalTabs/AnimatedVerticalTabs";
     import test2 from "../../views/xybbz/generator/test2";
     import OneTabs from "../tabs/OneTabs";
+    import MyHome from "../../views/xybbz/MyHome/MyHome";
 
     export default {
         name: "MyLayOut",
@@ -65,7 +25,8 @@
             ATopmenu,
             MyDropdown,
             test2,
-            OneTabs
+            OneTabs,
+            MyHome
         },
         data() {
             const {lang} = this.$route.params;
@@ -130,37 +91,15 @@
 
 <style scoped>
 
-    .OneTabs{
-        width: 40%;
-    }
-    #layOut{
+    .myindex{
+        min-height: 380.25px;
+        max-height: 380.25px;
+        display: flex;
+        width: 50%;
+        height: 100%;
         margin-top: 10%;
         margin-right: auto;
         margin-left: auto;
-    }
-
-    body {
-
-    }
-
-    #ant-dropdown {
-        margin-left: auto;
-    }
-
-    .lo {
-        display: flex;
-    }
-
-    #avatarImage {
-        height: 100%;
-    }
-
-    .logo {
-        width: 120px;
-        height: 100%;
-        float: left;
-        text-align: center;
-        z-index: 1024;
     }
 
     #components-layout-demo-top {
@@ -172,36 +111,20 @@
         z-index: 1024;
     }
 
-    #title {
-        color: white;
-        position: fixed;
-        top: 0px;
-        left: 0;
-        width: 216px;
-        height: 69px;
-    }
 
-    .ant-dropdown-link {
-        /**鼠标变成小手**/
-        cursor: pointer;
-        margin-top: 6px;
-        margin-right: 20px;
-        margin-bottom: 5px;
-    }
 
-    #ant-dropdown {
-        display: flex;
-    }
-
-    @media (max-width: 1919px) {
-        .ant-dropdown-link {
-            width: 0;
-        }
-        #ant-dropdown {
-            width: 0;
-        }
-        #divider{
-            width: 0;
+    /*@media (min-width: 1200px) {
+        #layOut {
+            max-width: 1160px;
         }
     }
+
+    @media (min-width: 992px) {
+        #layOut {
+            max-width: 960px;
+        }
+    }*/
+
+</style>
+<style>
 </style>
