@@ -9,16 +9,34 @@
     <div id="home">
         <swiper class="swiper-container" :options="swiperOption" ref="mySwiper">
             <!-- slides -->
-            <swiper-slide id="one">紅紅火火1</swiper-slide>
-            <swiper-slide id="two">紅紅火火2</swiper-slide>
-            <swiper-slide id="thre">紅紅火火3</swiper-slide>
-            <swiper-slide id="ids">紅紅火火4</swiper-slide>
-            <!--            <div class="swiper-pagination"  slot="pagination"></div> @mouseenter=""-->
+            <swiper-slide id="one">
+                <template slot="">
+                    <img src="../../../static/images/3.jpeg" alt="">
+                </template>
+            </swiper-slide>
+            <swiper-slide style="background-color: red" id="two">
+                <template slot="">
+                    <img src="../../../static/images/1.jpg" alt="">
+                </template>
+            </swiper-slide>
+            <!--<swiper-slide style="background-color: red" id="thre">
+                <template slot="">
+                    <img src="../../../static/images/2.jpg" alt="">
+                </template>
+            </swiper-slide>-->
+            <swiper-slide style="background-color: red" id="ids">
+                <template slot="">
+                    <img src="../../../static/images/3.jpeg" alt="">
+                </template>
+            </swiper-slide>
+            <div class="swiper-pagination" slot="pagination"></div>
             <!-- 上一页 -->
-            <div class="swiper-button-prev styleClass" :class="{'shadow': isShadow}" slot="button-prev" @mouseleave="deleteClass"
+            <div class="swiper-button-prev styleClass" :class="{'shadowNew': isShadow}" slot="button-prev"
+                 @mouseleave="deleteClass"
                  @mouseenter="updateClass"></div>
             <!-- 下一页 -->
-            <div class="swiper-button-next styleClass" slot="button-next"></div>
+            <div class="swiper-button-next styleClass" :class="{'next': isNext}" @mouseenter="addNextClass"
+                 @mouseleave="deleteNextClass" slot="button-next"></div>
             <!-- 滚动条，建议不加 -->
             <!-- <div class="swiper-scrollbar"   slot="scrollbar"></div> -->
         </swiper>
@@ -34,6 +52,7 @@
         data() {
             return {
                 isShadow: false,
+                isNext: false,
                 swiperOption: {
                     navigation: {
                         nextEl: '.swiper-button-next',
@@ -52,7 +71,8 @@
                     pagination: {
                         el: '.swiper-pagination',
                         // 设置点击可切换
-                        clickable: true
+                        clickable: true,
+                        // bulletClass : 'my-bullet'
                     },
                     // 设置轮播可循环
                     loop: true
@@ -73,6 +93,12 @@
             // this.swiper.slideTo(0, 1000, false)
         },
         methods: {
+            addNextClass() {
+                this.isNext = true
+            },
+            deleteNextClass() {
+                this.isNext = false
+            },
             updateClass() {
                 this.isShadow = true
             },
@@ -88,36 +114,67 @@
 </script>
 
 <style scoped>
+    .swiper-pagination {
+        position: absolute;
+        text-align: center;
+        transition: 300ms opacity;
+        transform: translate3d(0, 0, 0);
+        z-index: 10;
+        /*width: 33.3%;*/
+    }
+
+
+
+    .swiper-pagination-bullets {
+        /*bottom: 10px;*/
+        top: 38%;
+        left: 0;
+        width: 100%;
+    }
+
     #home {
-        width: 300px;
+        width: 676px;
+        height: 100%;
         line-height: 300px;
         text-align: center;
         font-size: 50px;
     }
 
     #one {
-        width: 300px;
+        /*width: auto;*/
         line-height: 300px;
         text-align: center;
         font-size: 50px;
+        background-color: red;
     }
 
     .swiper-container {
         height: 100%;
         margin-left: auto;
-        margin-right: auto;
+        margin-right: 100px;
+        /*padding-left: 20px;*/
         width: 100%;
-        --swiper-theme-color: #ff6600; /* 设置Swiper风格 */
-        --swiper-navigation-color: #00ff2d; /* 单独设置按钮颜色 */
+        /*--swiper-pagination-color: #ffffff;*/
+        /*--swiper-theme-color: #ff6600; !* 设置Swiper风格 *!*/
+        --swiper-navigation-color: #ffffff; /* 单独设置按钮颜色 */
         --swiper-navigation-size: 15px; /* 设置按钮大小 */
     }
 
+    .swiper-button-prev {
+        left: 0;
+    }
+
+    .swiper-button-next {
+        right: 0;
+    }
+
     .swiper-button-prev, .swiper-button-next {
+
         position: absolute;
-        top: 0;
-        width: calc(var(--swiper-navigation-size) / 44 * 27);
+        top: 7px;
+        /*width: calc(var(--swiper-navigation-size) / 44 * 27);*/
         height: var(--swiper-navigation-size);
-        margin-top: calc(-1 * var(--swiper-navigation-size) / 2);
+        /*margin-top: calc(-1 * var(--swiper-navigation-size) / 2);*/
         z-index: 10;
         cursor: pointer;
         display: flex;
@@ -125,20 +182,27 @@
         justify-content: center;
         color: var(--swiper-navigation-color, var(--swiper-theme-color));
     }
+
     .styleClass {
         height: 100%;
-        width: 10%;
-
+        width: 13%;
+        /*background: linear-gradient(to right, rgba(0, 0, 0, .0001) 0, rgba(0, 0, 0, .3) 100%);*/
     }
-    .shadow {
-        transition: .4s;
-        background: -webkit-linear-gradient(right, white, lightblue, skyblue)
+
+    .next {
+        background: linear-gradient(to right, rgba(0, 0, 0, .0001) 0, rgba(0, 0, 0, .3) 100%);
+    }
+
+    .shadowNew {
+        background: linear-gradient(to left, rgba(0, 0, 0, .0001) 0, rgba(0, 0, 0, .3) 100%);
     }
 
     .swiper-slide {
         text-align: center;
-        font-size: 18px;
+        /*font-size: 18px;*/
         background: #fff;
+        width: 100%;
+        height: 100%;
 
         /* Center slide text vertically */
         display: -webkit-box;
@@ -153,5 +217,27 @@
         -ms-flex-align: center;
         -webkit-align-items: center;
         align-items: center;
+    }
+     img{
+        width: 100%;
+        height: 100%;
+        /*border-style: none !important;*/
+        /*object-fit:cover;*/
+    }
+    /*.styleClass img{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 100%;
+        width: 100%;
+        display: block;
+        min-width: 100%;
+        min-height: 100%;
+        transform:translate(-50%,-50%);
+    }*/
+</style>
+<style>
+    .swiper-pagination-bullet {
+        margin: 0 3px !important;
     }
 </style>

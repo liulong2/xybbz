@@ -52,19 +52,19 @@ const routes = [
         component: Clock
     },
     {
+        path: '/generator',
+        component: Generator,
+        name: '代码生成',
+        meta: {
+            breadNumber: 1
+        }
+    },
+    {
         path: '/appMain',
         component: AppMain,
         redirect: '/home',
         name: '首页',
         children: [
-            {
-                path: '/generator',
-                component: Generator,
-                name: '代码生成',
-                meta: {
-                    breadNumber: 1
-                }
-            },
             {
                 path: '/home',
                 component: MyHome,

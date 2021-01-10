@@ -26,7 +26,12 @@
         width: 100%;
         overflow: hidden;
     }*/
-   /* body{
-        background:#f8fafc;
-    }*/
+    body{
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        background-image: url("./static/images/user/login.png");
+    }
 </style>

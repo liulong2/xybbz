@@ -14,7 +14,7 @@
                 <my-dropdown></my-dropdown>
             </div>
         </a-layout-header>-->
-        <a-layout-content id="layOut" :style="{ padding: '0 10px', marginTop: '10px', padding: '2rem', marginTop: '10%'}">
+        <a-layout-content id="layOut" :style="{ padding: '0 10px', padding: '2rem'}">
 
             <!--            处理路由面包屑-->
             <a-breadcrumb :routes="breadlist" :style="{ margin: '16px 20px' }">
@@ -28,16 +28,19 @@
                     </router-link>
                 </template>
             </a-breadcrumb>
-            <div :style="{ background: '#fff', padding: '24px', minHeight: '100px', display: 'flex', }">
+            <div :style="{minHeight: '100px', display: 'flex', }">
 
-                <a-divider id="divider" style="height: 100%" type="vertical" />
+<!--                分割线-->
+<!--                <a-divider id="divider" style="height: 100%" type="vertical" />-->
                 <slot name="myrouter">
                 </slot>
+
                 <router-view></router-view>
+                <one-tabs class="OneTabs"/>
             </div>
-            <a-layout-footer :style="{ textAlign: 'center'  }">
+            <!--<a-layout-footer :style="{ textAlign: 'center'  }">
                 乱七八糟的网站
-            </a-layout-footer>
+            </a-layout-footer>-->
         </a-layout-content>
 
     </a-layout>
@@ -52,13 +55,17 @@
     import {getLocalToken, setLocalToken} from "../../utils/local";
     import global from "@/config/global"
     import AnimatedVerticalTabs from "@/components/animatedVerticalTabs/AnimatedVerticalTabs";
+    import test2 from "../../views/xybbz/generator/test2";
+    import OneTabs from "../tabs/OneTabs";
 
     export default {
         name: "MyLayOut",
         components: {
             AnimatedVerticalTabs,
             ATopmenu,
-            MyDropdown
+            MyDropdown,
+            test2,
+            OneTabs
         },
         data() {
             const {lang} = this.$route.params;
@@ -123,7 +130,11 @@
 
 <style scoped>
 
+    .OneTabs{
+        width: 40%;
+    }
     #layOut{
+        margin-top: 10%;
         margin-right: auto;
         margin-left: auto;
     }

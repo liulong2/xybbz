@@ -153,17 +153,17 @@
             },*/
             generateClick() {
                 const key = 'generator'
-                this.$message.loading({content: '删除中', key});
+                this.$message.loading({content: '生成中', key});
                 let str =''
                 str = arrayToStr(this.tableIds);
                 console.log(str)
                 generatorTable(str).then(res => {
                     setTimeout(() => {
-                        this.$message.success({content: '删除成功', key, duration: 2});
+                        this.$message.success({content: '生成成功', key, duration: 2});
                     }, 600)
                 }).catch(error => {
                     setTimeout(() => {
-                        this.$message.error({content: '删除失败', key, duration: 2});
+                        this.$message.error({content: '生成失败', key, duration: 2});
                     }, 600)
                 })
             },
