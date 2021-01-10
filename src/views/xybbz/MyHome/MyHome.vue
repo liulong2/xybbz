@@ -148,18 +148,6 @@
         background-color: red;
     }*/
 
-    .swiper-container {
-        height: 100%;
-        margin-left: auto;
-        margin-right: 100px;
-        /*padding-left: 20px;*/
-        width: 100%;
-        /*--swiper-pagination-color: #ffffff;*/
-        /*--swiper-theme-color: #ff6600; !* 设置Swiper风格 *!*/
-        --swiper-navigation-color: #ffffff; /* 单独设置按钮颜色 */
-        --swiper-navigation-size: 15px; /* 设置按钮大小 */
-    }
-
     .swiper-button-prev {
         left: 0;
     }
@@ -239,5 +227,16 @@
 <style>
     .swiper-pagination-bullet {
         margin: 0 3px !important;
+    }
+    .swiper-container {
+        height: 100%;
+        margin-left: auto;
+        margin-right: 100px;
+        /*padding-left: 20px;*/
+        width: 100%;
+        /*--swiper-pagination-color: #ffffff;*/
+        /*--swiper-theme-color: #ff6600; !* 设置Swiper风格 *!*/
+        --swiper-navigation-color: #ffffff; /* 单独设置按钮颜色 */
+        --swiper-navigation-size: 15px; /* 设置按钮大小 */
     }
 </style>

@@ -91,9 +91,7 @@
 
 <style scoped>
 
-    .myindex{
-        min-height: 380.25px;
-        max-height: 380.25px;
+    .myindex {
         display: flex;
         width: 50%;
         height: 100%;
@@ -110,7 +108,6 @@
         float: left;
         z-index: 1024;
     }
-
 
 
     /*@media (min-width: 1200px) {
