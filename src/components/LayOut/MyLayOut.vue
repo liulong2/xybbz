@@ -95,6 +95,7 @@
         display: flex;
         width: 50%;
         height: 100%;
+        /*max-width: 1271px;*/
         margin-top: 10%;
         margin-right: auto;
         margin-left: auto;
