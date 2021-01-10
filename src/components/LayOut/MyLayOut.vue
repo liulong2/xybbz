@@ -98,15 +98,15 @@
         margin-top: 10%;
         margin-right: auto;
         margin-left: auto;
+        background: rgba(255, 255, 255, 0.2);
+        /*float: auto;*/
+        z-index: 1024;
     }
 
     #components-layout-demo-top {
         width: 100%;
         height: 100%;
-        background: rgba(255, 255, 255, 0.2);
-        margin: 0 24px 16px 0;
-        float: left;
-        z-index: 1024;
+
     }
 
 
