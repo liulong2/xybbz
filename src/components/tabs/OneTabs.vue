@@ -1,34 +1,52 @@
 <template>
-    <div class="internal">
-        <a-tabs default-active-key="1" @change="callback" size="default" :tab-bar-gutter="30">
-            <a-tab-pane key="1" class="">
-                <template slot="tab">
-                    <p class="pSize">追番进度</p>
-                </template>
-                <vue-scroll :ops="ops" style="width:100%;height:100%">
-                    <p class="contentBulletin" v-html="bulletin"></p>
-                </vue-scroll>
+    <div class="myOneTabs">
+        <clock></clock>
+<!--        <div class="internal">-->
+            <a-tabs default-active-key="1" @change="callback" size="default" :tab-bar-gutter="30">
+                <a-tab-pane key="1" class="">
+                    <template slot="tab">
+                        <p class="pSize">追番进度</p>
+                    </template>
+                    <vue-scroll :ops="ops" style="width:100%;height:100%">
+                        <!--                        <p class="contentBulletin" v-html="bulletin"></p>-->
+                        <p class="contentBulletin"># elsearch
 
-            </a-tab-pane>
-            <a-tab-pane key="2" force-render>
-                <template slot="tab">
-                    <p class="pSize">最新观看</p>
-                </template>
-                <vue-scroll :ops="ops" style="width:100%;height:100%">
-                    <p class="contentBulletin" v-html="bulletin"></p>
-                </vue-scroll>
-            </a-tab-pane>
-            <a-button slot="tabBarExtraContent">
-                查看更多
-            </a-button>
-        </a-tabs>
+                            下载地址
+
+                            ```
+                            http://tomcat01.qfjava.cn:81
+                            ```
+                            啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦
+
+                        </p>
+                    </vue-scroll>
+
+                </a-tab-pane>
+                <a-tab-pane key="2" force-render>
+                    <template slot="tab">
+                        <p class="pSize">最新观看</p>
+                    </template>
+                    <vue-scroll :ops="ops" style="width:100%;height:100%">
+                        <p class="contentBulletin" v-html="bulletin"></p>
+                    </vue-scroll>
+                </a-tab-pane>
+                <a-button slot="tabBarExtraContent">
+                    查看更多
+                </a-button>
+            </a-tabs>
+<!--        </div>-->
+
     </div>
+
 </template>
 
 <script>
     import {getLatest} from '@/api/bulletin/api'
+    import Clock from "@/components/clock/Clock";
+
     export default {
         name: "OneTabs",
+        components: {Clock},
         data() {
             return {
                 bulletin: '',
@@ -53,9 +71,9 @@
                 console.log(key);
             },
             initData() {
-                getLatest().then(res =>{
+                getLatest().then(res => {
                     this.bulletin = res.data.data.bulletinContent
-                }).catch(error =>{
+                }).catch(error => {
 
                 })
             }
@@ -67,32 +85,57 @@
 </script>
 
 <style scoped>
-.internal{
-    padding: 20px;
-    width: 100%;
-    height: 100%;
-    /*background-color: #555454;*/
-    background: rgba(229, 229, 230, 0.7);
-    /*opacity: .4;*/
-}
-    .pSize{
+    .ant-tabs {
+        padding: 10px;
+        width: 100%;
+        height: 80%;
+        background: rgba(229, 229, 230, 0.7);
+    }
+
+    .pSize {
         font-weight: bolder;
         font-size: 15px;
-       /* word-wrap: break-word;
-        word-break: break-all;*/
-        /*color: black;*/
-        /*opacity: 1.2;*/
     }
-    .contentBulletin {
+
+    .myOneTabs {
         /*display: flex;*/
+        /*flex-wrap: wrap;*/
+        /*justify-content: flex-end;*/
+        /*flex-direction: column;*/
+        width: 100%;
         /*height: 100%;*/
-        /*width: 280px;*/
-        /*height: 100%;*/
-        /*width: 100%;*/
-        height: 130px;
-        /*border: 1px solid red;*/
-        /*overflow: hidden;*/
-        text-overflow:ellipsis;
-        /*white-space: nowrap;*/
     }
+
+    .contentBulletin {
+        width: 100%;
+        /*height: 169px;*/
+        /*height: 209px;*/
+        height: 100%;
+        /*overflow: hidden;*/
+        /*align-items: start;*/
+        /*text-overflow: ellipsis;*/
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    /*.ant-tabs {
+        box-sizing: border-box;
+        height: 100% !important;
+        margin: 0;
+        padding: 0;
+        color: rgba(0, 0, 0, 0.65);
+        font-size: 14px;
+        font-variant: tabular-nums;
+        line-height: 1.5;
+        list-style: none;
+        font-feature-settings: 'tnum';
+        position: relative;
+        overflow: hidden;
+        zoom: 1;
+    }*/
 </style>

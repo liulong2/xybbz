@@ -11,7 +11,7 @@
 
 "@ant-design/icons-vue@^2.0.0":
   version "2.0.0"
-  resolved "https://registry.npm.taobao.org/@ant-design/icons-vue/download/@ant-design/icons-vue-2.0.0.tgz?cache=0&sync_timestamp=1607654520296&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40ant-design%2Ficons-vue%2Fdownload%2F%40ant-design%2Ficons-vue-2.0.0.tgz#0357f5010a404e9f34a87a4b41b2a08df691dbce"
+  resolved "https://registry.npm.taobao.org/@ant-design/icons-vue/download/@ant-design/icons-vue-2.0.0.tgz#0357f5010a404e9f34a87a4b41b2a08df691dbce"
   integrity sha1-A1f1AQpATp80qHpLQbKgjfaR284=
   dependencies:
     "@ant-design/colors" "^3.1.0"
@@ -1683,7 +1683,7 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
 
 ant-design-vue@^1.7.2:
   version "1.7.2"
-  resolved "https://registry.npm.taobao.org/ant-design-vue/download/ant-design-vue-1.7.2.tgz?cache=0&sync_timestamp=1609131067386&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fant-design-vue%2Fdownload%2Fant-design-vue-1.7.2.tgz#aac7ff802205711631c8698e2a0c7b4e61dfd73e"
+  resolved "https://registry.npm.taobao.org/ant-design-vue/download/ant-design-vue-1.7.2.tgz?cache=0&sync_timestamp=1610025711264&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fant-design-vue%2Fdownload%2Fant-design-vue-1.7.2.tgz#aac7ff802205711631c8698e2a0c7b4e61dfd73e"
   integrity sha1-qsf/gCIFcRYxyGmOKgx7TmHf1z4=
   dependencies:
     "@ant-design/icons" "^2.1.1"
@@ -2852,7 +2852,7 @@ core-js-compat@^3.6.5, core-js-compat@^3.7.0:
 
 core-js@^2.4.0:
   version "2.6.12"
-  resolved "https://registry.npm.taobao.org/core-js/download/core-js-2.6.12.tgz?cache=0&sync_timestamp=1607215907966&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcore-js%2Fdownload%2Fcore-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
+  resolved "https://registry.npm.taobao.org/core-js/download/core-js-2.6.12.tgz?cache=0&sync_timestamp=1609682099238&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcore-js%2Fdownload%2Fcore-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
   integrity sha1-2TM9+nsGXjR8xWgiGdb2kIWcwuw=
 
 core-js@^3.6.5:

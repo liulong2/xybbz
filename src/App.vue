@@ -21,17 +21,20 @@
 </script>
 
 <style>
-    /*#app {
+    #app {
         height: 100%;
         width: 100%;
-        overflow: hidden;
-    }*/
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    html,body{
+        width: 100%;
+        height: 100%;
+    }
     body{
-        width: 100%;
-        height: 100%;
+        margin: 0;
         background-size: cover;
-        -webkit-background-size: cover;
-        -o-background-size: cover;
         background-image: url("./static/images/user/login.png");
     }
 </style>

@@ -7,14 +7,11 @@ import {getLocalToken} from "@/utils/local";
 import global from "@/config/global";
 
 const Generator = () => import('../views/xybbz/generator/Generator')
-const test2 = () => import('../views/xybbz/generator/test2')
 const User = () => import('../views/xybbz/user/User')
 const LogIn = () => import('@/views/xybbz/user/LogIn')
-const BottomLayer = () => import('@/components/BottomLayer/BottomLayer')
 const AppMain = () => import('@/components/vueMain/AppMain')
 const MyHome = () => import('@/views/xybbz/MyHome/MyHome')
 const MyLogin = () => import('@/views/xybbz/user/MyLogin')
-const AnimatedVerticalTabs = () => import('@/components/animatedVerticalTabs/AnimatedVerticalTabs')
 const Clock = () => import('@/components/clock/Clock')
 
 Vue.use(VueRouter)
@@ -44,10 +41,6 @@ const routes = [
         component: MyLogin
     },
     {
-        path: '/animatedverticaltabs',
-        component: AnimatedVerticalTabs
-    },
-    {
         path: '/clock',
         component: Clock
     },
@@ -72,19 +65,7 @@ const routes = [
                 meta: {
                     breadNumber: 0
                 }
-            },
-            {
-                path: '/test2',
-                component: test2,
-                name: '测试',
-                meta: {
-                    breadNumber: 3
-                }
-            },
-            {
-                path: '/bottomLayer',
-                component: BottomLayer
-            },
+            }
         ]
     }
 ]

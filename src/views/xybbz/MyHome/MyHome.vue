@@ -6,7 +6,7 @@
         </a-button>
 
     </div>-->
-    <div id="home">
+    <div class="thisHome">
         <swiper class="swiper-container" :options="swiperOption" ref="mySwiper">
             <!-- slides -->
             <swiper-slide id="one">
@@ -46,6 +46,7 @@
 
 <script>
     import {Swiper, SwiperSlide} from 'vue-awesome-swiper'
+
 
     export default {
         name: "MyHome",
@@ -132,21 +133,13 @@
         width: 100%;
     }
 
-    #home {
+    .thisHome {
         width: 676px;
         height: 100%;
         line-height: 300px;
         text-align: center;
         font-size: 50px;
     }
-
-    /*#one {
-        !*width: auto;*!
-        line-height: 300px;
-        text-align: center;
-        font-size: 50px;
-        background-color: red;
-    }*/
 
     .swiper-button-prev {
         left: 0;
@@ -187,10 +180,8 @@
 
     .swiper-slide {
         text-align: center;
-        /*font-size: 18px;*/
         background: #fff;
         width: 100%;
-        height: 100%;
 
         /* Center slide text vertically */
         display: -webkit-box;
@@ -208,21 +199,10 @@
     }
      img{
         width: 100%;
-        height: 100%;
+        height: 380px;
         /*border-style: none !important;*/
         /*object-fit:cover;*/
     }
-    /*.styleClass img{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        height: 100%;
-        width: 100%;
-        display: block;
-        min-width: 100%;
-        min-height: 100%;
-        transform:translate(-50%,-50%);
-    }*/
 </style>
 <style>
     .swiper-pagination-bullet {

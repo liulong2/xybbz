@@ -1,11 +1,7 @@
 <template>
-    <div id="newClock">
-        <div id="clock" :class="{}" :style="disPlayStyle"
-             style="animation-delay: 10s; animation-duration:4s; display: none">
-            <p class="date">{{ date }}</p>
-            <p class="time">{{ time }}</p>
-            <p class="text">DIGITAL CLOCK with Vue.js</p>
-        </div>
+    <div id="clock" :style="disPlayStyle"
+         style="animation-delay: 10s; animation-duration:4s; display: none">
+        <p class="time">{{ time }}</p>
     </div>
 </template>
 
@@ -23,10 +19,10 @@
             }
         },
         created() {
-            window.document.getElementsByTagName("body")[0].style.background = '#0f3854'
-            window.document.getElementsByTagName("body")[0].style.background = '#radial-gradient'
-            window.document.getElementsByTagName("body")[0].style.backgroundSize = '100%'
-            window.document.getElementsByTagName("body")[0].style.height = '100%'
+            // window.document.getElementsByTagName("body")[0].style.background = '#0f3854'
+            // window.document.getElementsByTagName("body")[0].style.background = '#radial-gradient'
+            // window.document.getElementsByTagName("body")[0].style.backgroundSize = '100%'
+            // window.document.getElementsByTagName("body")[0].style.height = '100%'
             console.log(setInterval(this.updateTime, 1000))
             this.updateTime();
             this.isAddClass()
@@ -58,40 +54,34 @@
     }
 </script>
 
-<style lang="scss">
-    @import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css";
+<style scoped lang="scss">
+    /*@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css";*/
 
     @import "../../static/css/ShareTechMono/index.css";
 
-    html, body {
-        height: 100%;
-    }
-
-    body {
-        background: #0f3854 !important;
-        background: radial-gradient(ellipse at center, #0a2e38 0%, #000000 70%) !important;
-        background-size: 100% !important;
-    }
-
-    p {
-        margin: 0;
-        padding: 0;
-    }
+    /*p {
+        margin: 10px;
+        padding: 10px;
+    }*/
 
     #clock {
+        width: 100%;
+        height: 20%;
+        background: rgba(255, 255, 255, 0.2);;
+        justify-content: center;
+        display: flex;
         font-family: 'Share Tech Mono', monospace;
         color: #ffffff;
         text-align: center;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        color: #daf6ff;
+
+        /*position: fixed;*/
+        /*left: 50%;*/
+        /*top: 50%;     transform: translate(-50%, -50%);*/
         text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
 
         .time {
             letter-spacing: 0.05em;
-            font-size: 80px;
+            font-size: 40px;
             padding: 5px 0;
         }
 
@@ -106,5 +96,16 @@
             padding: 20px 0 0;
         }
 
+    }
+
+    p {
+        /*margin-top: 10px;*/
+        /*margin-bottom: 10px;*/
+    }
+</style>
+<style>
+    p {
+        margin-top: 0;
+        margin-bottom: 0;
     }
 </style>
