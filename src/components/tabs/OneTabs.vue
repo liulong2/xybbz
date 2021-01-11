@@ -102,7 +102,7 @@
         /*flex-wrap: wrap;*/
         /*justify-content: flex-end;*/
         /*flex-direction: column;*/
-        width: 100%;
+        width: 50%;
         /*height: 100%;*/
     }
 
@@ -123,19 +123,9 @@
         height: 100%;
     }
 
-    /*.ant-tabs {
-        box-sizing: border-box;
-        height: 100% !important;
-        margin: 0;
-        padding: 0;
-        color: rgba(0, 0, 0, 0.65);
-        font-size: 14px;
-        font-variant: tabular-nums;
-        line-height: 1.5;
-        list-style: none;
-        font-feature-settings: 'tnum';
-        position: relative;
-        overflow: hidden;
-        zoom: 1;
-    }*/
+    @media (max-width: 1920px) {
+        .myOneTabs{
+            width: 100%;
+        }
+    }
 </style>

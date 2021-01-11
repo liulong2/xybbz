@@ -53,12 +53,12 @@
         display: flex;
         justify-content: center;
         align-items: stretch;
-        width: 56%;
+        width: 40%;
         height: 100%;
         margin-top: 10%;
         margin-right: auto;
         margin-left: auto;
-        background: rgba(255, 255, 255, 0.2);
+        /*background: rgba(255, 255, 255, 0.2);*/
         z-index: 1024;
     }
 
@@ -68,18 +68,12 @@
 
     }
  /*.newTabs{
-     height: 100%;
+     width: 100%;
  }*/
 
-    @media (min-width: 1200px) {
-        #layOut {
-            max-width: 1160px;
-        }
-    }
-
-    @media (min-width: 992px) {
-        #layOut {
-            max-width: 960px;
+    @media (min-width: 1920px) {
+        .myindex {
+            width: 56%;
         }
     }
 
