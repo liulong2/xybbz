@@ -89,7 +89,7 @@
         padding: 10px;
         width: 100%;
         height: 80%;
-        background: rgba(229, 229, 230, 0.7);
+        background: linear-gradient(to left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, .3) 100%);
     }
 
     .pSize {

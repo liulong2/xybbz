@@ -67,7 +67,7 @@
     #clock {
         width: 100%;
         height: 20%;
-        background: rgba(255, 255, 255, 0.2);;
+        background: linear-gradient(to left, rgba(0, 0, 0, .0001) 0, rgba(0, 0, 0, .3) 100%);
         justify-content: center;
         display: flex;
         font-family: 'Share Tech Mono', monospace;

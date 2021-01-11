@@ -1,11 +1,15 @@
 <template>
     <!--            此处的maxHeight非常重要,关系到 one-tabs的高度-->
-    <vue-scroll :ops="ops" style="width:100%;height:100%">
-        <div class="myindex">
-            <my-home class="layOut-home"></my-home>
-            <one-tabs class="newTabs"/>
-        </div>
-    </vue-scroll>
+    <div>
+
+        <vue-scroll :ops="ops" style="width:100%;height:100%">
+            <div class="myindex">
+                <my-home class="layOut-home"></my-home>
+                <one-tabs class="newTabs"/>
+            </div>
+        </vue-scroll>
+    </div>
+
 
 </template>
 
@@ -71,7 +75,7 @@
      width: 100%;
  }*/
 
-    @media (min-width: 1920px) {
+    @media (max-width: 1920px) {
         .myindex {
             width: 56%;
         }

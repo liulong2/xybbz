@@ -13,6 +13,7 @@ const AppMain = () => import('@/components/vueMain/AppMain')
 const MyHome = () => import('@/views/xybbz/MyHome/MyHome')
 const MyLogin = () => import('@/views/xybbz/user/MyLogin')
 const Clock = () => import('@/components/clock/Clock')
+const TopDiv = () => import('@/components/tops/TopDiv')
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,10 @@ const routes = [
         path: '/user',
         component: User,
         name: '登陆2'
+    },
+    {
+        path: '/top',
+        component: TopDiv
     },
     {
         path: '/login',
