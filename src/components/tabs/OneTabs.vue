@@ -9,7 +9,7 @@
                     </template>
 
                         <!--                        <p class="contentBulletin" v-html="bulletin"></p>-->
-                    <vue-scroll :ops="ops" style="width:100%;height:30%">
+<!--                    <vue-scroll :ops="ops" style="width:100%;height:30%">-->
                         <p class="contentBulletin"># elsearch
 
                             下载地址
@@ -21,7 +21,7 @@
                                 <br><br><br>111111111111111111111111111<br><br>11111111111111111111111111<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
                         </p>
-                    </vue-scroll>
+<!--                    </vue-scroll>-->
 
                 </a-tab-pane>
                 <a-tab-pane key="2" force-render>
@@ -29,7 +29,8 @@
                         <p class="pSize">最新观看</p>
                     </template>
                     <vue-scroll :ops="ops" style="width:100%;height:100%">
-                        <p class="contentBulletin" v-html="bulletin"></p>
+<!--                        v-html="bulletin"-->
+                        <p class="contentBulletin" ></p>
                     </vue-scroll>
                 </a-tab-pane>
                 <a-button slot="tabBarExtraContent">
@@ -101,9 +102,9 @@
 
     .myOneTabs {
         height: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
+        /*display: flex;*/
+        /*flex-wrap: wrap;*/
+        /*justify-content: flex-end;*/
         /*flex-direction: column;*/
         width: 50%;
         /*height: 100%;*/
