@@ -59,6 +59,7 @@
                         nextEl: '.swiper-button-next',
                         prevEl: '.swiper-button-prev',
                     },
+                    slidesPerView: 1,
                     // 设置自动轮播
                     autoplay: {  //自动轮播
                         delay: 11000,
@@ -134,7 +135,7 @@
     }
 
     .thisHome {
-        width: 676px;
+        width: 65%;
         height: 100%;
         line-height: 300px;
         text-align: center;

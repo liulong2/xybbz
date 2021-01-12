@@ -2,12 +2,12 @@
     <!--            此处的maxHeight非常重要,关系到 one-tabs的高度-->
     <div>
 
-        <vue-scroll :ops="ops" style="width:100%;height:100%">
+<!--        <vue-scroll :ops="ops" style="width:100%;height:100%">-->
             <div class="myindex">
                 <my-home class="layOut-home"></my-home>
                 <one-tabs class="newTabs"/>
             </div>
-        </vue-scroll>
+<!--        </vue-scroll>-->
     </div>
 
 

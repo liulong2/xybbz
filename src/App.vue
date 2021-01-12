@@ -35,6 +35,7 @@
     body{
         margin: 0;
         background-size: cover;
-        background-image: url("./static/images/user/login.png");
+        background-color: white;
+        /*background-image: url("./static/images/user/login.png");*/
     }
 </style>

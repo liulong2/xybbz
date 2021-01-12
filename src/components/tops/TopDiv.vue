@@ -1,18 +1,23 @@
 <template>
     <div class="topDiv">
+        <div class="icon">
+            <p>
+                <b>咸鱼</b>
+            </p>
+        </div>
         <a-menu v-model="current" mode="horizontal">
             <a-menu-item key="mail">
                 <!--                <a-icon type="mail"/>-->
-                Navigation One
+                首页
             </a-menu-item>
             <a-menu-item key="app">
                 <!--                <a-icon type="appstore"/>-->
-                Navigation Two
+                第二个首页
             </a-menu-item>
             <a-sub-menu>
         <span slot="title" class="submenu-title-wrapper">
 <!--            <a-icon type="setting"/>-->
-            Navigation Three - Submenu
+            第三个首页
         </span>
                 <a-menu-item-group title="Item 1">
                     <a-menu-item key="setting:1">
@@ -32,8 +37,8 @@
                 </a-menu-item-group>
             </a-sub-menu>
             <a-menu-item key="alipay">
-                <a href="https://antdv.com" target="_blank" rel="noopener noreferrer"
-                >Navigation Four - Link</a
+                <a href="javaScript:void(0)" target="_blank" rel="noopener noreferrer"
+                >第四个首页</a
                 >
             </a-menu-item>
         </a-menu>
@@ -52,16 +57,24 @@
 </script>
 
 <style scoped>
+    p {
+         margin-top: 0;
+         margin-bottom: 0;
+    }
+    .icon{
+        font-family:"楷体",serif;
+        font-size: 31px;
+    }
     .topDiv {
         width: 100%;
         display: flex;
         justify-content: center;
         background-color: #5e3d3d;
-
+        box-shadow:2px 2px 2px #656363;
     }
 
     .ant-menu {
-        width: 100%;
+        width: 30%;
         justify-content: center;
 
     }
@@ -77,7 +90,7 @@
         border: 0;
         /*底部白条*/
         /*border-bottom: 1px solid #e8e8e8;*/
-        box-shadow:2px 2px 2px #656363;
+
         /*box-shadow: none;*/
     }
 </style>
