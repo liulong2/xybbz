@@ -64,13 +64,14 @@
     .icon{
         font-family:"楷体",serif;
         font-size: 31px;
+        color: #00ffe2;
     }
     .topDiv {
         width: 100%;
         display: flex;
         justify-content: center;
-        background-color: #5e3d3d;
-        box-shadow:2px 2px 2px #656363;
+        /*background-color: #5e3d3d;*/
+        box-shadow:0 1px 3px rgba(18,18,18,.1);
     }
 
     .ant-menu {
@@ -82,7 +83,7 @@
     ul {
         display: flex;
         justify-content: center;
-        background-color: #5e3d3d;
+        /*background-color: #5e3d3d;*/
     }
     .ant-menu-horizontal {
         line-height: 46px;
