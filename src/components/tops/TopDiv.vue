@@ -64,7 +64,7 @@
     .icon{
         font-family:"楷体",serif;
         font-size: 31px;
-        color: #00ffe2;
+        color: rgb(0, 132, 255);;
     }
     .topDiv {
         width: 100%;
