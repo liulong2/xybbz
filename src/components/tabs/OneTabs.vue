@@ -17,7 +17,7 @@
                             http://tomcat01.qfjava.cn:81
                             ```
                             啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦
-
+                            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                         </p>
                     </vue-scroll>
 
@@ -71,11 +71,11 @@
                 console.log(key);
             },
             initData() {
-                getLatest().then(res => {
+               /* getLatest().then(res => {
                     this.bulletin = res.data.data.bulletinContent
                 }).catch(error => {
 
-                })
+                })*/
             }
         },
         created() {

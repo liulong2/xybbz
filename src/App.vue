@@ -35,7 +35,8 @@
     body{
         margin: 0;
         background-size: cover;
-        background-color: white;
-        /*background-image: url("./static/images/user/login.png");*/
+        /*background-color: white;*/
+        background-image: url("./static/images/sqy/sqy.jpg");
+        background-position:0 -145px
     }
 </style>

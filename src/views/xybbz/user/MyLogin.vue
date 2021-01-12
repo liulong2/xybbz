@@ -109,8 +109,8 @@
 
                 <!--    Register    -->
 
-                <div class="login animated fadeIn" style="animation-delay:.7s; animation-duration:4s;"
-                     id="login-bg"></div>
+                <!--<div class="login animated fadeIn" style="animation-delay:.7s; animation-duration:4s;"
+                     id="login-bg"></div>-->
 
             </div>
 
@@ -248,6 +248,17 @@
     }
 
     .login-container{
+        /*background: white;*/
+        position: relative;
+        border-radius: 5px;
+        display: flex;
+        width: 35vw;
+        height: 70vh;
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.07);
+        transition: .4s;
+    }
+    /*备份*/
+    /*.login-container{
         background: white;
         position: relative;
         border-radius: 5px;
@@ -256,7 +267,7 @@
         height: 70vh;
         box-shadow: 0 19px 38px rgba(0, 0, 0, 0.07);
         transition: .4s;
-    }
+    }*/
 
 
     .login{
@@ -265,7 +276,7 @@
     }
 
     .login#login-form{
-        width: 50%;
+        width: 100%;
         display: block;
         padding: 15px;
         align-items: center;
@@ -273,6 +284,16 @@
         position: relative;
         margin-top: 20px;
     }
+    /*备份*/
+    /*.login#login-form{
+        width: 50%;
+        display: block;
+        padding: 15px;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        margin-top: 20px;
+    }*/
 
     .login#login-bg{
         width: 50%;

@@ -77,7 +77,7 @@
     .ant-menu {
         width: 30%;
         justify-content: center;
-
+        background: none;
     }
 
     ul {
