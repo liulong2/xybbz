@@ -7,8 +7,9 @@
                     <template slot="tab">
                         <p class="pSize">追番进度</p>
                     </template>
-                    <vue-scroll :ops="ops" style="width:100%;height:100%">
+
                         <!--                        <p class="contentBulletin" v-html="bulletin"></p>-->
+                    <vue-scroll :ops="ops" style="width:100%;height:30%">
                         <p class="contentBulletin"># elsearch
 
                             下载地址
@@ -17,7 +18,8 @@
                             http://tomcat01.qfjava.cn:81
                             ```
                             啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦
-                            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                                <br><br><br>111111111111111111111111111<br><br>11111111111111111111111111<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
                         </p>
                     </vue-scroll>
 
@@ -35,7 +37,7 @@
                 </a-button>
             </a-tabs>
 <!--        </div>-->
-
+        <div style="height: 100%">;allllllllllllllllll</div>
     </div>
 
 </template>
@@ -58,7 +60,7 @@
                     },
                     bar: {
                         hoverStyle: true,
-                        onlyShowBarOnScroll: false, //是否只有滚动的时候才显示滚动条
+                        onlyShowBarOnScroll: true, //是否只有滚动的时候才显示滚动条
                         background: "#F5F5F5",//滚动条颜色
                         opacity: .9,//滚动条透明度
                         "overflow-x": "hidden"
@@ -98,9 +100,10 @@
     }
 
     .myOneTabs {
-        /*display: flex;*/
-        /*flex-wrap: wrap;*/
-        /*justify-content: flex-end;*/
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
         /*flex-direction: column;*/
         width: 50%;
         /*height: 100%;*/
