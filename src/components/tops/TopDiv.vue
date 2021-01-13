@@ -46,8 +46,13 @@
 </template>
 
 <script>
+    import MyWeather from "@/views/xybbz/MyWeather/MyWeather";
     export default {
         name: "TopDiv",
+        components: {MyWeather},
+        component: {
+            MyWeather
+        },
         data() {
             return {
                 current: ['mail'],

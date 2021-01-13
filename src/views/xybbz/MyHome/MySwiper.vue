@@ -2,7 +2,7 @@
     <!--<div id="home">
         这是一个首页  你们知道吗
         <a-button type="primary" @click="submitForm()">
-            登陆
+            登陆 游戏 天气
         </a-button>
 
     </div>-->
@@ -49,7 +49,7 @@
 
 
     export default {
-        name: "MyHome",
+        name: "MySwiper",
         data() {
             return {
                 isShadow: false,

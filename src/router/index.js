@@ -10,10 +10,11 @@ const Generator = () => import('../views/xybbz/generator/Generator')
 const User = () => import('../views/xybbz/user/User')
 const LogIn = () => import('@/views/xybbz/user/LogIn')
 const AppMain = () => import('@/components/vueMain/AppMain')
-const MyHome = () => import('@/views/xybbz/MyHome/MyHome')
+const MyHome = () => import('@/views/xybbz/MyHome/MySwiper')
 const MyLogin = () => import('@/views/xybbz/user/MyLogin')
 const Clock = () => import('@/components/clock/Clock')
 const TopDiv = () => import('@/components/tops/TopDiv')
+const MyWeather = () => import('@/views/xybbz/MyWeather/MyWeather')
 
 Vue.use(VueRouter)
 
@@ -30,6 +31,10 @@ const routes = [
         path: '/user',
         component: User,
         name: '登陆2'
+    },
+    {
+        path: '/ther',
+        component: MyWeather
     },
     {
         path: '/top',

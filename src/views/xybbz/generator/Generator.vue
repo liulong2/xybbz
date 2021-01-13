@@ -144,7 +144,7 @@
                 }, 300);
             });
             // this.getRouter(this.$route)
-            // this.setColumns()
+            // this.setColumns() 天气地区
             // this.setComponents()
         },
         methods: {

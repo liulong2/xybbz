@@ -7,6 +7,7 @@
                 <div class="myindex">
                     <my-home class="layOut-home"></my-home>
                     <one-tabs class="newTabs"/>
+                    <my-weather></my-weather>
                 </div>
 
         </vue-scroll>
@@ -17,15 +18,17 @@
 
 <script>
     import OneTabs from "../tabs/OneTabs";
-    import MyHome from "../../views/xybbz/MyHome/MyHome";
+    import MyHome from "../../views/xybbz/MyHome/MySwiper";
     import TopDiv from "../tops/TopDiv";
+    import MyWeather from "@/views/xybbz/MyWeather/MyWeather";
 
     export default {
         name: "MyLayOut",
         components: {
             OneTabs,
             MyHome,
-            TopDiv
+            TopDiv,
+            MyWeather
         },
         data() {
             return {
