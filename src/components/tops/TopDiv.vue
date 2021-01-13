@@ -42,6 +42,7 @@
                 >
             </a-menu-item>
         </a-menu>
+        <my-weather></my-weather>
     </div>
 </template>
 
@@ -50,9 +51,6 @@
     export default {
         name: "TopDiv",
         components: {MyWeather},
-        component: {
-            MyWeather
-        },
         data() {
             return {
                 current: ['mail'],

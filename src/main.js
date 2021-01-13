@@ -8,6 +8,9 @@ import 'ant-design-vue/dist/antd.css';
 import less from 'less';
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
+import VueResouse from 'vue-resource'
+// import {VueJsonp} from 'vue-jsonp'
+
 
 import vuescroll from "vuescroll";//引入vuescroll
 import "vuescroll/dist/vuescroll.css";//引入vuescroll样式
@@ -17,6 +20,8 @@ Vue.use(vuescroll);//使用
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper'; //导入模组
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]); //使用模组
 
+// Vue.use(VueJsonp)
+Vue.use(VueResouse)
 Vue.use(VueAwesomeSwiper,)
 Vue.use(less)
 Vue.use(Antd);

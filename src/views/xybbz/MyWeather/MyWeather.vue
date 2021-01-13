@@ -3,16 +3,18 @@
         <div id="weather-v2-plugin-standard">
         </div>
         <!--<a-cascader
+                :default-value="['0','1','101010100']"
                 :field-names="{ label: 'zh', value: 'id', children: 'children' }"
                 :options="weathreArea"
-                placeholder="Please select"
+                placeholder="请下拉选择"
                 @change="onChange"
         />-->
+
     </div>
 </template>
 
 <script>
-    import {area} from "@/utils/weatherArea";
+    import {area} from "@/utils/weatherNew";
 
     export default {
         name: "MyWeather",
@@ -23,48 +25,56 @@
         },
         methods: {
             onChange(value) {
-                console.log(value);
-            },
+                this.$http.get("https://apip.weatherdt.com/v2/plugin/data/web",
+                    {
+                        params: {
+                            key: 'OQyLsL7MvC',
+                            lang: 'zh',
+                            location: value[2]
+                        }
+                    })
+                    .then(res => {
+
+                    }).catch(error => {
+                    console.log(error)
+                })
+            }
         },
         mounted() {
             window.WIDGET = {
                 CONFIG: {
                     "layout": 1,
-                    "width": "450",
-                    "height": "150",
+                    "width": "245",
+                    "height": "130",
                     "background": 5,
                     "dataColor": "4A4A4A",
-                    "borderRadius": "8",
-                    "key": "OQyLsL7MvC"
+                    "borderRadius": 5,
+                    "modules": "10",
+                    "key": "USFc5Pry4V"
                 }
             }
             var c = document.createElement('link')
             c.rel = 'stylesheet'
-            c.href = 'https://apip.weatherdt.com/standard/static/css/weather-standard.css?v=2.0'
+            c.href = '../../../static/weatherdt.css'
             var s = document.createElement('script')
             s.src = 'https://apip.weatherdt.com/standard/static/js/weather-standard.js?v=2.0'
             var sn = document.getElementsByTagName('script')[0]
             sn.parentNode.insertBefore(c, sn)
             sn.parentNode.insertBefore(s, sn)
-
-            /*(function (d) {
-                var c = d.createElement('link')
-                c.rel = 'stylesheet'
-                c.href = 'https://apip.weatherdt.com/standard/static/css/weather-standard.css?v=2.0'
-                var s = d.createElement('script')
-                s.src = 'https://apip.weatherdt.com/standard/static/js/weather-standard.js?v=2.0'
-                var sn = d.getElementsByTagName('script')[0]
-                sn.parentNode.insertBefore(c, sn)
-                sn.parentNode.insertBefore(s, sn)
-            })(document)*/
+        },
+        created() {
         }
     }
 </script>
 <style scoped>
 
-    @import "https://apip.weatherdt.com/simple/static/css/weather-simple.css?v=2.0";
+    @import "../../../static/weatherdt.css";
 
+
+</style>
+
+<style>
     #weather-v2-plugin-simple {
-        z-index: 9999;
+        height: 100% !important;
     }
 </style>
