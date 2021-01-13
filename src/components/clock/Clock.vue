@@ -23,7 +23,7 @@
             // window.document.getElementsByTagName("body")[0].style.background = '#radial-gradient'
             // window.document.getElementsByTagName("body")[0].style.backgroundSize = '100%'
             // window.document.getElementsByTagName("body")[0].style.height = '100%'
-            console.log(setInterval(this.updateTime, 1000))
+            setInterval(this.updateTime, 1000)
             this.updateTime();
             this.isAddClass()
         },
@@ -46,9 +46,9 @@
                 let week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
                 let cd = new Date();
                 this.time = this.zeroPadding(cd.getHours(), 2) + ':' + this.zeroPadding(cd.getMinutes(), 2) + ':' + this.zeroPadding(cd.getSeconds(), 2);
-                console.log(this.time)
+                // console.log(this.time)
                 this.date = this.zeroPadding(cd.getFullYear(), 4) + '-' + this.zeroPadding(cd.getMonth() + 1, 2) + '-' + this.zeroPadding(cd.getDate(), 2) + ' ' + week[cd.getDay()];
-                console.log(this.date)
+                // console.log(this.date)
             }
         }
     }
@@ -67,7 +67,7 @@
     #clock {
         width: 100%;
         height: 20%;
-        background: linear-gradient(to left, rgba(0, 0, 0, .0001) 0, rgba(0, 0, 0, .3) 100%);
+        background: linear-gradient(to left, rgba(0, 0, 0, .0001) 0, rgba(124, 124, 124, 0.4) 100%);
         justify-content: center;
         display: flex;
         font-family: 'Share Tech Mono', monospace;

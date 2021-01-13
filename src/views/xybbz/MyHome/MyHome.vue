@@ -201,6 +201,7 @@
      img{
         width: 100%;
         height: 380px;
+         /*height: 100%;*/
         /*border-style: none !important;*/
         /*object-fit:cover;*/
     }

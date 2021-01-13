@@ -4,14 +4,11 @@
     <div>
             <top-div></top-div>
         <vue-scroll :ops="ops" style="height: 100%; width: 100%">
-<!--            <div style="height: 100%; width: 100%">-->
                 <div class="myindex">
                     <my-home class="layOut-home"></my-home>
                     <one-tabs class="newTabs"/>
                 </div>
-<!--            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>-->
 
-<!--            </div>-->
         </vue-scroll>
     </div>
 
@@ -73,7 +70,8 @@
         justify-content: center;
         align-items: stretch;
         width: 40%;
-        height: 100%;
+        height: 380px;
+        /*height: 380px;*/
         margin-top: 19.5%;
         margin-right: auto;
         margin-left: auto;
@@ -86,9 +84,11 @@
         height: 100%;
 
     }
- /*.newTabs{
-     width: 100%;
- }*/
+
+    /*.newTabs {
+        !*width: 100%;*!
+        height: 380px;
+    }*/
 
     @media (max-width: 1920px) {
         .myindex {
