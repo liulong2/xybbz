@@ -24,7 +24,7 @@
         width: 40px;
         line-height: 40px;
         border-radius: 20px;
-        background-color: #1088e9;
+        background-color: rgba(16, 136, 233, .5);
         color: #fff;
         text-align: center;
         font-size: 20px;
