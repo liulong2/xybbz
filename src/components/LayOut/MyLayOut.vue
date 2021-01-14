@@ -9,7 +9,8 @@
                     <one-tabs class="newTabs"/>
                     <my-weather></my-weather>
                 </div>
-
+            <my-back-top></my-back-top>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </vue-scroll>
     </div>
 
@@ -21,6 +22,7 @@
     import MyHome from "../../views/xybbz/MyHome/MySwiper";
     import TopDiv from "../tops/TopDiv";
     import MyWeather from "@/views/xybbz/MyWeather/MyWeather";
+    import MyBackTop from "@/components/backTop/MyBackTop";
 
     export default {
         name: "MyLayOut",
@@ -28,7 +30,8 @@
             OneTabs,
             MyHome,
             TopDiv,
-            MyWeather
+            MyWeather,
+            MyBackTop
         },
         data() {
             return {
