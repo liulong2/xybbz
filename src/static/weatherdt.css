@@ -7,9 +7,10 @@
 }
 
 #weather-v2-plugin-standard[data-v-bfc01bdc] {
-    display: flex;
+    /*display: flex;*/
     align-items: center;
-    height: 100% !important;
+    width: 100% !important;
+    height: 46.5px !important;
     /*flex-direction: row-reverse;*/
     font-family: PingFang SC, Microsoft YaHei, Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -31,7 +32,10 @@
 }
 
 .wv-top-backdrop[data-v-bfc01bdc] {
-    position: absolute;
+    z-index: 9999;
+    width: 100% !important;
+    position: relative;
+    /*position: absolute;*/
     left: 0;
     top: 0;
     background-color: rgba(0, 0, 0, .5);
@@ -131,7 +135,7 @@ button.wv-top-button[data-v-bfc01bdc]:focus {
 .wv-v-h-location[data-v-e38785c2] {
     width: 98%;
     height: 47px;
-    padding: 1.5em .7em .3em
+    padding: 1em .7em .3em
 }
 
 .wv-v-h-now[data-v-e38785c2] {
@@ -184,7 +188,7 @@ button.wv-top-button[data-v-bfc01bdc]:focus {
     /*display: block;
     float: left;
     position: relative;*/
-    width: 57px;
+    width: 100%;
     /*overflow: hidden*/
 }
 
@@ -326,7 +330,7 @@ button.wv-top-button[data-v-bfc01bdc]:focus {
 }
 
 .wv-n-h-col-10[data-v-7e2529f0] {
-    display: flex;
+    display: flex !important;
     flex-direction: row;
     /*display: block;*/
     /*float: left;*/
@@ -354,8 +358,8 @@ button.wv-top-button[data-v-bfc01bdc]:focus {
 }
 
 div.wv-n-h-now-img > img[data-v-7e2529f0] {
-    width: 4em;
-    margin: -0.3em 1em .2em 0
+    width: 3em;
+    margin: .3em .5em .2em 0
 }
 
 .wv-n-h-now-img[data-v-7e2529f0] {
@@ -366,7 +370,10 @@ div.wv-n-h-now-img > img[data-v-7e2529f0] {
 .wv-n-h-now-content[data-v-7e2529f0] {
     /*float:left;*/
     display:flex !important;
-    vertical-align: middle
+    justify-content: space-between;
+    vertical-align: middle;
+    margin-top: .5em;
+
 }
 
 .wv-n-h-now-content img[data-v-7e2529f0] {
@@ -374,20 +381,27 @@ div.wv-n-h-now-img > img[data-v-7e2529f0] {
 }
 
 .wv-n-h-now-txt[data-v-7e2529f0] {
-    width: 61px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content:space-between;
+    /*justify-content: center;*/
+    width: 54px;
     font-size: 1em;
-    margin-top: .4em
+    margin-top: .7em;
 }
 
 .wv-n-h-now-txt > span[data-v-7e2529f0] {
+    margin: 0 auto;
     font-weight: 400;
-    font-size: 1em
+    font-size: 1em;
+    width: 100%;
 }
 
 .wv-n-h-now-tmp[data-v-7e2529f0] {
     /*float: left;*/
+    /*margin-right: 15px;*/
     display: flex;
-    width: 64px;
+    /*width: auto;*/
     font-size: 1.7em;
     position: relative;
     padding-top: .1em
@@ -404,6 +418,7 @@ div.wv-n-h-now-img > img[data-v-7e2529f0] {
 }
 
 .wv-n-h-now-tmp > .wv-n-h-now-alarm[data-v-7e2529f0] {
+    display: none;
     font-size: .5em;
     padding: .2em 0 0;
     margin-left: 1em
@@ -444,6 +459,7 @@ div.wv-n-h-now-img > img[data-v-7e2529f0] {
 }
 
 .wv-n-h-now-aqi-item[data-v-7e2529f0] {
+    width: 100%;
     float: right
 }
 
@@ -454,56 +470,70 @@ div.wv-n-h-now-img > img[data-v-7e2529f0] {
 }
 
 .wv-n-h-now-aqi-item > .wv-n-h-label[data-v-7e2529f0], .wv-n-h-now-aqi-item > span[data-v-7e2529f0] {
-    font-size: 1em;
+    font-size: 1.2em;
     display: inline-block;
     vertical-align: middle
 }
 
 .wv-n-h-now-aqi-item-color-1 span[data-v-7e2529f0] {
+    margin-bottom: 2px;
     color: #94ce6f
 }
 
 .wv-n-h-now-aqi-item-color-1 .wv-n-h-label[data-v-7e2529f0] {
+    display: none;
     background-color: #94ce6f
 }
 
 .wv-n-h-now-aqi-item-color-2 span[data-v-7e2529f0] {
+    margin-bottom: 2px;
     color: #e4c600
 }
 
 .wv-n-h-now-aqi-item-color-2 .wv-n-h-label[data-v-7e2529f0] {
+    display: none;
     background-color: #e4c600
 }
 
 .wv-n-h-now-aqi-item-color-3 span[data-v-7e2529f0] {
+    font-size: 1em;
+    width: 100%;
+    margin-bottom: 2px;
     color: #e59c3b
 }
 
 .wv-n-h-now-aqi-item-color-3 .wv-n-h-label[data-v-7e2529f0] {
+    display: none;
     background-color: #e59c3b
 }
 
 .wv-n-h-now-aqi-item-color-4 span[data-v-7e2529f0] {
+    margin-bottom: 2px;
     color: #c76464
 }
 
 .wv-n-h-now-aqi-item-color-4 .wv-n-h-label[data-v-7e2529f0] {
+    display: none;
     background-color: #c76464
 }
 
 .wv-n-h-now-aqi-item-color-5 span[data-v-7e2529f0] {
+    margin-bottom: 2px;
     color: #8a4daa
 }
 
 .wv-n-h-now-aqi-item-color-5 .wv-n-h-label[data-v-7e2529f0] {
+    display: none;
     background-color: #8a4daa
 }
 
 .wv-n-h-now-aqi-item-color-6 span[data-v-7e2529f0] {
+    margin-bottom: 2px;
     color: #bf2762
 }
 
 .wv-n-h-now-aqi-item-color-6 .wv-n-h-label[data-v-7e2529f0] {
+    display: none;
     background-color: #bf2762
 }
 
