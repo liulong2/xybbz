@@ -15,6 +15,7 @@ const MyLogin = () => import('@/views/xybbz/user/MyLogin')
 const Clock = () => import('@/components/clock/Clock')
 const TopDiv = () => import('@/components/tops/TopDiv')
 const MyWeather = () => import('@/views/xybbz/MyWeather/MyWeather')
+const MyFilm = () => import('@/components/film/MyFilm')
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,10 @@ const routes = [
         path: '/generator',
         component: Generator
     },*/
+    {
+      path: '/film',
+      component: MyFilm
+    },
     {
         path: '/user',
         component: User,
