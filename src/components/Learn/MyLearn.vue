@@ -1,11 +1,12 @@
 <template>
-    
+    <div class="learn">
+
+    </div>
 </template>
 
 <script>
-    //动漫
     export default {
-        name: "MyAnime",
+        name: "MyLearn"
     }
 </script>
 

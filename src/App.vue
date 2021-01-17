@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <top-div></top-div>
         <!--    <keep-alive>-->
         <router-view></router-view>
         <!--    </keep-alive>-->
@@ -8,9 +9,13 @@
 
 <script>
     import zhCN from 'ant-design-vue/es/locale-provider/zh_CN';
+    import TopDiv from "@/components/tops/TopDiv";
 
     export default {
         name: 'App',
+        components: {
+          TopDiv
+        },
         data() {
             return {
                 locale: zhCN,

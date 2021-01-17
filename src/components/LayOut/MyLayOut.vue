@@ -1,16 +1,20 @@
 <template>
-    <!--            此处的maxHeight非常重要,关系到 one-tabs的高度-->
+    <!--            此处的maxHeight非常重要,关系到 one-tabs的高度 按钮-->
 
     <div>
-            <top-div></top-div>
+
         <vue-scroll :ops="ops" style="height: 100%; width: 100%">
                 <div class="myindex">
                     <my-home class="layOut-home"></my-home>
                     <one-tabs class="newTabs"/>
                     <my-weather></my-weather>
+
                 </div>
+            <div class="bottonType">
+                <mygames :hrefs="iconTypeObj"></mygames>
+            </div>
             <my-back-top></my-back-top>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
         </vue-scroll>
     </div>
 
@@ -23,6 +27,9 @@
     import TopDiv from "../tops/TopDiv";
     import MyWeather from "@/views/xybbz/MyWeather/MyWeather";
     import MyBackTop from "@/components/backTop/MyBackTop";
+    import Mygames from "@/components/games/MyLove";
+    import {iconGame,iconDianYing,iconDongMan,iconManHua,iconTV,iconXuexi} from "@/static/images/film/iconfont";
+    import global from "@/config/global";
 
     export default {
         name: "MyLayOut",
@@ -31,10 +38,12 @@
             MyHome,
             TopDiv,
             MyWeather,
-            MyBackTop
+            MyBackTop,
+            Mygames
         },
         data() {
             return {
+                iconTypeObj:global.hrefs,
                 // basePath: '/components/breadcrumb',
                 breadlist: [], //路由集合,
                 ops: {
@@ -58,6 +67,12 @@
             }
         },
         created() {
+            iconGame()
+            iconDianYing()
+            iconDongMan()
+            iconManHua()
+            iconTV()
+            iconXuexi()
         },
         methods: {
             mosuseWheel() {
@@ -100,6 +115,15 @@
         .myindex {
             width: 56%;
         }
+    }
+    .bottonType{
+        width: 40%;
+        /*width: 100%;*/
+        height: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 30px;
+        background-color: rgba(248,248,249,.9);
     }
 
 </style>
