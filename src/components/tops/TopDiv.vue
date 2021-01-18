@@ -10,13 +10,13 @@
                 <!--                <a-icon type="mail"/>-->
                 首页
             </a-menu-item>
-            <a-menu-item key="app">
+            <a-menu-item v-for="(item, value) in currents" :key="item.iconHref" @click="jumpClick(item.routerPath)">
                 <!--                <a-icon type="appstore"/>-->
-                第二个首页
+                {{item.iconName}}
             </a-menu-item>
-            <a-sub-menu>
+            <!--<a-sub-menu>
         <span slot="title" class="submenu-title-wrapper">
-<!--            <a-icon type="setting"/>-->
+&lt;!&ndash;            <a-icon type="setting"/>&ndash;&gt;
             第三个首页
         </span>
                 <a-menu-item-group title="Item 1">
@@ -35,12 +35,7 @@
                         Option 4
                     </a-menu-item>
                 </a-menu-item-group>
-            </a-sub-menu>
-            <a-menu-item key="alipay">
-                <a href="javaScript:void(0)" target="_blank" rel="noopener noreferrer"
-                >第四个首页</a
-                >
-            </a-menu-item>
+            </a-sub-menu>-->
         </a-menu>
         <my-weather></my-weather>
     </div>
@@ -48,13 +43,22 @@
 
 <script>
     import MyWeather from "@/views/xybbz/MyWeather/MyWeather";
+    import global from "@/config/global";
+    import {isNull} from "@/utils/utils";
+
     export default {
         name: "TopDiv",
         components: {MyWeather},
         data() {
             return {
                 current: ['mail'],
+                currents: global.hrefs
             };
+        },
+        methods: {
+            jumpClick(val) {
+                this.$router.push(isNull(val) ? '/' : val)
+            }
         }
     }
 </script>

@@ -16,6 +16,7 @@ const Clock = () => import('@/components/clock/Clock')
 const TopDiv = () => import('@/components/tops/TopDiv')
 const MyWeather = () => import('@/views/xybbz/MyWeather/MyWeather')
 const MyGame = () =>import('@/components/MyGame/MyGame')
+const MyLearn = () => import('@/components/Learn/MyLearn')
 
 Vue.use(VueRouter)
 
@@ -40,6 +41,10 @@ const routes = [
     {
         path: '/ther',
         component: MyWeather
+    },
+    {
+      path: '/learn',
+      component: MyLearn
     },
     {
         path: '/top',
