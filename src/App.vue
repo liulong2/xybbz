@@ -4,7 +4,7 @@
         <!--    <keep-alive>-->
         <!--        <vue-scroll :ops="ops" style="height: 100%; width: 100%">-->
         <router-view></router-view>
-        <my-botton></my-botton>
+        <my-botton @click="thiClick"></my-botton>
         <!--        </vue-scroll>-->
         <!--    </keep-alive>-->
     </div>
@@ -13,7 +13,7 @@
 <script>
     import zhCN from 'ant-design-vue/es/locale-provider/zh_CN';
     import TopDiv from "@/components/tops/TopDiv";
-    import MyBotton from "@/components/MyBotton";
+    import MyBotton from "@/components/botton/MyBotton";
 
     export default {
         name: 'App',
@@ -25,6 +25,11 @@
             return {
                 locale: zhCN,
                 isDisplay: true
+            }
+        },
+        methods: {
+            thiClick() {
+                this.$route.path
             }
         }
     }
@@ -46,8 +51,8 @@
     body {
         margin: 0;
         background-size: cover;
-        /*background-color: white;*/
-        background-image: url("./static/images/sqy/sqy.jpg");
+        background-color: white;
+        /*background-image: url("./static/images/sqy/sqy.jpg");*/
         background-position: 0 -145px
     }
 </style>

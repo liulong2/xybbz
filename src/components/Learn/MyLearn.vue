@@ -13,6 +13,7 @@
                 </a-list-item-meta>
             </a-list-item>
         </a-list>
+        <a-pagination v-model="current" :total="50" show-less-items/>
     </div>
 </template>
 
@@ -81,17 +82,31 @@
         data() {
             return {
                 data,
+                current: 1,
             };
         },
     }
 </script>
 
 <style scoped>
-.learn{
-    margin-top: 5%;
-    width: 40%;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: rgba(255, 255, 255, .6);
-}
+    .learn {
+        margin-top: 5%;
+        width: 40%;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: rgba(255, 255, 255, .6);
+        margin-bottom: 3%;
+    }
+
+    .ant-pagination-item-link {
+        display: block;
+        height: 100%;
+        font-size: 12px;
+        text-align: center;
+        background-color: #fff;
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+        outline: none;
+        transition: all .3s;
+    }
 </style>

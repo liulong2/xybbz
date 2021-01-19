@@ -122,7 +122,8 @@
     import {logIn} from '@/api/user/index'
     import {setLocalToken} from '@/utils/local'
     import global from '@/config/global'
-    import { setToken } from '@/utils/auth'
+    import {setToken} from '@/utils/auth'
+
     export default {
         name: "MyLogin",
         data() {
@@ -236,6 +237,11 @@
     body{
         background:#f8fafc;
     }*/
+
+    .container{
+        height: 100%;
+    }
+
     html body{
         width: 100%;
     }
@@ -306,7 +312,8 @@
     }
 
     .register{
-        width: 50%;
+        width: 100%;
+        /*width: 50%;*/
         display: block;
         padding: 15px;
         align-items: center;
