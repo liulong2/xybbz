@@ -95,7 +95,7 @@
         margin-right: auto;
         margin-left: auto;
         background-color: rgba(255, 255, 255, .6);
-        margin-bottom: 3%;
+        /*margin-bottom: 3%;*/
     }
 
     .ant-pagination-item-link {

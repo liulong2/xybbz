@@ -123,7 +123,7 @@
         margin-right: auto;
         margin-left: auto;
         margin-top: 30px;
-        background-color: rgba(248,248,249,.9);
+        background-color: rgba(248, 248, 249, 0.1);
     }
 
 </style>

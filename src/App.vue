@@ -47,11 +47,21 @@
         width: 100%;
         height: 100%;
     }
+    /*@font-face {
+        font-family: 'webfont';
+        font-display: swap;
+        src: url('src/static/family/webfont.eot'); !* IE9 *!
+        src: url('src/static/family/webfont.eot?#iefix') format('embedded-opentype'), !* IE6-IE8 *!
+        url('src/static/family/webfont.woff2') format('woff2'),
+        url('src/static/family/webfont.woff') format('woff'), !* chrome、firefox *!
+        url('src/static/family/webfont.ttf') format('truetype'), !* chrome、firefox、opera、Safari, Android, iOS 4.2+*!
+        url('src/static/family/webfont.svg#webfont') format('svg'); !* iOS 4.1- *!
+    }*/
 
     body {
         margin: 0;
         background-size: cover;
-        background-color: white;
+        background-color: #ffffff !important;
         /*background-image: url("./static/images/sqy/sqy.jpg");*/
         background-position: 0 -145px
     }
