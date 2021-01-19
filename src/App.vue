@@ -36,18 +36,24 @@
 </script>
 
 <style>
+    @import url("/src/static/css/fontawesome-free@5.12.0/brands.min.css");
+
     #app {
         height: 100%;
         width: 100%;
         margin-right: auto;
         margin-left: auto;
+        font-family: "Font Awesome 5 Brands", monospace !important;
     }
 
     html, body {
         width: 100%;
         height: 100%;
     }
+
     body {
+
+
         margin: 0;
         background-size: cover;
         background-color: #ffffff !important;
