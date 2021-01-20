@@ -17,8 +17,8 @@
     width: 100%;
     height: 15%;
     margin-top: 5%;
-    /*position: relative;*/
-    /*bottom: 0;*/
+    position: fixed;
+    bottom: 0;
     text-align: center;
     /*background-color: rgba(146, 132, 132, 0.2) !important;*/
     box-shadow: 0 -1px 3px rgba(18, 18, 18, .1);

@@ -28,6 +28,6 @@
 </style>
 <style>
     .ant-input {
-        border-radius: 20px
+        border-radius: 20px !important;
     }
 </style>

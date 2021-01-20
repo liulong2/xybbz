@@ -1,11 +1,11 @@
 <template>
     <div class="learn">
         <a-list item-layout="horizontal" :data-source="data">
-            <a-list-item slot="renderItem" slot-scope="item, index">
+            <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
                 <a-list-item-meta
                         description="Ant Design, a design language for background applications, is refined by Ant UED Team"
                 >
-                    <a slot="title" href="https://www.antdv.com/">{{ item.title }}</a>
+                    <a slot="title" href="https://www.antdv.com/">{{ item.blogTitle }}</a>
                     <a-avatar
                             slot="avatar"
                             src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
@@ -13,12 +13,12 @@
                 </a-list-item-meta>
             </a-list-item>
         </a-list>
-        <a-pagination v-model="current" :total="50" show-less-items/>
+        <a-pagination v-model="current" :page-size="pageSize" :total="total" @change="onChange" show-less-items/>
     </div>
 </template>
 
 <script>
-    const data = [
+    /*const data = [
         {
             title: 'Ant Design Title 1',
         },
@@ -74,17 +74,44 @@
             title: 'Ant Design Title 4',
         }
 
-
-    ];
+    ];*/
+    import {getSort} from "@/api/sort/api";
+    import {getBlogListPage} from "@/api/blog/api";
     //学习
     export default {
         name: "MyLearn",
         data() {
             return {
-                data,
+                data: [],
                 current: 1,
+                pageSize: 2,
+                total: 0
             };
         },
+        created() {
+            this.getSortData()
+        },
+        methods: {
+            onChange(current) {
+                this.current = current;
+                this.getSortData()
+            },
+            getSortData() {
+                getSort({name: "learn_type", type: 1}).then(res => {
+                    console.log();
+                    getBlogListPage(res.data.data.id, this.current, this.pageSize).then(res => {
+                        this.total = res.data.data.total
+                        console.log(this.total);
+                        this.data = res.data.data.records
+                        console.log();
+                    }).catch(error => {
+                        this.$message.error("获取失败")
+                    })
+                }).catch(error => {
+                    this.$message.error("获取失败")
+                })
+            }
+        }
     }
 </script>
 
