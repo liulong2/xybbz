@@ -97,7 +97,7 @@ const router = new VueRouter({
 })
 
 
-router.beforeEach((to, from, next) => {
+/*router.beforeEach((to, from, next) => {
     console.log(to);
     console.log(from)
     //取出本地信息
@@ -121,5 +121,5 @@ router.beforeEach((to, from, next) => {
     } else {
         next()
     }
-})
+})*/
 export default router;

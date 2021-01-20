@@ -6,7 +6,7 @@ import actions from "./modules/actions"
 
 Vue.use(Vuex)
 const state = {
-    isDisplay: true,
+    isDisplay: false,
     //路由集合
     breadListState: [
         {name: '首页', path: '/home'}

@@ -13,68 +13,12 @@
                 </a-list-item-meta>
             </a-list-item>
         </a-list>
-        <a-pagination v-model="current" :page-size="pageSize" :total="total" @change="onChange" show-less-items/>
+        <a-pagination v-model="current" :page-size="pageSize" :total="total" @change="onChange" show-less-items
+                      :hide-on-single-page="true"/>
     </div>
 </template>
 
 <script>
-    /*const data = [
-        {
-            title: 'Ant Design Title 1',
-        },
-        {
-            title: 'Ant Design Title 2',
-        },
-        {
-            title: 'Ant Design Title 3',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-        {
-            title: 'Ant Design Title 4',
-        },
-        {
-            title: 'Ant Design Title 4',
-        }
-
-    ];*/
     import {getSort} from "@/api/sort/api";
     import {getBlogListPage} from "@/api/blog/api";
     //学习
@@ -84,7 +28,7 @@
             return {
                 data: [],
                 current: 1,
-                pageSize: 2,
+                pageSize: 20,
                 total: 0
             };
         },

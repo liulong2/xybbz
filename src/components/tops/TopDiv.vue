@@ -1,5 +1,5 @@
 <template>
-    <div class="topDiv">
+    <div class="topDiv" v-if="getIsDisplay">
         <div class="icon">
             <p>
                 <b>咸鱼</b>
@@ -47,6 +47,7 @@
     import global from "@/config/global";
     import {isNull} from "@/utils/utils";
     import MySearch from "@/components/search/MySearch";
+    import {mapGetters} from "vuex";
 
     export default {
         name: "TopDiv",
@@ -57,10 +58,18 @@
         data() {
             return {
                 current: ['mail'],
-                currents: global.hrefs
+                currents: global.hrefs,
+                isEnable: false
             };
         },
+        created(){
+
+        },
+        computed:{
+            ...mapGetters(['getIsDisplay']),
+        },
         methods: {
+            // todo 判断是否为刷新 刷新的话从缓存中获取
             jumpClick(val) {
                 this.$router.push(isNull(val) ? '/' : val)
             }
@@ -81,7 +90,7 @@
     }
 
     .topDiv {
-        width: 100%;
+        width: 80%;
         display: flex;
         justify-content: center;
         /*background-color: #5e3d3d;*/

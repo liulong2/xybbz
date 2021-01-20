@@ -123,6 +123,7 @@
     import {setLocalToken} from '@/utils/local'
     import global from '@/config/global'
     import {setToken} from '@/utils/auth'
+    import {mapActions, mapGetters} from "vuex";
 
     export default {
         name: "MyLogin",
@@ -172,6 +173,13 @@
 
             }
         },
+        created(){
+
+        },
+        computed:{
+            ...mapActions(['setDisplay']),
+            ...mapGetters(['getIsDisplay']),
+        },
         methods: {
             submitForm(formName) {
                 console.log(11111)
@@ -184,7 +192,10 @@
                             const obj = {keyName, context, type}
                             setLocalToken(obj)
                             setToken(context);
+                            this.setDisplay
+                            console.log(this.getIsDisplay);
                             this.$router.push('/appMain')
+
                         }).catch(error => {
                             console.log(error);
                         })
