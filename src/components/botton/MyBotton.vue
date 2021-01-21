@@ -1,5 +1,5 @@
 <template>
-    <div class="myBotton" v-if="getIsDisplay">
+    <div class="myBotton" v-if="getIsDisplay()">
         <div class="childen">
             这是一个咸鱼写的网站
         </div>
@@ -17,10 +17,10 @@
             }
         },
         computed: {
-            ...mapGetters(['getIsDisplay']),
+
         },
         methods: {
-
+            ...mapGetters(['getIsDisplay']),
             // ...mapActions(['addBreadListState', 'removeBreadListState', 'addAllBreadListState']),
         },
         created(){

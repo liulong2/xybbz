@@ -174,15 +174,19 @@
             }
         },
         created(){
-
+            this.setIsDisable()
         },
         computed:{
-            ...mapActions(['setDisplay']),
-            ...mapGetters(['getIsDisplay']),
+
         },
         methods: {
+            ...mapActions(['setDisplay']),
+            ...mapGetters(['getIsDisplay']),
+            setIsDisable() {
+                this.setDisplay(false)
+            },
+
             submitForm(formName) {
-                console.log(11111)
                 this.$refs[formName].validate(valid => {
                     if (valid) {
                         logIn(this.ruleForm.userName, this.ruleForm.password).then(data => {
@@ -192,8 +196,13 @@
                             const obj = {keyName, context, type}
                             setLocalToken(obj)
                             setToken(context);
-                            this.setDisplay
-                            console.log(this.getIsDisplay);
+                            this.setDisplay(true)
+                            //存储到缓存中
+                             context = this.getIsDisplay();
+                             keyName = global.topBottomEnableName;
+                             type = false
+                             const enableObj = {keyName, context, type}
+                            setLocalToken(enableObj)
                             this.$router.push('/appMain')
 
                         }).catch(error => {

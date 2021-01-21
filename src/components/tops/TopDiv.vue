@@ -1,5 +1,5 @@
 <template>
-    <div class="topDiv" v-if="getIsDisplay">
+    <div class="topDiv" v-if="getIsDisplay()">
         <div class="icon">
             <p>
                 <b>咸鱼</b>
@@ -10,7 +10,7 @@
                 <!--                <a-icon type="mail"/>-->
                 首页
             </a-menu-item>
-            <a-menu-item v-for="(item, value) in currents" :key="item.iconHref" @click="jumpClick(item.routerPath)">
+            <a-menu-item v-for="(item, value) in currents" :key="item.iconHref" @click="jumpClick(item)">
                 <!--                <a-icon type="appstore"/>-->
                 {{item.iconName}}
             </a-menu-item>
@@ -46,8 +46,9 @@
     import MyWeather from "@/views/xybbz/MyWeather/MyWeather";
     import global from "@/config/global";
     import {isNull} from "@/utils/utils";
+    import {getLocalToken, setLocalToken} from "@/utils/local";
     import MySearch from "@/components/search/MySearch";
-    import {mapGetters} from "vuex";
+    import {mapActions, mapGetters} from "vuex";
 
     export default {
         name: "TopDiv",
@@ -62,16 +63,60 @@
                 isEnable: false
             };
         },
-        created(){
-
+        created() {
+            this.getDisplay()
+            this.getCurr()
         },
-        computed:{
-            ...mapGetters(['getIsDisplay']),
-        },
+        computed: {},
         methods: {
+            ...mapGetters(['getIsDisplay', 'getCurrents']),
+            ...mapActions(['setDisplay', 'setTopSwitch']),
+            getCurr() {
+                let keyName = global.current
+                let type = false
+                const obj = {keyName, type}
+                if (!isNull(getLocalToken(obj))) {
+                    // this.$store.dispatch('setDisplay',true)
+                    console.log(getLocalToken(obj)[0]);
+                    this.setTopSwitch(getLocalToken(obj)[0])
+
+                    console.log(this.getCurrents()[0]);
+                    console.log("22222222222222")
+                    this.current = []
+                    this.current.push(this.getCurrents()[0].iconHref)
+
+                    console.log(this.getCurrents()[0]);
+                    console.log("1111111111111111111111111")
+                    // this.$router.push(isNull(this.getCurrents()[0].routerPath) ? "/" : this.getCurrents()[0].routerPath)
+                }
+            },
+            getDisplay() {
+                let keyName = global.topBottomEnableName
+                let type = false
+                const obj = {keyName, type}
+                if (!isNull(getLocalToken(obj))) {
+                    // this.$store.dispatch('setDisplay',true)
+                    this.setDisplay(true)
+                }
+            },
             // todo 判断是否为刷新 刷新的话从缓存中获取
             jumpClick(val) {
-                this.$router.push(isNull(val) ? '/' : val)
+                // const routerPath = val.routerPath
+                this.setTopSwitch(val)
+
+                const routerPath = val.routerPath
+                this.current = []
+                this.current.push(val.iconHref)
+
+                console.log(this.getCurrents());
+                //存储到缓存中
+                let context = this.getCurrents();
+                let keyName = global.current;
+                let type = false
+                const enableObj = {keyName, context, type}
+                setLocalToken(enableObj)
+
+                this.$router.push(isNull(routerPath) ? '/' : routerPath)
             }
         }
     }
@@ -90,7 +135,7 @@
     }
 
     .topDiv {
-        width: 80%;
+        width: 100%;
         display: flex;
         justify-content: center;
         /*background-color: #5e3d3d;*/

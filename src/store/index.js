@@ -7,6 +7,7 @@ import actions from "./modules/actions"
 Vue.use(Vuex)
 const state = {
     isDisplay: false,
+    current: [{iconHref: 'mail', iconName: '首页', routerPath: "/home"}],
     //路由集合
     breadListState: [
         {name: '首页', path: '/home'}

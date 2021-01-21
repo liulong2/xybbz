@@ -9,7 +9,7 @@ export const serialize = data => {
 
 //判断是否为空
 export function isNull(val) {
-    if (typeof val == 'number') {
+    if (typeof val == 'boolean') {
         return false
     }
 

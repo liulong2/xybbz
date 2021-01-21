@@ -1,10 +1,12 @@
-import {SET_IS_DISPLAY, BREAD_LIST_STATE_ADD, REMOVE_DATA, BREAD_LIST_MUTATIONS} from './modules-methodname'
-import {getToken} from '@/utils/auth'
-import {isNull} from "../../utils/utils";
+import {BREAD_LIST_MUTATIONS, BREAD_LIST_STATE_ADD, REMOVE_DATA, SET_IS_DISPLAY,TOP_SWITCH} from './modules-methodname'
 
 export default {
     [SET_IS_DISPLAY](state, payload) {
-        state.isDisplay = true
+        state.isDisplay = payload
+    },
+    [TOP_SWITCH](state,payload){
+        state.current = []
+        state.current.push(payload)
     },
     [BREAD_LIST_STATE_ADD](state, payload) {
         state.breadListState.push(payload)

@@ -3,7 +3,7 @@
         <a-list item-layout="horizontal" :data-source="data">
             <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
                 <a-list-item-meta
-                        description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                        :description="item.blogContext"
                 >
                     <a slot="title" href="https://www.antdv.com/">{{ item.blogTitle }}</a>
                     <a-avatar
@@ -63,6 +63,8 @@
     .learn {
         margin-top: 5%;
         width: 40%;
+        /*padding-bottom: 10%;*/
+        height: auto;
         margin-right: auto;
         margin-left: auto;
         background-color: rgba(255, 255, 255, .6);

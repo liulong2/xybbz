@@ -1,6 +1,10 @@
 export default {
     token: 'liu', //token 请求头
     keyName: 'token',
+    //全局头部和底部显示存储名称
+    topBottomEnableName: 'isEnable',
+    //顶部切换
+    current: 'current',
     breadList: 'breadListStorage',
     //MyLove组件传入信息
     hrefs: [

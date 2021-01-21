@@ -47,6 +47,8 @@ export const getLocalToken = (params = {}) => {
         context = obj.context
     } else if (obj.contextType == 'object') {
         context = obj.context
+    } else if (obj.contextType == 'boolean') {
+        context = obj.context
     }
     return context;
 }
