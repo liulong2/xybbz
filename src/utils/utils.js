@@ -1,4 +1,7 @@
 //序列化
+import global from "@/config/global";
+import {getLocalToken, setLocalToken} from "@/utils/local";
+
 export const serialize = data => {
     let arrayList = []
     Object.keys(data).forEach(ele => {
@@ -42,4 +45,18 @@ export function arrayToStr(val) {
         str = str.substr(0, str.length - 1);
     }
     return str
+}
+
+//更新vuex和缓存
+export function topCurr(val,obj) {
+    console.log(val)
+
+    val.setTopSwitch(obj)
+    console.log(val.getCurrents()[0]);
+    //存储到缓存中
+    let context = val.getCurrents()[0];
+    let keyName = global.current;
+    let type = false
+    const enableObj = {keyName, context, type}
+    setLocalToken(enableObj)
 }

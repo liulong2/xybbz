@@ -47,6 +47,8 @@
 <script>
     import {Swiper, SwiperSlide} from 'vue-awesome-swiper'
     import {mapActions, mapGetters} from "vuex";
+    import global from "@/config/global";
+    import {setLocalToken} from "@/utils/local";
 
 
     export default {
@@ -92,22 +94,25 @@
             }
         },
         created() {
-
+            this.setTopSwitch({
+                iconHref: 'mail',
+                iconName: '首页',
+                routerPath: '/home'
+            },)
+            let context = this.getCurrents();
+            let keyName = global.current;
+            let type = false
+            const enableObj = {keyName, context, type}
+            setLocalToken(enableObj)
         },
         mounted() {
-            console.log('Current Swiper instance object', this.swiper)
+            // console.log('Current Swiper instance object', this.swiper)
             // this.swiper.slideTo(0, 1000, false)
         },
         methods: {
             ...mapGetters(['getCurrents']),
             ...mapActions(['setTopSwitch']),
-            updateTop() {
-                this.setTopSwitch({
-                    iconHref: '#icon-youxi',
-                    iconName: '游戏',
-                    routerPath: '/game'
-                })
-            },
+
             addNextClass() {
                 this.isNext = true
             },

@@ -40,7 +40,7 @@
                 })
             }
         },
-        mounted() {
+        created() {
             window.WIDGET = {
                 CONFIG: {
                     "layout": 1,
@@ -61,8 +61,6 @@
             var sn = document.getElementsByTagName('script')[0]
             sn.parentNode.insertBefore(c, sn)
             sn.parentNode.insertBefore(s, sn)
-        },
-        created() {
         }
     }
 </script>

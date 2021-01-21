@@ -5,37 +5,15 @@
                 <b>咸鱼</b>
             </p>
         </div>
-        <a-menu v-model="current" mode="horizontal">
-            <a-menu-item key="mail">
-                <!--                <a-icon type="mail"/>-->
+        <a-menu v-model="current" :default-selected-keys="getDefaultCurrent" mode="horizontal">
+            <!--<a-menu-item key="mail" @click="jumpClick(obj)">
+                &lt;!&ndash;                <a-icon type="mail"/>&ndash;&gt;
                 首页
-            </a-menu-item>
+            </a-menu-item>-->
             <a-menu-item v-for="(item, value) in currents" :key="item.iconHref" @click="jumpClick(item)">
                 <!--                <a-icon type="appstore"/>-->
                 {{item.iconName}}
             </a-menu-item>
-            <!--<a-sub-menu>
-        <span slot="title" class="submenu-title-wrapper">
-&lt;!&ndash;            <a-icon type="setting"/>&ndash;&gt;
-            第三个首页
-        </span>
-                <a-menu-item-group title="Item 1">
-                    <a-menu-item key="setting:1">
-                        Option 1
-                    </a-menu-item>
-                    <a-menu-item key="setting:2">
-                        Option 2
-                    </a-menu-item>
-                </a-menu-item-group>
-                <a-menu-item-group title="Item 2">
-                    <a-menu-item key="setting:3">
-                        Option 3
-                    </a-menu-item>
-                    <a-menu-item key="setting:4">
-                        Option 4
-                    </a-menu-item>
-                </a-menu-item-group>
-            </a-sub-menu>-->
         </a-menu>
         <my-weather></my-weather>
         <my-search></my-search>
@@ -58,38 +36,31 @@
         },
         data() {
             return {
-                current: ['mail'],
+                current: [],
+                defaultCurrent: ['mail'],
                 currents: global.hrefs,
                 isEnable: false
             };
         },
         created() {
             this.getDisplay()
-            this.getCurr()
+
         },
-        computed: {},
+        mounted() {
+
+        },
+        computed: {
+            getDefaultCurrent() {
+                this.defaultCurrent = []
+                this.defaultCurrent.push(this.getCurrents()[0].iconHref)
+                console.log(this.defaultCurrent)
+                this.current = this.defaultCurrent
+                return this.defaultCurrent
+            },
+        },
         methods: {
             ...mapGetters(['getIsDisplay', 'getCurrents']),
             ...mapActions(['setDisplay', 'setTopSwitch']),
-            getCurr() {
-                let keyName = global.current
-                let type = false
-                const obj = {keyName, type}
-                if (!isNull(getLocalToken(obj))) {
-                    // this.$store.dispatch('setDisplay',true)
-                    console.log(getLocalToken(obj)[0]);
-                    this.setTopSwitch(getLocalToken(obj)[0])
-
-                    console.log(this.getCurrents()[0]);
-                    console.log("22222222222222")
-                    this.current = []
-                    this.current.push(this.getCurrents()[0].iconHref)
-
-                    console.log(this.getCurrents()[0]);
-                    console.log("1111111111111111111111111")
-                    // this.$router.push(isNull(this.getCurrents()[0].routerPath) ? "/" : this.getCurrents()[0].routerPath)
-                }
-            },
             getDisplay() {
                 let keyName = global.topBottomEnableName
                 let type = false
@@ -115,7 +86,7 @@
                 let type = false
                 const enableObj = {keyName, context, type}
                 setLocalToken(enableObj)
-
+                console.log(routerPath);
                 this.$router.push(isNull(routerPath) ? '/' : routerPath)
             }
         }

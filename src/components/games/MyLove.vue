@@ -1,7 +1,7 @@
 <template>
     <div class="myGame">
         <div class="iconFa" @mouseenter="updateClass(value)"
-             @mouseleave="deleteClass(value)" v-for="(item,value) in hrefs"
+             @mouseleave="deleteClass(value)" v-for="(item,value) in hrefs" v-if="item.iconHref !== 'mail'"
              @click="clickRouter(item.routerPath)"
              :key="value">
             <div class="gameIcon">

@@ -1,10 +1,10 @@
 <template>
     <div id="app">
         <top-div></top-div>
-        <keep-alive>
+<!--        <keep-alive>-->
             <!--        <vue-scroll :ops="ops" style="height: 100%; width: 100%">-->
             <router-view></router-view>
-        </keep-alive>
+<!--        </keep-alive>-->
         <my-botton @click="thiClick"></my-botton>
         <!--        </vue-scroll>-->
 

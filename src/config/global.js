@@ -9,6 +9,11 @@ export default {
     //MyLove组件传入信息
     hrefs: [
         {
+            iconHref: 'mail',
+            iconName: '首页',
+            routerPath: '/home'
+        },
+        {
             iconHref: '#icon-youxi',
             iconName: '游戏',
             routerPath: '/game'

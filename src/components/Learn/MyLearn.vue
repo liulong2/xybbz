@@ -21,6 +21,9 @@
 <script>
     import {getSort} from "@/api/sort/api";
     import {getBlogListPage} from "@/api/blog/api";
+    import global from "@/config/global";
+    import {setLocalToken} from "@/utils/local";
+    import {mapActions, mapGetters} from "vuex";
     //学习
     export default {
         name: "MyLearn",
@@ -33,9 +36,22 @@
             };
         },
         created() {
+            this.setTopSwitch({
+                iconHref: '#icon-xuexi',
+                iconName: '学习',
+                routerPath: '/learn'
+            },)
+            let context = this.getCurrents();
+            let keyName = global.current;
+            let type = false
+            const enableObj = {keyName, context, type}
+            setLocalToken(enableObj)
+            console.log("测试")
             this.getSortData()
         },
         methods: {
+            ...mapGetters(['getCurrents']),
+            ...mapActions(['setTopSwitch']),
             onChange(current) {
                 this.current = current;
                 this.getSortData()
