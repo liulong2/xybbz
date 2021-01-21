@@ -61,6 +61,7 @@
 
 <style scoped>
     .learn {
+        min-height: 800px;
         margin-top: 5%;
         width: 40%;
         /*padding-bottom: 10%;*/

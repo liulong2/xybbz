@@ -46,6 +46,7 @@
 
 <script>
     import {Swiper, SwiperSlide} from 'vue-awesome-swiper'
+    import {mapActions, mapGetters} from "vuex";
 
 
     export default {
@@ -90,11 +91,23 @@
                 return this.$refs.mySwiper.$swiper
             }
         },
+        created() {
+
+        },
         mounted() {
             console.log('Current Swiper instance object', this.swiper)
             // this.swiper.slideTo(0, 1000, false)
         },
         methods: {
+            ...mapGetters(['getCurrents']),
+            ...mapActions(['setTopSwitch']),
+            updateTop() {
+                this.setTopSwitch({
+                    iconHref: '#icon-youxi',
+                    iconName: '游戏',
+                    routerPath: '/game'
+                })
+            },
             addNextClass() {
                 this.isNext = true
             },
@@ -124,7 +137,6 @@
         z-index: 10;
         width: 50%;
     }
-
 
 
     .swiper-pagination-bullets {
@@ -198,10 +210,11 @@
         -webkit-align-items: center;
         align-items: center;
     }
-     img{
+
+    img {
         width: 100%;
         height: 380px;
-         /*height: 100%;*/
+        /*height: 100%;*/
         /*border-style: none !important;*/
         /*object-fit:cover;*/
     }
@@ -210,6 +223,7 @@
     .swiper-pagination-bullet {
         margin: 0 3px !important;
     }
+
     .swiper-container {
         height: 100%;
         margin-left: auto;
