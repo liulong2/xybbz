@@ -3,7 +3,7 @@
         <top-div></top-div>
 <!--        <keep-alive>-->
             <!--        <vue-scroll :ops="ops" style="height: 100%; width: 100%">-->
-            <router-view></router-view>
+            <router-view v-if="isRouterAlive"></router-view>
 <!--        </keep-alive>-->
         <my-botton @click="thiClick"></my-botton>
         <!--        </vue-scroll>-->
@@ -14,7 +14,7 @@
 <script>
     import zhCN from 'ant-design-vue/es/locale-provider/zh_CN';
     import TopDiv from "@/components/tops/TopDiv";
-    import MyBotton from "@/components/botton/MyBotton";
+    import MyBotton from "@/components/bottom/MyBotton";
 
     export default {
         name: 'App',
@@ -22,15 +22,27 @@
             TopDiv,
             MyBotton
         },
+        provide() {
+            return {
+                reload: this.reload
+            }
+        },
         data() {
             return {
                 locale: zhCN,
-                isDisplay: true
+                isDisplay: true,
+                isRouterAlive: true
             }
         },
         methods: {
             thiClick() {
                 this.$route.path
+            },
+            reload() {
+                this.isRouterAlive = false
+                this.$nextTick(() =>{
+                    this.isRouterAlive = true
+                })
             }
         }
     }

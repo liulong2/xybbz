@@ -13,6 +13,7 @@
                 </a-list-item-meta>
             </a-list-item>
         </a-list>
+
         <a-pagination v-model="current" :page-size="pageSize" :total="total" @change="onChange" show-less-items
                       :hide-on-single-page="true"/>
     </div>

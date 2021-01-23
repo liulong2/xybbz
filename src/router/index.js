@@ -99,7 +99,11 @@ const router = new VueRouter({
 
 /*router.beforeEach((to, from, next) => {
 
-    //取出本地信息
+
+    if (to.path !== from.path) {
+        next()
+    }
+  /!*  //取出本地信息
     let keyName = global.breadList;
     let type = false
     let breadListState = getLocalToken({keyName, type})
@@ -119,6 +123,6 @@ const router = new VueRouter({
 
     } else {
         next()
-    }
+    }*!/
 })*/
 export default router;

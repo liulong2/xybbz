@@ -44,8 +44,7 @@
                 scrollHeight: '',
                 bulletin: '',
                 ops: {
-                    vuescroll: {
-                    },
+                    vuescroll: {},
                     scrollPanel: {
                         bouncing: false,
                     },
@@ -69,7 +68,7 @@
                 const elementsByClassName = window.document.getElementById('scrollJd');
                 console.log();
                 const height = Number.parseInt(window.getComputedStyle(elementsByClassName)
-                    .height.replace('px',''));
+                    .height.replace('px', ''));
                 console.log(height);
                 let count = 0.0;
                 if (height <= 1176) {
@@ -93,7 +92,7 @@
                 if (height <= 567) {
                     count = 0.13
                 }
-                if(height <= 525) {
+                if (height <= 525) {
                     count = 0.16
                 }
                 if (height <= 378) {
@@ -111,7 +110,7 @@
 
                 console.log(count);
                 this.scrollHeight = (Number.parseInt((((380 * 0.8) / height) - count) * 100 + '') === 0 ? (100)
-                    : Number.parseInt((((380 * 0.8) / height) - count) * 100 + ''))  + "%";
+                    : Number.parseInt((((380 * 0.8) / height) - count) * 100 + '')) + "%";
             },
             callback(key) {
                 console.log(key);
@@ -130,7 +129,7 @@
         created() {
 
             this.initData()
-        }
+        },
     }
 </script>
 
@@ -178,7 +177,7 @@
     }
 
     @media (max-width: 1920px) {
-        .myOneTabs{
+        .myOneTabs {
             width: 100%;
         }
     }

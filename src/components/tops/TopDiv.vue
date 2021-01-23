@@ -34,6 +34,7 @@
             MyWeather,
             MySearch
         },
+        inject: ['reload'],
         data() {
             return {
                 current: [],
@@ -72,6 +73,7 @@
             },
             // todo 判断是否为刷新 刷新的话从缓存中获取
             jumpClick(val) {
+
                 // const routerPath = val.routerPath
                 this.setTopSwitch(val)
 
@@ -87,8 +89,11 @@
                 setLocalToken(enableObj)
                 console.log(routerPath);
                 console.log("这里是加载路由的地方 isNull(routerPath) ? '/' : ")
-                this.$router.push(routerPath)
+                this.$router.push(routerPath).catch(error => error)
+                this.reload()
             }
+        },
+        watch: {
         }
     }
 </script>
@@ -114,7 +119,7 @@
     }
 
     .ant-menu {
-        width: 30%;
+        width: 22%;
         justify-content: center;
         background: none;
     }
