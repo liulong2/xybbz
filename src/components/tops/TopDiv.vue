@@ -44,6 +44,7 @@
         },
         created() {
             this.getDisplay()
+            console.log("测试组件生成")
 
         },
         mounted() {
@@ -66,7 +67,6 @@
                 let type = false
                 const obj = {keyName, type}
                 if (!isNull(getLocalToken(obj))) {
-                    // this.$store.dispatch('setDisplay',true)
                     this.setDisplay(true)
                 }
             },
@@ -79,7 +79,6 @@
                 this.current = []
                 this.current.push(val.iconHref)
 
-                console.log(this.getCurrents());
                 //存储到缓存中
                 let context = this.getCurrents();
                 let keyName = global.current;
@@ -87,7 +86,8 @@
                 const enableObj = {keyName, context, type}
                 setLocalToken(enableObj)
                 console.log(routerPath);
-                this.$router.push(isNull(routerPath) ? '/' : routerPath)
+                console.log("这里是加载路由的地方 isNull(routerPath) ? '/' : ")
+                this.$router.push(routerPath)
             }
         }
     }

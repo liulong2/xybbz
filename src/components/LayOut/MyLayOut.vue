@@ -7,7 +7,7 @@
                 <div class="myindex">
                     <my-home class="layOut-home"></my-home>
                     <one-tabs class="newTabs"/>
-                    <my-weather></my-weather>
+<!--                    <my-weather></my-weather>-->
 
                 </div>
             <div class="bottonType">
@@ -25,10 +25,9 @@
     import OneTabs from "../tabs/OneTabs";
     import MyHome from "../../views/xybbz/MyHome/MySwiper";
     import TopDiv from "../tops/TopDiv";
-    import MyWeather from "@/views/xybbz/MyWeather/MyWeather";
     import MyBackTop from "@/components/backTop/MyBackTop";
     import Mygames from "@/components/games/MyLove";
-    import {iconGame,iconDianYing,iconDongMan,iconManHua,iconTV,iconXuexi} from "@/static/images/film/iconfont";
+    import {iconDianYing, iconDongMan, iconGame, iconManHua, iconTV, iconXuexi} from "@/static/images/film/iconfont";
     import global from "@/config/global";
 
     export default {
@@ -37,7 +36,6 @@
             OneTabs,
             MyHome,
             TopDiv,
-            MyWeather,
             MyBackTop,
             Mygames
         },

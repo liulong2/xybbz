@@ -2,14 +2,6 @@
     <div>
         <div id="weather-v2-plugin-standard">
         </div>
-        <!--<a-cascader
-                :default-value="['0','1','101010100']"
-                :field-names="{ label: 'zh', value: 'id', children: 'children' }"
-                :options="weathreArea"
-                placeholder="请下拉选择"
-                @change="onChange"
-        />-->
-
     </div>
 </template>
 
