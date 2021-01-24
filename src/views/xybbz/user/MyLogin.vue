@@ -2,7 +2,7 @@
     <div class="container">
         <div class="content">
 
-            <div class="login-container animated fadeInDown" style="animation-delay:.3s;"
+            <div class="login-container animated fadeInDown" style="animation-delay:.3s; background-color: #ffffff;"
                  :style="loginContainerStyle">
                 <!--   Login   -->
                 <div class="login justify-content-center" id="login-form"
@@ -46,7 +46,7 @@
                                 <!--<a-input type="submit" placeholder="input password" />
                                 <a-input type="button" class="btn-register" value="Sign Up" />-->
                                 <input type="submit" value="登录" @click="submitForm('ruleForm')">
-                                <input type="button" value="Sign Up" @click="btnRegister" class="btn-register">
+                                <input type="button" value="注册" @click="btnRegister" class="btn-register">
                             </div>
                         </a-form-model>
                     </div>
@@ -57,7 +57,7 @@
 
                 <div class="register justify-content-cente animatedr"
                      :class="{'zoomOut': registerZoomOut, 'animated': registerAnimated, 'fadeIn': registerFadeIn}"
-                     :style="registerId" style="animation-delay:.3s">
+                     :style="registerId" style="animation-delay:.3s; background-color: #ffffff;">
                     <h1 class="form-title "><i class="fas fa-user-plus" style="color:#57efc4;"></i> <br> REGISTER
                         <hr>
                     </h1>
@@ -66,21 +66,21 @@
                         <a-form-model ref="ruleForm" :model="ruleForm" :rules="rules" labelAlign="right"
                                       layout="horizontal"
                                       v-bind="layout">
-                            <label for=""><i class="fab fa-amilia"></i> Name </label>
+                            <label for=""><i class="fab fa-amilia"></i> 用户名 </label>
                             <input type="text" name="name" placeholder="Name" required autofocus>
 
-                            <label for=""><i class="fas fa-at"></i> Email </label>
+                            <label for=""><i class="fas fa-at"></i> 邮箱 </label>
                             <input type="email" name="email" placeholder="E-mail">
 
-                            <label for=""><i class="fab fa-slack-hash"></i> Password </label>
+                            <label for=""><i class="fab fa-slack-hash"></i> 密码 </label>
                             <input type="password" name="password" placeholder="Password">
 
-                            <label for=""><i class="fab fa-slack-hash"></i> Confirm Password </label>
+                            <label for=""><i class="fab fa-slack-hash"></i> 确认密码 </label>
                             <input type="password" name="password_confirmation" placeholder="Password">
 
                             <div class="submit-buttons">
-                                <input type="submit" value="Register" style="background:#55efc4;">
-                                <input type="button" value="Sign In" class="btn-login" @click="btnLogin">
+                                <input type="submit" value="注册" style="background:#55efc4;">
+                                <input type="button" value="登录" class="btn-login" @click="btnLogin">
                             </div>
                         </a-form-model>
                          <!--<form method="POST">
@@ -175,6 +175,10 @@
         },
         created(){
             this.setIsDisable()
+            if (this.$route.query.key) {
+                this.btnRegister()
+            }
+
         },
         computed:{
 
@@ -203,7 +207,7 @@
                              type = false
                              const enableObj = {keyName, context, type}
                             setLocalToken(enableObj)
-                            this.$router.push('/appMain')
+                            this.$router.push('/home')
 
                         }).catch(error => {
                             console.log(error);
@@ -260,6 +264,7 @@
 
     .container{
         height: 100%;
+
     }
 
     html body{
@@ -271,6 +276,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        /*background-color: #ffffff;*/
     }
 
     .login-container{

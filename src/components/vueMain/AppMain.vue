@@ -1,5 +1,5 @@
 <template>
-    <my-lay-out></my-lay-out>
+    <my-lay-out class="mainApp"></my-lay-out>
 </template>
 
 <script>
@@ -18,5 +18,7 @@
 </script>
 
 <style scoped>
-
+.mainApp{
+    min-height: 800px;
+}
 </style>

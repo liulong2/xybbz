@@ -1,16 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import {verificationToken} from "@/api/user";
-import {getToken, removeToken} from "@/utils/auth";
-import {isNull} from "@/utils/utils";
-import {getLocalToken} from "@/utils/local";
-import global from "@/config/global";
 
 const Generator = () => import('../views/xybbz/generator/Generator')
 const User = () => import('../views/xybbz/user/User')
 const LogIn = () => import('@/views/xybbz/user/LogIn')
 const AppMain = () => import('@/components/vueMain/AppMain')
-const MyHome = () => import('@/views/xybbz/MyHome/MySwiper')
 const MyLogin = () => import('@/views/xybbz/user/MyLogin')
 const Clock = () => import('@/components/clock/Clock')
 const TopDiv = () => import('@/components/tops/TopDiv')
@@ -73,20 +67,9 @@ const routes = [
         }
     },
     {
-        path: '/appMain',
+        path: '/home',
         component: AppMain,
-        redirect: '/home',
-        name: '首页',
-        children: [
-            {
-                path: '/home',
-                component: MyHome,
-                name: '首页',
-                meta: {
-                    breadNumber: 0
-                }
-            }
-        ]
+
     }
 ]
 

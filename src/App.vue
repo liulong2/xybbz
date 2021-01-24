@@ -69,8 +69,9 @@
 
         margin: 0;
         background-size: cover;
-        background-color: #ffffff !important;
+        background-color: #e2e2e2 !important;
+        /*background-color: #ffffff !important;*/
         /*background-image: url("./static/images/sqy/sqy.jpg");*/
-        background-position: 0 -145px
+        /*background-position: 0 -145px*/
     }
 </style>

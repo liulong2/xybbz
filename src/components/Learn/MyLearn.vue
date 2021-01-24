@@ -1,19 +1,21 @@
 <template>
     <div class="learn">
-        <a-list item-layout="horizontal" :data-source="data">
-            <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
-                <a-list-item-meta
-                        :description="item.blogContext"
-                >
-                    <a slot="title" href="https://www.antdv.com/">{{ item.blogTitle }}</a>
-                    <a-avatar
-                            slot="avatar"
-                            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                    />
-                </a-list-item-meta>
-            </a-list-item>
-        </a-list>
-
+        <div class="learnChild">
+            <a-list item-layout="horizontal" :data-source="data" :bordered="true">
+                <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
+                    <a-list-item-meta
+                            :description="item.blogContext"
+                    >
+                        <a slot="title" href="https://www.antdv.com/">{{ item.blogTitle }}</a>
+                        <a-avatar
+                                slot="avatar"
+                                src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                        />
+                    </a-list-item-meta>
+                </a-list-item>
+            </a-list>
+            <user-infor></user-infor>
+        </div>
         <a-pagination v-model="current" :page-size="pageSize" :total="total" @change="onChange" show-less-items
                       :hide-on-single-page="true"/>
     </div>
@@ -25,6 +27,7 @@
     import global from "@/config/global";
     import {setLocalToken} from "@/utils/local";
     import {mapActions, mapGetters} from "vuex";
+    import UserInfor from "@/views/xybbz/user/UserInfor";
     //学习
     export default {
         name: "MyLearn",
@@ -35,6 +38,9 @@
                 pageSize: 20,
                 total: 0
             };
+        },
+        components: {
+            UserInfor
         },
         created() {
             this.setTopSwitch({
@@ -85,10 +91,14 @@
         height: auto;
         margin-right: auto;
         margin-left: auto;
-        background-color: rgba(255, 255, 255, .6);
+        /*background-color: rgba(255, 255, 255, .6);*/
         /*margin-bottom: 3%;*/
     }
-
+    .learnChild{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
     .ant-pagination-item-link {
         display: block;
         height: 100%;
@@ -99,5 +109,9 @@
         border-radius: 4px;
         outline: none;
         transition: all .3s;
+    }
+    .ant-list {
+        width: 68%;
+        background-color: rgba(255, 255, 255, .6);
     }
 </style>

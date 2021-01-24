@@ -14,7 +14,7 @@
                 </a-menu-item>-->
                 <a-menu-divider v-if="false"/>
                 <a-menu-item>
-                    <a :href="searchUrl">Google {{inputValue}}</a>
+                    <a :href="searchUrl" target="_blank">Google {{inputValue}}</a>
                 </a-menu-item>
             </a-menu>
         </a-dropdown>
@@ -36,7 +36,7 @@
         },
         methods: {
             onSearch(value) {
-                this.searchUrl = "https://www.google.com/search?q=" + value
+                this.searchUrl = "https://www.google.com/search?q=" + this.inputValue
                 window.open(this.searchUrl, "_blank")
             },
             handleChange(value) {
@@ -47,6 +47,7 @@
                 if (isNull(this.inputValue)) {
                     this.isEnable = false
                 }
+                this.searchUrl = "https://www.google.com/search?q=" + this.inputValue
                 /*this.dataSource =
                     !value || value.indexOf('@') >= 0
                         ? []
