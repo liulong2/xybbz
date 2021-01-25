@@ -1,16 +1,25 @@
 <template>
     <div class="learn">
         <div class="learnChild">
-            <a-list item-layout="horizontal" :data-source="data" :bordered="true">
+<!--            :locale="{emptyText: '暂无数据'}"-->
+<!--            使用jsx修改 locale 属性-->
+            <a-list item-layout="horizontal" :data-source="data" :bordered="true" :locale="{emptyText: createEmpty()}">
                 <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
-                    <a-list-item-meta
-                            :description="item.blogContext"
-                    >
+                    <a-badge slot="extra" count="109" :number-style="{ backgroundColor: '#aab0c6' }" />
+                    <a-list-item-meta>
                         <a slot="title" href="https://www.antdv.com/">{{ item.blogTitle }}</a>
-                        <a-avatar
+                        <<!--a-avatar
                                 slot="avatar"
                                 src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                        />
+                        />-->
+                        <div slot="description">
+                            <a href="#">
+                                {{item.userName}}
+                                最后发送人{{item.lastReply}}
+                            </a>
+                            {{item.blogContext}}</div>
+                        <a-avatar style="cursor:pointer;" slot="avatar" shape="square" :size="64" @click="userClick" icon="user" :src="item.userIcon"/>
+
                     </a-list-item-meta>
                 </a-list-item>
             </a-list>
@@ -59,9 +68,16 @@
         methods: {
             ...mapGetters(['getCurrents']),
             ...mapActions(['setTopSwitch']),
+            // jsx修改属性
+            createEmpty(){
+                return (<a-empty description={false} />)
+            },
             onChange(current) {
                 this.current = current;
                 this.getSortData()
+            },
+            userClick() {
+               // todo 点击跳转个人资料
             },
             getSortData() {
                 getSort({name: "learn_type", type: 1}).then(res => {
@@ -94,11 +110,13 @@
         /*background-color: rgba(255, 255, 255, .6);*/
         /*margin-bottom: 3%;*/
     }
-    .learnChild{
+
+    .learnChild {
         display: flex;
         width: 100%;
         justify-content: space-between;
     }
+
     .ant-pagination-item-link {
         display: block;
         height: 100%;
@@ -110,6 +128,7 @@
         outline: none;
         transition: all .3s;
     }
+
     .ant-list {
         width: 68%;
         background-color: rgba(255, 255, 255, .6);

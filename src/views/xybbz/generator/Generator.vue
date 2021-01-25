@@ -25,13 +25,13 @@
 </template>
 
 <script>
-    import {getList,generatorTable} from '../../../api/generator/api'
+    import {getList,generatorTable} from '@/api/generator/api'
     import PublicButton from "../../../components/PublicButton/PublicTopButton";
 
     import Vue from 'vue';
     import VueDraggableResizable from 'vue-draggable-resizable';
     import PublicRightButton from "../../../components/PublicButton/PublicRightButton";
-    import { arrayToStr } from "../../../utils/utils"
+    import { arrayToStr } from "@/utils/utils"
 
 
     Vue.component('vue-draggable-resizable', VueDraggableResizable);

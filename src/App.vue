@@ -1,18 +1,21 @@
 <template>
     <div id="app">
-        <top-div></top-div>
-<!--        <keep-alive>-->
+<!--        <a-config-provider :locale="locale">-->
+
+            <top-div></top-div>
+            <!--        <keep-alive>-->
             <!--        <vue-scroll :ops="ops" style="height: 100%; width: 100%">-->
             <router-view v-if="isRouterAlive"></router-view>
-<!--        </keep-alive>-->
-        <my-botton @click="thiClick"></my-botton>
+            <!--        </keep-alive>-->
+            <my-botton @click="thiClick"></my-botton>
+<!--        </a-config-provider>-->
         <!--        </vue-scroll>-->
 
     </div>
 </template>
 
 <script>
-    import zhCN from 'ant-design-vue/es/locale-provider/zh_CN';
+    import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN';
     import TopDiv from "@/components/tops/TopDiv";
     import MyBotton from "@/components/bottom/MyBotton";
 
@@ -40,7 +43,7 @@
             },
             reload() {
                 this.isRouterAlive = false
-                this.$nextTick(() =>{
+                this.$nextTick(() => {
                     this.isRouterAlive = true
                 })
             }
