@@ -8,16 +8,30 @@
                     <a-badge slot="extra" count="109" :number-style="{ backgroundColor: '#aab0c6' }" />
                     <a-list-item-meta>
                         <a slot="title" href="https://www.antdv.com/">{{ item.blogTitle }}</a>
-                        <<!--a-avatar
+                        <!--a-avatar
                                 slot="avatar"
                                 src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
                         />-->
-                        <div slot="description">
-                            <a href="#">
-                                {{item.userName}}
-                                最后发送人{{item.lastReply}}
-                            </a>
-                            {{item.blogContext}}</div>
+                        <span slot="description" class="detailed">
+
+                                <a-tag color="#f50">
+                                    #f50
+                                </a-tag>
+                            <div>
+                                <strong>{{item.userName}}</strong>
+                            </div>
+                            •
+                            <div style="color: #ccc;">分钟前{{}}</div>
+                            •
+                            <div style="color: #ccc;">
+                                最后回复来自
+
+                            </div>
+                            <strong>{{item.lastReply}}</strong>
+
+
+<!--                            {{item.blogContext}}-->
+                        </span>
                         <a-avatar style="cursor:pointer;" slot="avatar" shape="square" :size="64" @click="userClick" icon="user" :src="item.userIcon"/>
 
                     </a-list-item-meta>
@@ -99,10 +113,16 @@
 </script>
 
 <style scoped>
+    .detailed {
+        width: 100%;
+        display: flex;
+        font-size: 13px;
+        /*color: #ccc;*/
+    }
     .learn {
         min-height: 800px;
         margin-top: 5%;
-        width: 40%;
+        width: 50%;
         /*padding-bottom: 10%;*/
         height: auto;
         margin-right: auto;
@@ -132,5 +152,11 @@
     .ant-list {
         width: 68%;
         background-color: rgba(255, 255, 255, .6);
+    }
+    .ant-list-item-meta-description {
+        color: rgba(0, 0, 0, 0.45);
+        margin-top: 14px;
+        font-size: 14px;
+        line-height: 22px;
     }
 </style>

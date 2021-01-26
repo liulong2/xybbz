@@ -13,9 +13,13 @@
         <div class="bottomInfo">
             <a-button @click="registeredClick">现在注册
             </a-button>
-            <div>
-                已经注册?&nbsp<a :class="{aClass: aStyle}" @mouseleave="deleteClass"
-                          @mouseenter="updateClass" href="#">登录</a>
+            <div class="loginRegist">
+                <div>
+                    已经注册?&nbsp
+                </div>
+                <div class="noLogin" @click="clickLogin" :class="{aClass: aStyle}" @mouseleave="deleteClass"
+                     @mouseenter="updateClass">登录
+                </div>
             </div>
         </div>
     </div>
@@ -30,8 +34,11 @@
             }
         },
         methods: {
+            clickLogin() {
+                this.$router.push({path: '/mylogin', query: {key: "false"}})
+            },
             registeredClick() {
-                this.$router.push({path: '/mylogin', query: {key: true}})
+                this.$router.push({path: '/mylogin', query: {key: "true"}})
             },
             //鼠标离开时间
             deleteClass() {
@@ -45,6 +52,12 @@
 </script>
 
 <style scoped>
+    .noLogin{
+        cursor:pointer
+    }
+    .loginRegist {
+        display: flex;
+    }
     .info {
         width: 30%;
         height: 200px;

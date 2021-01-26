@@ -175,10 +175,13 @@
         },
         created(){
             this.setIsDisable()
-            if (this.$route.query.key) {
-                this.btnRegister()
-            }
+            console.log(this.$route.query.key);
 
+            if (this.$route.query.key === "true") {
+                this.btnRegister()
+            }else {
+                this.btnLogin()
+            }
         },
         computed:{
 
@@ -235,6 +238,7 @@
 
             },
             btnLogin() {
+                console.log("登陆页面")
                 setTimeout(() => {
                     this.registerFadeIn = false
                     this.loginFormZoomOut = false
