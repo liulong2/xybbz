@@ -5,29 +5,36 @@
 <!--            使用jsx修改 locale 属性-->
             <a-list item-layout="horizontal" :data-source="data" :bordered="true" :locale="{emptyText: createEmpty()}">
                 <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
-                    <a-badge slot="extra" count="109" :number-style="{ backgroundColor: '#aab0c6' }" />
+                    <a-badge style="cursor:pointer;" slot="extra" count="109" :number-style="{ backgroundColor: '#aab0c6' }" />
                     <a-list-item-meta>
-                        <a slot="title" href="https://www.antdv.com/">{{ item.blogTitle }}</a>
+                        <div slot="title" style="cursor:pointer;" :class="{titleClass: index === isTitle}"  @mouseleave="deleteTitleClass(index)"
+                             @mouseenter="updateTitleClass(index)"
+                             @click="clickTitle">{{ item.blogTitle }}</div>
                         <!--a-avatar
                                 slot="avatar"
                                 src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
                         />-->
                         <span slot="description" class="detailed">
 
-                                <a-tag color="#f50">
+                                <a-tag style="cursor:pointer;" color="#f50">
                                     #f50
                                 </a-tag>
-                            <div>
+                            <div style="cursor:pointer;" :class="{createClass: index === isCreate}" @mouseleave="deleteCreateClass(index)"
+                                 @mouseenter="updateCreateClass(index)">
                                 <strong>{{item.userName}}</strong>
                             </div>
                             •
-                            <div style="color: #ccc;">分钟前{{}}</div>
-                            •
-                            <div style="color: #ccc;">
-                                最后回复来自
+                            <div style="color: #ccc;">{{getTime(item.createTime)}}</div>
+
+                            <div v-if="(item.lastReply)" style="color: #ccc;">
+                                •最后回复来自
 
                             </div>
-                            <strong>{{item.lastReply}}</strong>
+                            <div :class="{replayClass: index === isReplay}" @mouseleave="deleteRewplayClass(index)"
+                                 @mouseenter="updateReplayClass(index)" style="cursor:pointer;">
+                                <strong >{{item.lastReply}}</strong>
+                            </div>
+
 
 
 <!--                            {{item.blogContext}}-->
@@ -51,6 +58,7 @@
     import {setLocalToken} from "@/utils/local";
     import {mapActions, mapGetters} from "vuex";
     import UserInfor from "@/views/xybbz/user/UserInfor";
+    import {isNull} from "@/utils/utils";
     //学习
     export default {
         name: "MyLearn",
@@ -59,7 +67,10 @@
                 data: [],
                 current: 1,
                 pageSize: 20,
-                total: 0
+                total: 0,
+                isCreate: '',
+                isReplay: '',
+                isTitle: ''
             };
         },
         components: {
@@ -85,6 +96,60 @@
             // jsx修改属性
             createEmpty(){
                 return (<a-empty description={false} />)
+            },
+            updateTitleClass(val) {
+              this.isTitle = val
+            },
+            deleteTitleClass(val) {
+                this.isTitle = ''
+            },
+            deleteRewplayClass(val) {
+                this.isReplay = ''
+            },
+            updateReplayClass(val) {
+                this.isReplay = val
+            },
+            deleteCreateClass(val) {
+              this.isCreate = ""
+            },
+            updateCreateClass(val) {
+              this.isCreate = val
+            },
+            clickTitle() {
+                //跳转详细页
+            },
+            getTime(lastTime) {
+                ////时间差的毫秒数
+                const newTime = new Date()
+                const timeDiffer =  newTime.getTime() - new Date(lastTime).getTime();
+                //计算相差天数
+                const day = Math.floor(timeDiffer / (24 * 3600 * 1000))
+                //计算天数后剩余毫秒数
+                const surplus = timeDiffer % (24 * 3600 * 1000)
+                //计算小时
+                const hours = Math.floor(surplus/(3600 * 1000))
+                //计算相差分钟数
+                const minute = surplus%(3600*1000)        //计算小时数后剩余的毫秒数
+                const minutes = Math.floor(minute/(60*1000))
+                //计算相差秒数
+                const second = minute%(60*1000)      //计算分钟数后剩余的毫秒数
+                const seconds=Math.round(second/1000)
+                let desc = ""
+                if (!isNull(day)) {
+                    desc =  desc + day + "天"
+                }
+                if (!isNull(hours)) {
+                    desc = desc + hours + "小时"
+                }
+                if (!isNull(minutes)) {
+                    desc = desc + minutes + "分钟"
+                }
+                if (isNull(day) && isNull(hours) && !isNull(seconds)) {
+                    desc = desc + "几秒钟前"
+                }
+                return (desc + "前")
+
+
             },
             onChange(current) {
                 this.current = current;
@@ -113,6 +178,15 @@
 </script>
 
 <style scoped>
+    .titleClass{
+        text-decoration: underline;
+    }
+    .replayClass{
+        text-decoration: underline;
+    }
+    .createClass{
+        text-decoration: underline;
+    }
     .detailed {
         width: 100%;
         display: flex;
