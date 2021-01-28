@@ -1,25 +1,31 @@
 <template>
     <div class="learn">
         <div class="learnChild">
-<!--            :locale="{emptyText: '暂无数据'}"-->
-<!--            使用jsx修改 locale 属性-->
+            <!--            :locale="{emptyText: '暂无数据'}"-->
+            <!--            使用jsx修改 locale 属性-->
             <a-list item-layout="horizontal" :data-source="data" :bordered="true" :locale="{emptyText: createEmpty()}">
                 <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
-                    <a-badge style="cursor:pointer;" slot="extra" count="109" :number-style="{ backgroundColor: '#aab0c6' }" />
+                    <a-badge  style="cursor:pointer;" slot="extra" v-if="item.replayContent !== 0" :count="item.replayContent <10 ? 0 + '' + item.replayContent : item.replayContent"
+                             @mouseleave="deleteAvatarClass(index)"
+                             @mouseenter="updateAvatarClass(index)"
+                             :number-style="index === isAvatar ?  mouseenterStyle : badgeStyle"/>
                     <a-list-item-meta>
-                        <div slot="title" style="cursor:pointer;" :class="{titleClass: index === isTitle}"  @mouseleave="deleteTitleClass(index)"
+                        <div slot="title" style="cursor:pointer;" :class="{titleClass: index === isTitle}"
+                             @mouseleave="deleteTitleClass(index)"
                              @mouseenter="updateTitleClass(index)"
-                             @click="clickTitle">{{ item.blogTitle }}</div>
-                        <!--a-avatar
+                             @click="clickTitle(item.id)">{{ item.blogTitle }}
+                        </div>
+                        <!--a-avatar 详细
                                 slot="avatar"
                                 src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
                         />-->
                         <span slot="description" class="detailed">
 
-                                <a-tag style="cursor:pointer;" color="#f50">
+                                <a-tag style="cursor:pointer;" color="#57575f">
                                     #f50
                                 </a-tag>
-                            <div style="cursor:pointer;" :class="{createClass: index === isCreate}" @mouseleave="deleteCreateClass(index)"
+                            <div style="cursor:pointer;" :class="{createClass: index === isCreate}"
+                                 @mouseleave="deleteCreateClass(index)"
                                  @mouseenter="updateCreateClass(index)">
                                 <strong>{{item.userName}}</strong>
                             </div>
@@ -32,22 +38,24 @@
                             </div>
                             <div :class="{replayClass: index === isReplay}" @mouseleave="deleteRewplayClass(index)"
                                  @mouseenter="updateReplayClass(index)" style="cursor:pointer;">
-                                <strong >{{item.lastReply}}</strong>
+                                <strong>{{item.lastReply}}</strong>
                             </div>
 
 
-
-<!--                            {{item.blogContext}}-->
+                            <!--                           {{item.blogContext}}-->
                         </span>
-                        <a-avatar style="cursor:pointer;" slot="avatar" shape="square" :size="64" @click="userClick" icon="user" :src="item.userIcon"/>
+                        <a-avatar style="cursor:pointer;" slot="avatar"
+                                  shape="square" :size="64" @click="userClick" icon="user" :src="item.userIcon"/>
 
                     </a-list-item-meta>
                 </a-list-item>
             </a-list>
-            <user-infor></user-infor>
+            <slot name="user"></slot>
+<!--            <user-infor></user-infor>-->
         </div>
         <a-pagination v-model="current" :page-size="pageSize" :total="total" @change="onChange" show-less-items
                       :hide-on-single-page="true"/>
+
     </div>
 </template>
 
@@ -70,7 +78,15 @@
                 total: 0,
                 isCreate: '',
                 isReplay: '',
-                isTitle: ''
+                isTitle: '',
+                isAvatar: '',
+                badgeStyle: {
+                    backgroundColor: '#aab0c6'
+                },
+                mouseenterStyle: {
+                    backgroundColor: '#57575f'
+                }
+
             };
         },
         components: {
@@ -94,11 +110,19 @@
             ...mapGetters(['getCurrents']),
             ...mapActions(['setTopSwitch']),
             // jsx修改属性
-            createEmpty(){
-                return (<a-empty description={false} />)
+            createEmpty() {
+                return ( <a-empty
+                description = {false}
+                />)
+            },
+            deleteAvatarClass(val) {
+                this.isAvatar = ''
+            },
+            updateAvatarClass(val) {
+                this.isAvatar = val
             },
             updateTitleClass(val) {
-              this.isTitle = val
+                this.isTitle = val
             },
             deleteTitleClass(val) {
                 this.isTitle = ''
@@ -110,33 +134,34 @@
                 this.isReplay = val
             },
             deleteCreateClass(val) {
-              this.isCreate = ""
+                this.isCreate = ""
             },
             updateCreateClass(val) {
-              this.isCreate = val
+                this.isCreate = val
             },
-            clickTitle() {
+            clickTitle(val) {
+                this.$router.push({path: "/detailed", query: {key: val } })
                 //跳转详细页
             },
             getTime(lastTime) {
                 ////时间差的毫秒数
                 const newTime = new Date()
-                const timeDiffer =  newTime.getTime() - new Date(lastTime).getTime();
+                const timeDiffer = newTime.getTime() - new Date(lastTime).getTime();
                 //计算相差天数
                 const day = Math.floor(timeDiffer / (24 * 3600 * 1000))
                 //计算天数后剩余毫秒数
                 const surplus = timeDiffer % (24 * 3600 * 1000)
                 //计算小时
-                const hours = Math.floor(surplus/(3600 * 1000))
+                const hours = Math.floor(surplus / (3600 * 1000))
                 //计算相差分钟数
-                const minute = surplus%(3600*1000)        //计算小时数后剩余的毫秒数
-                const minutes = Math.floor(minute/(60*1000))
+                const minute = surplus % (3600 * 1000)        //计算小时数后剩余的毫秒数
+                const minutes = Math.floor(minute / (60 * 1000))
                 //计算相差秒数
-                const second = minute%(60*1000)      //计算分钟数后剩余的毫秒数
-                const seconds=Math.round(second/1000)
+                const second = minute % (60 * 1000)      //计算分钟数后剩余的毫秒数
+                const seconds = Math.round(second / 1000)
                 let desc = ""
                 if (!isNull(day)) {
-                    desc =  desc + day + "天"
+                    desc = desc + day + "天"
                 }
                 if (!isNull(hours)) {
                     desc = desc + hours + "小时"
@@ -156,7 +181,7 @@
                 this.getSortData()
             },
             userClick() {
-               // todo 点击跳转个人资料
+                // todo 点击跳转个人资料
             },
             getSortData() {
                 getSort({name: "learn_type", type: 1}).then(res => {
@@ -178,21 +203,29 @@
 </script>
 
 <style scoped>
-    .titleClass{
+    .avatarClass {
+        background-color: rgb(131, 135, 151) !important;
+    }
+
+    .titleClass {
         text-decoration: underline;
     }
-    .replayClass{
+
+    .replayClass {
         text-decoration: underline;
     }
-    .createClass{
+
+    .createClass {
         text-decoration: underline;
     }
+
     .detailed {
         width: 100%;
         display: flex;
         font-size: 13px;
         /*color: #ccc;*/
     }
+
     .learn {
         min-height: 800px;
         margin-top: 5%;
@@ -227,6 +260,7 @@
         width: 68%;
         background-color: rgba(255, 255, 255, .6);
     }
+
     .ant-list-item-meta-description {
         color: rgba(0, 0, 0, 0.45);
         margin-top: 14px;

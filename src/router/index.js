@@ -11,6 +11,8 @@ const TopDiv = () => import('@/components/tops/TopDiv')
 const MyWeather = () => import('@/views/xybbz/MyWeather/MyWeather')
 const MyGame = () =>import('@/components/MyGame/MyGame')
 const MyLearn = () => import('@/components/Learn/MyLearn')
+const MyDetaileLearn = () => import('@/components/Learn/MyDetailedLearn')
+const MyLearnFather = () => import('@/components/Learn/MyLearnFather')
 
 Vue.use(VueRouter)
 
@@ -36,9 +38,29 @@ const routes = [
         path: '/ther',
         component: MyWeather
     },
-    {
+    /*{
       path: '/learn',
-      component: MyLearn
+      component: MyLearn,
+        /!*children: [
+            {
+                path: "/detailed",
+                component: MyDetaileLearn
+            }
+        ]*!/
+    },*/
+    {
+        path: "/father",
+        component: MyLearnFather,
+        children: [
+            {
+                path: '',
+                component: MyLearn,
+            },
+            {
+                path: "/detailed",
+                component: MyDetaileLearn
+            },
+        ]
     },
     {
         path: '/top',
