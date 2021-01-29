@@ -37,7 +37,7 @@ export default {
         {
             iconHref: '#icon-xuexi',
             iconName: '学习',
-            routerPath: '/learn'
+            routerPath: '/father'
         }
     ]
 }
