@@ -1,11 +1,15 @@
 <template>
     <div class="detaile">
         <div class="detaileLeft">
+            <div>
+                面包屑
+            </div>
             <div class="detaileTitle">
                 <h1>
                     我是你爸爸吧啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
                 </h1>
             </div>
+
             <div></div>
 
         </div>
@@ -20,33 +24,37 @@
             console.log(this.$route.query.key);
             //获得接口
         },
-        methods:{
-
-        }
+        methods: {}
     }
 </script>
 
 <style scoped>
-    .detaileTitle{
-        padding: 10px;
+    .detaileTitle {
+        /*padding: 10px;*/
         display: flex;
         /*justify-content: flex-end;*/
         align-items: center;
-        height: 60%;
+        height: auto;
     }
-    .detaileTitle h1{
+
+    .detaileTitle h1 {
         font-size: 24px;
         font-weight: 500;
         line-height: 150%;
         margin: 0 0 10px;
         padding: 0;
     }
-    .detaileLeft{
-        height: auto;
+
+    .detaileLeft {
+        padding: 10px;
+        height: 10%;
         background-color: rgba(255, 255, 255, .6);
         width: 68%;
     }
+
     .detaile {
+
+        min-height: 800px;
         display: flex;
         justify-content: space-between;
         height: auto;
