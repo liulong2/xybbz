@@ -5,7 +5,8 @@
             <!--            使用jsx修改 locale 属性-->
             <a-list item-layout="horizontal" :data-source="data" :bordered="true" :locale="{emptyText: createEmpty()}">
                 <a-list-item slot="renderItem" slot-scope="item, index" :key="index">
-                    <a-badge  style="cursor:pointer;" slot="extra" v-if="item.replayContent !== 0" :count="item.replayContent <10 ? 0 + '' + item.replayContent : item.replayContent"
+                    <a-badge style="cursor:pointer;" slot="extra" v-if="item.replayContent !== 0"
+                             :count="item.replayContent <10 ? 0 + '' + item.replayContent : item.replayContent"
                              @mouseleave="deleteAvatarClass(index)"
                              @mouseenter="updateAvatarClass(index)"
                              :number-style="index === isAvatar ?  mouseenterStyle : badgeStyle"/>
@@ -51,7 +52,7 @@
                 </a-list-item>
             </a-list>
             <slot name="user"></slot>
-<!--            <user-infor></user-infor>-->
+            <!--            <user-infor></user-infor>-->
         </div>
         <a-pagination v-model="current" :page-size="pageSize" :total="total" @change="onChange" show-less-items
                       :hide-on-single-page="true"/>
@@ -61,7 +62,7 @@
 
 <script>
     import {getSort} from "@/api/sort/api";
-    import {getBlogListPage} from "@/api/blog/api";
+    import {getBlogPageType} from "@/api/blog/api";
     import global from "@/config/global";
     import {setLocalToken} from "@/utils/local";
     import {mapActions, mapGetters} from "vuex";
@@ -74,7 +75,7 @@
             return {
                 data: [],
                 current: 1,
-                pageSize: 20,
+                pageSize: 100,
                 total: 0,
                 isCreate: '',
                 isReplay: '',
@@ -111,9 +112,7 @@
             ...mapActions(['setTopSwitch']),
             // jsx修改属性
             createEmpty() {
-                return ( <a-empty
-                description = {false}
-                />)
+                return ( <a-empty description = {false}/>)
             },
             deleteAvatarClass(val) {
                 this.isAvatar = ''
@@ -140,7 +139,7 @@
                 this.isCreate = val
             },
             clickTitle(val) {
-                this.$router.push({path: "/detailed", query: {key: val } })
+                this.$router.push({path: "/detailed", query: {key: val}})
                 //跳转详细页
             },
             getTime(lastTime) {
@@ -184,16 +183,9 @@
                 // todo 点击跳转个人资料
             },
             getSortData() {
-                getSort({name: "learn_type", type: 1}).then(res => {
-                    console.log();
-                    getBlogListPage(res.data.data.id, this.current, this.pageSize).then(res => {
-                        this.total = res.data.data.total
-                        console.log(this.total);
-                        this.data = res.data.data.records
-                        console.log();
-                    }).catch(error => {
-                        this.$message.error("获取失败")
-                    })
+                getBlogPageType("learn_type", this.current, this.pageSize).then(res => {
+                    this.total = res.data.data.total
+                    this.data = res.data.data.records
                 }).catch(error => {
                     this.$message.error("获取失败")
                 })
