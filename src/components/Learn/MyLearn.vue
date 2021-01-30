@@ -41,8 +41,6 @@
                                  @mouseenter="updateReplayClass(index)" style="cursor:pointer;">
                                 <strong>{{item.lastReply}}</strong>
                             </div>
-
-
                             <!--                           {{item.blogContext}}-->
                         </span>
                         <a-avatar style="cursor:pointer;" slot="avatar"
@@ -51,11 +49,14 @@
                     </a-list-item-meta>
                 </a-list-item>
             </a-list>
-            <slot name="user"></slot>
+            <div class="middle"></div>
+            <i-page :current="current" :pageSize="pageSize" :total="total" @updateDate="updateDateNew"></i-page>
+
             <!--            <user-infor></user-infor>-->
         </div>
-        <a-pagination v-model="current" :page-size="pageSize" :total="total" @change="onChange" show-less-items
-                      :hide-on-single-page="true"/>
+        <!--<a-pagination v-model="current" :page-size="pageSize" :total="total" @change="onChange" show-less-items
+                      :hide-on-single-page="true"/>-->
+        <slot name="user"></slot>
 
     </div>
 </template>
@@ -68,6 +69,7 @@
     import {mapActions, mapGetters} from "vuex";
     import UserInfor from "@/views/xybbz/user/UserInfor";
     import {isNull} from "@/utils/utils";
+    import IPage from "@/components/page/IPage";
     //学习
     export default {
         name: "MyLearn",
@@ -75,7 +77,7 @@
             return {
                 data: [],
                 current: 1,
-                pageSize: 100,
+                pageSize: 20,
                 total: 0,
                 isCreate: '',
                 isReplay: '',
@@ -91,7 +93,8 @@
             };
         },
         components: {
-            UserInfor
+            UserInfor,
+            IPage
         },
         created() {
             this.setTopSwitch({
@@ -104,7 +107,7 @@
             let type = false
             const enableObj = {keyName, context, type}
             setLocalToken(enableObj)
-            console.log("测试")
+
             this.getSortData()
         },
         methods: {
@@ -113,6 +116,11 @@
             // jsx修改属性
             createEmpty() {
                 return ( <a-empty description = {false}/>)
+            },
+            updateDateNew(val) {
+                console.log(val)
+                this.current = val
+                this.getSortData()
             },
             deleteAvatarClass(val) {
                 this.isAvatar = ''
@@ -195,6 +203,9 @@
 </script>
 
 <style scoped>
+    .middle{
+        height: 20px;
+    }
     .avatarClass {
         background-color: rgb(131, 135, 151) !important;
     }
@@ -219,21 +230,21 @@
     }
 
     .learn {
+        display: flex;
+        /*width: 100%;*/
+        justify-content: space-between;
         min-height: 800px;
         margin-top: 5%;
         width: 50%;
-        /*padding-bottom: 10%;*/
         height: auto;
         margin-right: auto;
         margin-left: auto;
-        /*background-color: rgba(255, 255, 255, .6);*/
-        /*margin-bottom: 3%;*/
     }
 
     .learnChild {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
+        /*display: flex;*/
+        width: 68%;
+        /*justify-content: space-between;*/
     }
 
     .ant-pagination-item-link {
@@ -249,7 +260,7 @@
     }
 
     .ant-list {
-        width: 68%;
+        /*width: 68%;*/
         background-color: rgba(255, 255, 255, .6);
     }
 
