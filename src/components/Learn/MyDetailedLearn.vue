@@ -3,8 +3,8 @@
         <div class="detaileLeft">
             <div class="detaileTitleNew">
                 <div>
-                    <div >
-                        <div style="color: #ccc;">首页</div> > <a>标签</a>
+                    <div class="mianbao" >
+                        <div style="color: #ccc; padding-right: 10px">首页</div> > <div style="color: #ccc; padding-left: 10px">标签</div>
                     </div>
                     <div class="detaileTitle" >
                         <!--                    <div class="detaileTitleChilden">-->
@@ -99,6 +99,10 @@
 </script>
 
 <style scoped>
+    .mianbao {
+        display: flex;
+        /*justify-content: space-around;*/
+    }
     .detaileContent {
         word-wrap:break-word;
 
