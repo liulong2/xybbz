@@ -1,36 +1,36 @@
 <template>
     <div class="detaile">
         <div class="detaileLeft">
-            <div class="detaileTitleNew">
-                <div>
-                    <div class="mianbao" >
-                        <div style="color: #ccc; padding-right: 10px">首页</div> > <div style="color: #ccc; padding-left: 10px">标签</div>
-                    </div>
-                    <div class="detaileTitle" >
-                        <!--                    <div class="detaileTitleChilden">-->
-                        <div>
-                            <h1>
-                                <strong>{{detailedData.blogTitle}}</strong>
-                            </h1>
+            <div class="detaileLeftTop">
+                <div class="detaileTitleNew">
+                    <div>
+                        <div class="mianbao" >
+                            <div style="color: #ccc; padding-right: 10px">首页</div> > <div style="color: #ccc; padding-left: 10px">标签</div>
                         </div>
-                        <div class="titleBottom" style="color: #ccc;">
+                        <div class="detaileTitle" >
+                            <!--                    <div class="detaileTitleChilden">-->
+                            <div>
+                                <h1>
+                                    <strong>{{detailedData.blogTitle}}</strong>
+                                </h1>
+                            </div>
+                            <div class="titleBottom" style="color: #ccc;">
 
-                            {{detailedData.userName}} ·
-                            {{getTime(detailedData.addTime)}}
+                                {{detailedData.userName}} ·
+                                {{getTime(detailedData.addTime)}}
+                            </div>
+                            <!--                    </div>-->
                         </div>
-                        <!--                    </div>-->
                     </div>
+                    <a-avatar shape="square" :size="64" icon="user" :src="detailedData.userIcon" />
                 </div>
-                <a-avatar shape="square" :size="64" icon="user" :src="detailedData.userIcon" />
+
+                <a-divider/>
+                <div class="detaileContent" v-html="detailedData.blogContext"/>
             </div>
-
-            <a-divider/>
-            <div class="detaileContent" v-html="detailedData.blogContext">
-
-            </div>
-
-            <!--            <div v-for=""></div>-->
-
+            <div class="middle"></div>
+            <div class="relpayConent">这里是回复内容</div>
+<!--            <i-page :></i-page>-->
         </div>
         <slot name="user"></slot>
     </div>
@@ -42,15 +42,21 @@
     import global from "@/config/global";
     import {setLocalToken} from "@/utils/local";
     import {mapActions, mapGetters} from "vuex";
+    import IPage from "@/components/page/IPage";
 
     export default {
         name: "MyDetailedLearn",
+        components: {
+          IPage
+        },
         data() {
             return {
                 detailedData: {}
             }
         },
         created() {
+            console.log(this.$route.query.key);
+            //获取主体数据
             this.setTopSwitch({
                 iconHref: '#icon-xuexi',
                 iconName: '学习',
@@ -62,7 +68,7 @@
             const enableObj = {keyName, context, type}
             setLocalToken(enableObj)
             this.getDetailed(this.$route.query.key)
-            //获得接口
+            //获得回复数据
         },
         methods: {
             ...mapGetters(['getCurrents']),
@@ -105,14 +111,23 @@
                     desc = desc + "几秒钟前"
                 }
                 return (desc + "前")
-
-
             },
         }
     }
 </script>
 
 <style scoped>
+    .relpayConent{
+        background-color: rgba(255, 255, 255, .6);
+        padding: 10px;
+    }
+    .middle{
+        height: 20px;
+    }
+    .detaileLeftTop {
+        padding: 10px;
+        background-color: rgba(255, 255, 255, .6);
+    }
     .mianbao {
         display: flex;
         /*justify-content: space-around;*/
@@ -148,12 +163,13 @@
         line-height: 150%;
         margin: 0 0 10px;
         padding: 0;
+        /*box-shadow: 0 2px 3px rgb(0 0 0 / 10%);*/
     }
 
     .detaileLeft {
-        padding: 10px;
+        /*padding: 10px;*/
         height: 10%;
-        background-color: rgba(255, 255, 255, .6);
+        /*background-color: rgba(255, 255, 255, .6);*/
         width: 68%;
     }
 
