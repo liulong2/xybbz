@@ -39,6 +39,9 @@
 <script>
     import {getBlogDetailed} from '@/api/blog/api'
     import {isNull} from "@/utils/utils";
+    import global from "@/config/global";
+    import {setLocalToken} from "@/utils/local";
+    import {mapActions, mapGetters} from "vuex";
 
     export default {
         name: "MyDetailedLearn",
@@ -48,11 +51,22 @@
             }
         },
         created() {
-            console.log(this.$route.query.key);
+            this.setTopSwitch({
+                iconHref: '#icon-xuexi',
+                iconName: '学习',
+                routerPath: '/learn'
+            },)
+            let context = this.getCurrents();
+            let keyName = global.current;
+            let type = false
+            const enableObj = {keyName, context, type}
+            setLocalToken(enableObj)
             this.getDetailed(this.$route.query.key)
             //获得接口
         },
         methods: {
+            ...mapGetters(['getCurrents']),
+            ...mapActions(['setTopSwitch']),
             getDetailed(id) {
                 getBlogDetailed(id).then(res => {
                     console.log(res);
