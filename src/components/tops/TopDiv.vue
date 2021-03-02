@@ -94,6 +94,13 @@
             }
         },
         watch: {
+            $route(to, from) {
+                if (to.path !== '/mylogin') {
+                    this.getDisplay()
+                }
+                console.log(to.path)
+                console.log(from.path)
+            }
         }
     }
 </script>

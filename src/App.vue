@@ -47,6 +47,15 @@
                     this.isRouterAlive = true
                 })
             }
+        },
+        watch: {
+            /*$route(to, from) {
+                if (to.path !== '/mylogin') {
+
+                }
+                console.log(to.path)
+                console.log(from.path)
+            }*/
         }
     }
 </script>
